@@ -10,13 +10,27 @@ import javax.servlet.http.HttpSession;
 
 public abstract class CustomTemplateServlet extends HttpServlet {
 	
+	public boolean logout(HttpServletRequest request, HttpServletResponse response) 
+			throws IOException {
+		String logout = request.getParameter("logout");
+		boolean result = (logout != null);
+		if (result) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("id");
+			checkNoneLogin(request, response);
+			
+		}
+		return result;
+		
+	}
+	
 	protected final boolean checkNoneLogin(HttpServletRequest request, HttpServletResponse response) 
 			   throws IOException {
 		HttpSession session = request.getSession();
 		boolean result = (session.getAttribute("id") == null);
 		if (result) {
 			// ログインサーブレットにリダイレクトする
-			response.sendRedirect("login");
+			response.sendRedirect("LoginMakan");
 		}
 		return result;
 			 
@@ -28,7 +42,7 @@ public abstract class CustomTemplateServlet extends HttpServlet {
 		boolean result = (session.getAttribute("id") != null);
 		if (result) {
 			// ホームサーブレットにリダイレクトする
-			response.sendRedirect("home");
+			response.sendRedirect("HomeMakan");
 		}
 		return result;
 			 
