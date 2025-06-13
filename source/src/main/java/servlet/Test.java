@@ -38,11 +38,11 @@ public class Test extends HttpServlet {
 		testDto.setPass("IronLotus");
 		testDto.setName("やまだ");
 		
-		testDao.insert(testDto);
-		testDao.select(testDto);
-		testDto.setName("もりわき");
+		//testDao.insert(testDto);
+		//testDao.select(testDto);
+		//testDto.setName("もりわき");
 		testDao.update(testDto);
-		testDao.delete(testDto);
+		//testDao.delete(testDto);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

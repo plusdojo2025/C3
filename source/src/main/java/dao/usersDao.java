@@ -63,8 +63,7 @@ public class usersDao extends CustomTemplateDao<users> {
 			// SQL文を準備する
 			String sql = """
 					INSERT INTO users(id,pass,name)
-					VALUES(?,?,?)
-					WHERE id=?;
+					VALUES(?,?,?);
 					""";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
