@@ -13,6 +13,7 @@
 		</div>
 		<a href="/C3/IncomeResisterMakan">IncomeResisterMakan</a>
 		<a href="/C3/HealthResultDefaultMakan">HealthResultDefaultMakan</a>
+		<a href="/C3/HealthResistMakan">HealthResistMakan</a>
 		<a href="/C3/WeightGraphMakan">WeightGraphMakan</a>
 		<a href="/C3/DishMakan">DishMakan</a>
 	</form>
