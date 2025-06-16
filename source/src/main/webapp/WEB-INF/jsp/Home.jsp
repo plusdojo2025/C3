@@ -11,11 +11,11 @@
 		<div>
 			<input type = "submit" id = "logout" name = "logout" value ="ログアウト">
 		</div>
-		<a href="/C3/IncomeResisterMakan">IncomeResisterMakan</a>
-		<a href="/C3/HealthResultDefaultMakan">HealthResultDefaultMakan</a>
-		<a href="/C3/HealthResistMakan">HealthResistMakan</a>
-		<a href="/C3/WeightGraphMakan">WeightGraphMakan</a>
-		<a href="/C3/DishMakan">DishMakan</a>
+		<a href="/c3/IncomeResisterMakan">IncomeResisterMakan</a>
+		<a href="/c3/HealthResultDefaultMakan">HealthResultDefaultMakan</a>
+		<a href="/c3/HealthResistMakan">HealthResistMakan</a>
+		<a href="/c3/WeightGraphMakan">WeightGraphMakan</a>
+		<a href="/c3/DishMakan">DishMakan</a>
 	</form>
 </body>
 </html>
