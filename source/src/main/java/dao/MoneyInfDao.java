@@ -83,7 +83,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			pStmt.setString(4, dto.getDependent());
 			pStmt.setInt(5,netIncome);//目標年収-税金
 			pStmt.setInt(6,dWork);//
-			pStmt.setString(7,"00001");//dto.getU_id()
+			pStmt.setString(7,dto.getU_id());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
