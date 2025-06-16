@@ -7,23 +7,22 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class HealthUpdateMakan
  */
-@WebServlet("/LoginMakan")
-public class LoginServlet extends CustomTemplateServlet {
+@WebServlet("/HealthUpdateMakan")
+public class HealthUpdateMakan extends CustomTemplateServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (checkDoneLogin(request, response)) {
-			return;
-		}
+//		if (checkNoneLogin(request, response)) {
+//			return;
+//		}
+		
 		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthUpdate.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -31,20 +30,10 @@ public class LoginServlet extends CustomTemplateServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if (checkDoneLogin(request, response)) {
-			return;
-		}
+		// TODO 自動生成されたメソッド・スタブ
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("id",id);
-		response.sendRedirect("HomeMakan");
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthUpdate.jsp");
+		dispatcher.forward(request, response);
 	}
 
-    
-	}
-
-
+}
