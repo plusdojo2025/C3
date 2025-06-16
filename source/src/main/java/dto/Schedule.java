@@ -1,7 +1,7 @@
 package dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Schedule extends CustomTemplateDto implements Serializable{
 	private int id;
@@ -155,7 +155,7 @@ public class Schedule extends CustomTemplateDto implements Serializable{
 		this.u_id = u_id;
 	}
 	public Schedule() {
-		this(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Date.valueOf("19000-1-1"),"");
+		this(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,"");
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	
