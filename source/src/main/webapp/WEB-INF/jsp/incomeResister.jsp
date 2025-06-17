@@ -5,78 +5,52 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><!-- ページタイトル入力 --></title>
-    <link rel="stylesheet" href="<c:url value='' />">
-
+    <title>労働時間計算</title>
+    <%-- CSSがあればパスを指定 --%>
+    <%-- <link rel="stylesheet" href="<c:url value='/css/style.css' />"> --%>
 </head>
 <body>
-    <!--　ヘッダー　-->
+    <!-- ヘッダー -->
     <header>
-
+        <%@ include file="header.jsp" %>
     </header>
-    <!--　ヘッダーここまで　-->
-    <!--　メイン　-->
+
+    <!-- メイン -->
     <main>
         <h2>1週間の労働時間と手取り計算</h2>
-  <form method="POST" action="<c:url value='/IncomeResultMakan' />">
-    <table>
-        <tr>
-            <label>
-                <td> 
-                    目標年収を入力
-                </td>
-                <td>
-                    <input type="text" name="gIncome"><br>
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <label>
-                <td> 
-                    時給を入力
-                </td>
-                <td>
-                    <input type="text" name="hWage"><br>
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <label>
-                <td> 
-                    １週間の希望労働日数を入力
-                </td>
-                <td>
-                    <input type="text" name="wWork"><br>
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <label>
-                <td> 
-                    扶養しているか
-                </td>
-<tr>
-            <td>
-                <label><input type="radio" name="huyou" value="n">はい</label>
-                <label><input type="radio" name="huyou" value="y">いいえ</label><br>
-            </td>
-        </tr>
-            </label>    
-        
-        <tr>
-            <td>
-               <input type="submit" name="submit" value="決定">
-                
-            </td>
-        </tr>
-    </table>
-  </form>
+        <form method="POST" action="<c:url value='/IncomeResultMakan' />">
+            <table>
+                <tr>
+                    <td>目標年収を入力</td>
+                    <td><input type="text" name="gIncome"></td>
+                </tr>
+                <tr>
+                    <td>時給を入力</td>
+                    <td><input type="text" name="hWage"></td>
+                </tr>
+                <tr>
+                    <td>1週間の希望労働日数を入力</td>
+                    <td><input type="text" name="wWork"></td>
+                </tr>
+                <tr>
+                    <td>扶養しているか</td>
+                    <td>
+                        <label><input type="radio" name="huyou" value="y"> はい</label>
+                        <label><input type="radio" name="huyou" value="n"> いいえ</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="submit" value="決定">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </main>
-    <!--　メインここまで　-->
-    <!--　フッター　-->
+
+    <!-- フッター -->
     <footer>
-        
+        <%@ include file="footer.jsp" %>
     </footer>
-    <!--　フッターここまで　-->
 </body>
 </html>
