@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title><!-- ページタイトル入力 --></title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="<c:url value='' />">
 
 </head>
 <body>

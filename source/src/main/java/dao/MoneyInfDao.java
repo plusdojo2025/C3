@@ -55,7 +55,71 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 					taxNo = 6;
 				}
 			}
-
+			if(gIncome <= 299) {
+				if(dependent.equals("NO")) {
+					taxNo = 7;
+				}
+				else {
+					taxNo = 8;
+				}
+			}
+			if(gIncome <= 399) {
+				if(dependent.equals("NO")) {
+					taxNo = 9;
+				}
+				else {
+					taxNo = 10;
+				}
+			}
+			if(gIncome <= 499) {
+				if(dependent.equals("NO")) {
+					taxNo = 11;
+				}
+				else {
+					taxNo = 12;
+				}
+			}
+			if(gIncome <= 599) {
+				if(dependent.equals("NO")) {
+					taxNo = 13;
+				}
+				else {
+					taxNo = 14;
+				}
+			}
+			if(gIncome <= 699) {
+				if(dependent.equals("NO")) {
+					taxNo = 15;
+				}
+				else {
+					taxNo = 16;
+				}
+			}
+			if(gIncome <= 799) {
+				if(dependent.equals("NO")) {
+					taxNo = 17;
+				}
+				else {
+					taxNo = 18;
+				}
+			}
+			if(gIncome <= 899) {
+				if(dependent.equals("NO")) {
+					taxNo = 19;
+				}
+				else {
+					taxNo = 20;
+				}
+			}
+			if(gIncome <= 1000) {
+				if(dependent.equals("NO")) {
+					taxNo = 21;
+				}
+				else {
+					taxNo = 22;
+				}
+			}
+			
 			String sql = "SELECT tax FROM tax WHERE id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setInt(1,taxNo);
