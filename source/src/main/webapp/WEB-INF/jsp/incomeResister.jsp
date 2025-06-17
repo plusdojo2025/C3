@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title><!-- ページタイトル入力 --></title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="<c:url value='' />">
 
 </head>
 <body>
@@ -17,7 +18,7 @@
     <!--　メイン　-->
     <main>
         <h2>1週間の労働時間と手取り計算</h2>
-  <form method="POST" action="IncomeResultMakan">
+  <form method="POST" action="<c:url value='/IncomeResultMakan' />">
     <table>
         <tr>
             <label>
