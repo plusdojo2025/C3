@@ -21,7 +21,7 @@ public class usersDao extends CustomTemplateDao<users> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT　* FROM users WHERE id = ? ";
+			String sql = "SELECT * FROM users WHERE id = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -157,6 +157,78 @@ public class usersDao extends CustomTemplateDao<users> {
 
 		// 結果を返す
 		return result;
+	}
+	
+	public boolean isLoginOK(users users) {
+		Connection conn = null;
+		boolean loginResult = false;
+
+		try {
+			conn = conn();
+
+			// SELECT文を準備する
+			String sql = "SELECT count(*) FROM users WHERE id=? AND pass=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, users.getId());
+			pStmt.setString(2, users.getPass());
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			rs.next();
+			if (rs.getInt("count(*)") == 1) {
+				loginResult = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			loginResult = false;
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		
+		// 結果を返す
+		return loginResult;
+	}
+	
+	public List<users> selectI_N(users dto) {
+
+		Connection conn = null;
+		List<users> uInfo = new ArrayList<users>();//不定の配列
+
+		try {
+			conn = conn();//戻り値Connection型 dbに接続する
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM users WHERE id = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1,dto.getId());
+
+			// SQL文を実行し、結果を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果を1行ずつコレクションにコピーする
+			while (rs.next()) {
+				users us = new users(
+						rs.getString("id"), //テーブルの列名
+						"dummy",
+						rs.getString("name")
+						);
+				uInfo.add(us);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			uInfo = null;
+		} finally {
+			// dbを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return uInfo;
 	}
 
 }
