@@ -29,5 +29,7 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
+	
+
 
 }
