@@ -1,24 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
-<body>
-	<form action = "LoginMakan" method = "post">
-		<div>
-			<label for = "id">ID:</label>
-			<input type = "text" id = "id" name = "id" value ="">
-		</div>
-		<div>
-			<label for = "pw">PW:</label>
-			<input type = "text" id = "pw" name = "pw" value ="">
-		</div>
-		<div>
-			<input type = "submit" id = "submit" name = "submit" value ="ログイン">
-		</div>
-	</form>
-</body>
+	<body id="top_login">
+	        <img src="tiger.png" alt="まま管理アプリ-makan-">
+	        
+	        <h1>Makan~ログインフォーム~</h1><!--見出し-->
+		<main>
+	    	<form id="form_login"action="<c:url value="/LoginMakan" />" method="POST">
+	        	<table>
+	            	<tr>
+	                	<td>
+	                    	<label for="ID_login">ID<br>
+	                        	<input type="text" name="loginID" placeholder="5桁のIDを入力してください" id="ID_login" pattern="[0-9]{5}">
+	                        </label>
+	                   	</td>
+	           		</tr>
+	                <tr>
+	                	<td>
+	                    	<label for="pass_login">パスワード<br>
+	                        	<input type="password" name="loginPassword" placeholder="パスワードを入力してください" id="pass_login" maxlength="15">
+	                        </label>
+	                    </td>
+	               	</tr>
+	              	<tr>
+	                	<td colspan="2">
+	                    	<input type="submit" value="ログイン">
+	                        <input type="reset" value="リセット">
+	                        <p id="error_login"><c:out value="${loginMiss}" /></p>
+	                  	</td>
+	           		</tr>
+	         	</table>
+	    	</form>
+	  	</main>
+	
+	    <script><!--ファイルを分ける-->
+	           	'use strict';
+	            let formE = document.getElementById('form_login');
+	            let errorE = document.getElementById('error_login');
+	
+	            formE.onsubmit = function(){
+	                if(formE.loginID.value === '' || formE.loginPassword.value === ''){//オブジェクトのネームの値
+	                    errorE.textContent ='IDまたはパスワードが入力されていません。';
+	                    return false;
+	                }
+	                errorE.textContent = null;//戻す
+	            };
+	            formE.onreset = function(){
+	                errorE.textContent = null;
+	            };
+	        </script>
+	
+	</body>
 </html>
