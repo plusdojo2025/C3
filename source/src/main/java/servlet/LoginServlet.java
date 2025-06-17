@@ -32,7 +32,7 @@ public class LoginServlet extends CustomTemplateServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (checkDoneLogin(request, response)) {
-			
+			return;
 		}
 		
 		String id = request.getParameter("id");
