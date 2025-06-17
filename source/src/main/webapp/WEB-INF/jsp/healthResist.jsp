@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>登録</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="<c:url value=' ' />">
 
 </head>
 <body>
     <!--　ヘッダー　-->
-    
+    <%@ include file="header.jsp" %>
     <!--　ヘッダーここまで　-->
     <!--　メイン　-->
     <main>
         <h2>Health目標入力</h2>
-  <form method="POST" action="HealthResultDefaultMakan">
+  <form method="POST" action="<c:url value='HealthResultDefaultMakan' />">
     <table>
         <tr>
             <td> 
@@ -54,8 +56,8 @@
                 性別
             </td>
             <td>    
-                <label><input type="radio" name="sex" value="m">男性</label>
-                <label><input type="radio" name="sex" value="f">女性</label><br>
+                <label><input type="radio" name="gender" value="M">男性</label>
+                <label><input type="radio" name="gender" value="F">女性</label><br>
             </td>
         </tr>
         <tr>
@@ -84,7 +86,7 @@
  </main>
     <!--　メインここまで　-->
     <!--　フッター　-->
-
+	<%@ include file="footer.jsp" %>
     <!--　フッターここまで　-->
 </body>
 </html>
