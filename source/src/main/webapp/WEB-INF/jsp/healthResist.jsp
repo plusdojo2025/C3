@@ -17,7 +17,7 @@
     <!--　メイン　-->
     <main>
         <h2>Health目標入力</h2>
-  <form method="POST" action="<c:url value='HealthResultDefaultMakan' />">
+  <form method="POST" action="<c:url value='HealthResistMakan' />">
     <table>
         <tr>
             <td> 
