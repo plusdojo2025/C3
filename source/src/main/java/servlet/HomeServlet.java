@@ -15,9 +15,9 @@ public class HomeServlet extends CustomTemplateServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			if (checkNoneLogin(request,response)) {
-				return;
-			}
+//			if (checkNoneLogin(request,response)) {
+//				return;
+//			}
 			// ホームページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
 			dispatcher.forward(request, response);
