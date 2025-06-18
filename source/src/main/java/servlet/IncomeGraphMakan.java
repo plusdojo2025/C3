@@ -1,5 +1,6 @@
 package servlet;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,7 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
@@ -31,6 +33,7 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
 
 }
