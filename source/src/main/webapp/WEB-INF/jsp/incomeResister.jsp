@@ -34,8 +34,8 @@
                 <tr>
                     <td>扶養しているか</td>
                     <td>
-                        <label><input type="radio" name="huyou" value="y"> はい</label>
-                        <label><input type="radio" name="huyou" value="n"> いいえ</label>
+                        <label><input type="radio" name="huyou" value="YES"> はい</label>
+                        <label><input type="radio" name="huyou" value="NO"> いいえ</label>
                     </td>
                 </tr>
                 <tr>
