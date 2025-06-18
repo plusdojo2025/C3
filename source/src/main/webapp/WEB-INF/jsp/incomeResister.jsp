@@ -34,11 +34,19 @@
                 <tr>
                     <td>扶養しているか</td>
                     <td>
-                        <label><input type="radio" name="huyou" value="y"> はい</label>
-                        <label><input type="radio" name="huyou" value="n"> いいえ</label>
+                        <label><input type="radio" name="dependent" value="YES"> はい</label>
+                        <label><input type="radio" name="dependent" value="NO"> いいえ</label>
                     </td>
                 </tr>
                 <tr>
+                
+                
+                <tr>  
+                    <td><input type="hidden" name="U_id" value=${userInf.id}></td>
+                </tr>
+                
+                
+                
                     <td colspan="2">
                         <input type="submit" name="submit" value="決定">
                     </td>

@@ -1,69 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><!-- ページタイトル入力 --></title>
-    <link rel="stylesheet" href="<c:url value='' />">
-
+    <title>結果表示</title>
+    <link rel="stylesheet" href="<c:url value='/style.css' />">
 </head>
 <body>
-    <!--　ヘッダー　-->
+    <!-- ヘッダー -->
     <header>
         <%@ include file="header.jsp" %>
     </header>
-    <!--　ヘッダーここまで　-->
-    <!--　メイン　-->
-    <main>
-        <h2>結果表示</h2>
-   <form>
-    <table>
-        <tr>
-            <label>
-                <td> 
-                    目標年収
-                </td>
-                <td>
-                  年収の数字(gIncome)
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <label>
-                <td> 
-                    手取り
-                </td>
-                <td>
-                    手取り(wWage)
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <label>
-                <td> 
-                    1日当たりの労働時間
-                </td>
-                <td>
-                    手取り(wWork)
-                </td>
-            </label>
-        </tr>
-        <tr>
-            <td>
-              <a href="HomeMakan"><button type="button">ホームに戻る</button></a>
-            </td>
-            
-        </tr>
-    </table>
+
+    <!-- メイン -->
+<main>
+    <h2>結果表示</h2>
+    <c:forEach var="b" items="${emp}">
+        <table>
+            <tr>
+                <th>目標年収</th>
+                <td>${b.gIncome}</td>
+            </tr>
+            <tr>
+                <th>手取り</th>
+                <td>${b.netIncome}</td>
+            </tr>
+            <tr>
+                <th>1日当たりの労働時間</th>
+                <td>${b.dWork}</td>
+            </tr>
+        </table>
+    </c:forEach>
+
+    <form action="HomeMakan" method="get">
+        <button type="submit">ホームに戻る</button>
     </form>
-    </main>
-    <!--　メインここまで　-->
-    <!--　フッター　-->
+</main>
+    <!-- フッター -->
     <footer>
         <%@ include file="footer.jsp" %>
     </footer>
-    <!--　フッターここまで　-->
 </body>
 </html>
