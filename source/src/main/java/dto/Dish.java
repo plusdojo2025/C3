@@ -44,10 +44,6 @@ public class Dish extends CustomTemplateDto implements Serializable{
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 	
-	public Dish(String name, int calorie) {
-		super();
-		this.name = name;
-		this.calorie = calorie;
-	}
+
 	
 }
