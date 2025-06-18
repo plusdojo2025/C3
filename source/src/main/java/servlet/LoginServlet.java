@@ -17,7 +17,7 @@ import dto.users;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginMakan")
+@WebServlet(urlPatterns={"","/LoginMakan"})
 public class LoginServlet extends CustomTemplateServlet {
 	private static final long serialVersionUID = 1L;
 
