@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>食事表示</title>
-<link rel="stylesheet" href="<c:url value='/css/style.css' />">
+<link rel="stylesheet" href="<c:url value='/css/css_madoka.css' />">
 </head>
 <body>
 <!-- フッターここから -->
+<%@ include file="header.jsp" %>
 <!-- フッターここまで -->
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
@@ -50,13 +51,18 @@
 </main>
 
   <!-- トラ画像 -->
-  <img src="images/tora.png">
+  <img src="images/tora.png" width="100", height=aoto>
 
   <!-- 一日の消費カロリー -->
   <p>今日の消費カロリー</p>
   <p>〇kcal</p>
 
-
+ <!--　フッター　-->
+    <footer>
+        <%@ include file="footer.jsp" %>
+    </footer>
+    <!--　フッターここまで　-->
+    
 <script src="script/dish.js"></script>
 </body>
 </html>
