@@ -15,31 +15,29 @@
     </header>
 
     <!-- メイン -->
-    <main>
-        <h2>結果表示</h2>
+<main>
+    <h2>結果表示</h2>
+    <c:forEach var="b" items="${emp}">
         <table>
             <tr>
                 <th>目標年収</th>
-                <td>${gIncome}</td>
+                <td>${b.gIncome}</td>
             </tr>
             <tr>
                 <th>手取り</th>
-                <td>${wWage}</td>
+                <td>${b.netIncome}</td>
             </tr>
             <tr>
                 <th>1日当たりの労働時間</th>
-                <td>${wWork}</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <form action="HomeMakan" method="get">
-                        <button type="submit">ホームに戻る</button>
-                    </form>
-                </td>
+                <td>${b.dWork}</td>
             </tr>
         </table>
-    </main>
+    </c:forEach>
 
+    <form action="HomeMakan" method="get">
+        <button type="submit">ホームに戻る</button>
+    </form>
+</main>
     <!-- フッター -->
     <footer>
         <%@ include file="footer.jsp" %>
