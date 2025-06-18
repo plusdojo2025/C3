@@ -19,6 +19,37 @@
 <p>主食<br></p>
 <c:forEach var="b" items="${emp}">
 <table>
+
+<tr>
+	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><p>${b.calorie}</p></td>
+</tr>
+</table>
+</c:forEach>
+
+<p>主菜<br></p>
+<c:forEach var="b" items="${emp2}">
+<table>
+<tr>
+	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><p>${b.calorie}</p></td>
+</tr>
+</table>
+</c:forEach>
+
+<p>副菜<br></p>
+<c:forEach var="b" items="${emp3}">
+<table>
+<tr>
+	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><p>${b.calorie}</p></td>
+</tr>
+</table>
+</c:forEach>
+
+<p>その他<br></p>
+<c:forEach var="b" items="${emp4}">
+<table>
 <tr>
 	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
 	<td><p>${b.calorie}</p></td>

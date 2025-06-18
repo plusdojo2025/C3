@@ -37,6 +37,24 @@ public class DishInfMakan extends CustomTemplateServlet {
 		request.setAttribute("emp",emp);
 		//session.setAttribute("emp",emp);
 	    
+		// データベースを検索して結果をリクエストスコープに格納する
+		List<Dish> emp2 = dao.select2();
+		//HttpSession session = request.getSession();
+		request.setAttribute("emp2",emp2);
+		//session.setAttribute("emp",emp);
+		
+		// データベースを検索して結果をリクエストスコープに格納する
+		List<Dish> emp3 = dao.select3();
+		//HttpSession session = request.getSession();
+		request.setAttribute("emp3",emp3);
+		//session.setAttribute("emp",emp);
+		
+		// データベースを検索して結果をリクエストスコープに格納する
+		List<Dish> emp4 = dao.select4();
+		//HttpSession session = request.getSession();
+		request.setAttribute("emp4",emp4);
+		//session.setAttribute("emp",emp);
+				
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("/WEB-INF/jsp/dishInf.jsp");
