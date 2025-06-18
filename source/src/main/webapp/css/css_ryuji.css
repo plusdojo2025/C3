@@ -1,1 +1,16 @@
 @charset "UTF-8";
+
+.kadomaru {
+  color: #FFFFFF;
+  background-color: #B5ACA1;
+  border-radius: 10px;
+  text-align: center;
+  padding: 8px 16px; /* 縦横の余白を調整 */
+  display: inline-block;
+  width: auto; /* 必要なら明示的に */
+  white-space: nowrap; /* 改行しない */
+  font-size: 14px;
+  max-width: 160px; /* 必要なら最大幅を指定 */
+}
+
+

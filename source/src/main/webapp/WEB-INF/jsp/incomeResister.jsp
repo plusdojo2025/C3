@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>労働時間計算</title>
-    <%-- CSSがあればパスを指定 --%>
     <%-- <link rel="stylesheet" href="<c:url value='/css/style.css' />"> --%>
 </head>
 <body>
