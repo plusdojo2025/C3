@@ -18,10 +18,12 @@
 
 <p>主食<br></p>
 <c:forEach var="b" items="${emp}">
+<table>
 <tr>
-<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
-<td>${b.calorie}</td>
+	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><p>${b.calorie}</p></td>
 </tr>
+</table>
 </c:forEach>
 
 <!-- <form method="POST" action="<c:url value='DishMakan' />">保存</form> -->

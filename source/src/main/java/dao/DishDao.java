@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,35 @@ public class DishDao extends CustomTemplateDao<Dish> {
 	@Override
 	public List<Dish> select(Dish dto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		// 結果セットを格納するコレクション
+		List<Dish> list = new ArrayList<Dish>();
+
+		// データベースに接続と切断を行うオブジェクト
+		Connection conn = null;
+
+		try {
+			conn = conn();
+
+			// SQL文を準備する
+			String sql = "select * from dish;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// SQL文を実行して検索結果を取得する
+			ResultSet rs = pstmt.executeQuery();
+			// 検索結果をコレクションに格納する
+			while (rs.next()) {
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
 	}
 
 	@Override
@@ -37,7 +64,7 @@ public class DishDao extends CustomTemplateDao<Dish> {
 	}
 	
 	// 主食：DishInfテーブルを検索するメソッド
-	public List<Dish> select() {
+	public List<Dish> select1() {
 		// 結果セットを格納するコレクション
 		List<Dish> list = new ArrayList<Dish>();
 
@@ -45,13 +72,7 @@ public class DishDao extends CustomTemplateDao<Dish> {
 		Connection conn = null;
 
 		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/c3"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+			conn = conn();
 
 			// SQL文を準備する
 			String sql = "select * from dish where type = 1;";
@@ -61,27 +82,116 @@ public class DishDao extends CustomTemplateDao<Dish> {
 			ResultSet rs = pstmt.executeQuery();
 			// 検索結果をコレクションに格納する
 			while (rs.next()) {
-				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("colorie"), rs.getInt("type"));
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
 				list.add(b);
 			}
-
-			// 検索結果が格納されたコレクションを返す
-			return list;
-
-		} catch (Exception e) {
-			// 例外処理
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		} finally {
 			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			close(conn);
 		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
 	}
+	
+	//主菜の情報
+	public List<Dish> select2() {
+		// 結果セットを格納するコレクション
+		List<Dish> list = new ArrayList<Dish>();
 
+		// データベースに接続と切断を行うオブジェクト
+		Connection conn = null;
+
+		try {
+			conn = conn();
+
+			// SQL文を準備する
+			String sql = "select * from dish where type = 2;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// SQL文を実行して検索結果を取得する
+			ResultSet rs = pstmt.executeQuery();
+			// 検索結果をコレクションに格納する
+			while (rs.next()) {
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
+	}
+	
+	//副菜の情報
+	public List<Dish> select3() {
+		// 結果セットを格納するコレクション
+		List<Dish> list = new ArrayList<Dish>();
+
+		// データベースに接続と切断を行うオブジェクト
+		Connection conn = null;
+
+		try {
+			conn = conn();
+
+			// SQL文を準備する
+			String sql = "select * from dish where type = 3;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// SQL文を実行して検索結果を取得する
+			ResultSet rs = pstmt.executeQuery();
+			// 検索結果をコレクションに格納する
+			while (rs.next()) {
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
+	}
+	
+	//その他の情報
+	public List<Dish> select4() {
+		// 結果セットを格納するコレクション
+		List<Dish> list = new ArrayList<Dish>();
+
+		// データベースに接続と切断を行うオブジェクト
+		Connection conn = null;
+
+		try {
+			conn = conn();
+
+			// SQL文を準備する
+			String sql = "select * from dish where type = 4;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// SQL文を実行して検索結果を取得する
+			ResultSet rs = pstmt.executeQuery();
+			// 検索結果をコレクションに格納する
+			while (rs.next()) {
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
+				list.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
+	}
 }
