@@ -24,7 +24,7 @@
 	                <tr>
 	                	<td>
 	                    	<label for="pass_login">パスワード<br>
-	                        	<input type="password" name="loginPassword" placeholder="パスワードを入力してください" id="pass_login" maxlength="15">
+	                        	<input type="password" name="loginPassword" placeholder="パスワードを入力してください" id="pass_login" maxlength="20">
 	                        </label>
 	                    </td>
 	               	</tr>

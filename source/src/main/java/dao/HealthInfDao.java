@@ -242,7 +242,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 
 			// SQL文を準備する 上書き
-			String sql =  "UPDATE healthInf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=?, WHERE u_id=?";
+			String sql =  "UPDATE healthInf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
