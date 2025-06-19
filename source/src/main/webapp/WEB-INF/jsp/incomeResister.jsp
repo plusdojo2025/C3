@@ -17,7 +17,7 @@
     <!-- メイン -->
     <main>
         <h2>1週間の労働時間と手取り計算</h2>
-        <form method="POST" action="<c:url value="/IncomeResisterMakan" />">
+        <form method="POST" action="<c:url value="/IncomeResultMakan" />">
             <table>
                 <tr>
                     <td>目標年収を入力</td>
