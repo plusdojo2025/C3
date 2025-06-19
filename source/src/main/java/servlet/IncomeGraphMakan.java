@@ -2,12 +2,19 @@ package servlet;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.MoneyInfDao;
+import dao.MonthIncomeDao;
+import dto.MoneyInf;
+import dto.MonthIncome;
 
 /**
  * Servlet implementation class IncomeGraphMakan
@@ -23,6 +30,25 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
+		String u_id;
+		HttpSession session = request.getSession();
+		u_id = (String) session.getAttribute("id");
+		MoneyInfDao mDao = new MoneyInfDao(); 
+		MoneyInf mDto = new MoneyInf();//空のコンストラクタ　×
+		MonthIncomeDao miDao = new MonthIncomeDao();
+		MonthIncome miDto = new MonthIncome(0,0,null,u_id);//空のコンストラクタ　×
+		//目標収入の描画
+		List<MoneyInf> mInf = mDao.select(mDto);
+		//
+		
+		//収入のグラフ(実績)
+		//scheduleから月別の労働時間合計を出す 1.scheduleDaoに関数を追加
+		//moneyInfの時給×scheduleの労働時間合計＝monthIncomeのmIncomeに保存
+		List<MonthIncome> mInc = miDao.select(miDto);
+		//
+		
+		request.setAttribute("mInfo",mInf);
+		request.setAttribute("mIncome",mInc);
 		
 		// 体重グラフにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/incomeGraph.jsp");
