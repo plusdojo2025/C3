@@ -26,7 +26,29 @@
   <div id="content">
     <div class="meal-section">
       <div class="meal-title">朝</div>
-      <div class="meal-content" id="content-morning">ここに内容が表示されます</div>
+      <!-- 料理内容 -->
+      <div class="meal-content" id="content-morning">
+		<c:forEach var="d" items="${dish}">
+		<table>		
+		<tr>
+			<td><p>${d.mStaple}</p></td>			
+			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
+		</tr>
+		<tr>
+			<td><p>${d.mMain}</p></td>			
+			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
+		</tr>
+		<tr>
+			<td><p>${d.mSide}</p></td>			
+			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
+		</tr>
+		<tr>
+			<td><p>${d.mOther}</p></td>			
+			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
+		</tr>
+		</table>
+		</c:forEach>
+      </div>
       <a href="<c:url value="DishInfMakan"/>">選択</a>
     </div>
 

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title><!-- ページタイトル入力 --></title>
 	<link rel="stylesheet" href="<c:url value='/css/css_ryuji.css' />">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <!--　ヘッダー　-->
@@ -17,26 +18,26 @@
         </div>
         
         <nav class="nav">
-            <ul>
+            <ul class="nav_list">
                 <li class="kadomaru"><a href="HomeMakan">ホーム</a></li>
                 <li class="kadomaru"><a href="DishMakan">食事登録</a></li>
                 <li class="kadomaru"><a href="#">グラフ</a>
-                    <div>
-                        <!-- <a href="IncomeGraphMakan">グラフ(年収)</a>
-                        <a href="WeightGraphMakan">グラフ(体重)</a> -->
-                    </div>
+                    <ul class="dropdown">
+                        <li><a href="IncomeGraphMakan">グラフ(年収)</a></li>
+                        <li><a href="WeightGraphMakan">グラフ(体重)</a> </li>
+                    </ul>
                 </li>
                 <li class="kadomaru"><a href="#">年収管理</a>
-                    <div>
-                        <!-- <a href="IncomeResisterMakan">目標年収入力/変更</a>
-                        <a href="IncomeResultMakan">計算結果</a>-->
-                    </div>
+                    <ul class="dropdown">
+                        <li><a href="IncomeResisterMakan">目標年収入力/変更</a></li>
+                        <li><a href="IncomeResultMakan">計算結果</a></li>
+                    </ul>
                 </li>
-                <li class="kadomaru"><a href="#">運動管理</a>
-                    <div>
-                        <!-- <a href="HealthResistMakan">目標体重入力/変更</a>
-                        <a href="HealthResultFirstWeekMakan">計算結果</a> -->
-                    </div>
+                <li class="kadomaru"><a  href="#">運動管理</a>
+                    <ul class="dropdown">
+                        <li><a href="HealthResistMakan">目標体重入力/変更</a></li>
+                        <li><a href="HealthResultFirstWeekMakan">計算結果</a></li>
+                    </ul>
                 </li>
                 <li class="kadomaru"><a href="LogoutMakan">ログアウト</a></li>
             </ul>
