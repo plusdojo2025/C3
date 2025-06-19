@@ -210,7 +210,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			 int netIncome = gIncome - tax;
 			
 			  //仮置き 一日辺りの労働時間 
-			 int kari = gIncome/12; 
+			 int kari = (gIncome*10000)/12; 
 			 kari = kari/4;
 			 int workTime =kari/hWage; 
 			 int dWork = workTime/wWork; //ここまで
