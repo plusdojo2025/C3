@@ -17,22 +17,10 @@
     <!-- メイン -->
 <main>
     <h2>結果表示</h2>
-    <c:forEach var="b" items="${emp}">
-        <table>
-            <tr>
-                <th>目標年収</th>
-                <td>${b.gIncome}</td>
-            </tr>
-            <tr>
-                <th>手取り</th>
-                <td>${b.netIncome}</td>
-            </tr>
-            <tr>
-                <th>1日当たりの労働時間</th>
-                <td>${b.dWork}</td>
-            </tr>
-        </table>
-    </c:forEach>
+		
+    目標年収（万円）<input type="text" name="gIncome" value="${MoneyInf.gIncome}"><br>
+    手取り（万円）<input type="text" name="netIncome" value="${MoneyInf.netIncome}"><br>
+    1日当たりの労働時間（時間）<input type="text" name="dWork" value="${MoneyInf.dWork}"><br>
 
     <form action="HomeMakan" method="get">
         <button type="submit">ホームに戻る</button>

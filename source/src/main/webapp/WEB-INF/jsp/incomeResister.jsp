@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>労働時間計算</title>
+    <title>労働時間計算（登録）</title>
     <%-- <link rel="stylesheet" href="<c:url value='/css/style.css' />"> --%>
 </head>
 <body>
@@ -20,15 +20,15 @@
         <form method="POST" action="<c:url value="/IncomeResultMakan" />">
             <table>
                 <tr>
-                    <td>目標年収を入力</td>
+                    <td>目標年収を入力（万円）</td>
                     <td><input type="text" name="gIncome"></td>
                 </tr>
                 <tr>
-                    <td>時給を入力</td>
+                    <td>時給を入力（円）</td>
                     <td><input type="text" name="hWage"></td>
                 </tr>
                 <tr>
-                    <td>1週間の希望労働日数を入力</td>
+                    <td>1週間の希望労働日数を入力（日）</td>
                     <td><input type="text" name="wWork"></td>
                 </tr>
                 <tr>

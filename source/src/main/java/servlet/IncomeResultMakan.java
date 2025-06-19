@@ -25,10 +25,10 @@ public class IncomeResultMakan extends CustomTemplateServlet {
 //			return;
 //		}
 
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/incomeResult.jsp");
 		dispatcher.forward(request, response);
-		
-	}
+		}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

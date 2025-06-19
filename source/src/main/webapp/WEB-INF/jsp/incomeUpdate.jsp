@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><!-- ページタイトル入力 --></title>
+    <title>労働時間計算（更新）</title>
     <link rel="stylesheet" href="<c:url value='' />">
 
 </head>
@@ -57,12 +57,17 @@
                 </td>
 <tr>
             <td>
-                <label><input type="radio" name="huyou" value="n">はい</label>
-                <label><input type="radio" name="huyou" value="y">いいえ</label><br>
+                <label><input type="radio" name="huyou" value="YES">はい</label>
+                <label><input type="radio" name="huyou" value="NO">いいえ</label><br>
             </td>
         </tr>
             </label>    
         
+            <tr>  
+                  <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
+                  <td><c:out value="${userInf.id}" /></td>
+            </tr>     
+                       
         <tr>
             <td>
                <input type="submit" name="submit" value="更新">
