@@ -8,23 +8,8 @@
 <title>体重グラフ</title>
 
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-  <style>
-   #weightchart-container {
-      width: 80%;
-      margin: 40px auto;
-    }
-    .button-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-   button {
-      margin: 0 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-    }
-   
-  </style>
+ <!-- CSSファイル -->
+<link rel="stylesheet" href="<c:url value='/css/css_hana.css'/>">
 
 </head>
 <body>

@@ -13,6 +13,9 @@
 
   <!-- JSファイル -->
   <script src="script/incomeGraph.js" defer></script>
+  
+  <!-- CSSファイル -->
+　　<link rel="stylesheet" href="<c:url value='/css/css_hana.css'/>">
 
   <style>
     #incomechart-container {
