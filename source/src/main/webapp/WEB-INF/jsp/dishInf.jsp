@@ -57,5 +57,11 @@
 </tr>
 </table>
 </c:forEach>
+<!-- 🔽 JavaScriptで埋め込む日時の隠しフィールド -->
+<input type="hidden" id="date" name="date">
+
 <input type="submit" id="save" name="submit" value="保存">
 </form>
+<script src="script/dish.js"></script>
+
+</body>

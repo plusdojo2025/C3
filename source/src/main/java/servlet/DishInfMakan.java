@@ -1,10 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -84,18 +80,9 @@ public class DishInfMakan extends CustomTemplateServlet {
 		int mOther = 0;
 		mOther = Integer.parseInt(request.getParameter("mOther"));
 
-		//HTMLフォームから受け取った日付の文字列をjava.util.Date型に変換し、「変数date」へ格納
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String parameterDate = request.getParameter("date");
-		Date date = null;
-		try {
-			LocalDate localDate = LocalDate.parse(parameterDate, dateFormatter);
-			date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		} catch (Exception ex) { }
-
 		// 登録処理を行う
 		DishInfDao bDao = new DishInfDao();
-		bDao.insert(new DishInf(mStaple,mMain, mMain, mOther,0,0,0,0,0,0,0,0,0,0,date,"00007"));	
+		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,1,1,1,1,1,1,1,1,1,null,"00007"));	
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
