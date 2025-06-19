@@ -17,7 +17,7 @@
     <!-- メイン -->
     <main>
         <h2>1週間の労働時間と手取り計算</h2>
-        <form method="POST" action="<c:url value='/IncomeResultMakan' />">
+        <form method="POST" action="<c:url value="/IncomeResisterMakan" />">
             <table>
                 <tr>
                     <td>目標年収を入力</td>
@@ -38,16 +38,16 @@
                         <label><input type="radio" name="dependent" value="NO"> いいえ</label>
                     </td>
                 </tr>
-                <tr>
                 
                 
                 <tr>  
-                    <td><input type="hidden" name="U_id" value=${userInf.id}></td>
+                    <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
+                    <td><c:out value="${userInf.id}" /></td>
                 </tr>
                 
                 
-                
-                    <td colspan="2">
+                <tr>
+                    <td>
                         <input type="submit" name="submit" value="決定">
                     </td>
                 </tr>
