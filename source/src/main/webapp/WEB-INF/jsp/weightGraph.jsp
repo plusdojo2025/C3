@@ -1,10 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>体重グラフ</title>
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+  <style>
+   #weightchart-container {
+      width: 80%;
+      margin: 40px auto;
+    }
+    .button-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+   button {
+      margin: 0 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+   
+  </style>
+
 </head>
 <body>
  <!--　ヘッダー　-->
@@ -15,28 +36,37 @@
     
     <!--　メイン　-->
     <main>
-        <p>目標体重　────────</p>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <h2>体重推移グラフ</h2>
+		
+		   <!-- グラフ表示切替用ボタン -->
+        <div class="button-container">
+            <button onclick="switchToMonthly()">月別表示</button>
+            <button onclick="switchToYearly()">年別表示</button>
+        </div>
 
-            <!-- 表示切替・移動用ボタン -->
-            <div id="controls">
-                <button onclick="changeToMonth()">月表示</button>
-                <button onclick="changeToYear()">年表示</button>
-                <button onclick="prev()">前</button>
-                <button onclick="next()">次</button>
-            </div>
-        <div style="width: 600px;">
+        <div id="monthly-controls" class="button-container">
+            <button onclick="changeMonth(-1)">前月</button>
+            <span id="month-label"></span>
+            <button onclick="changeMonth(1)">次月</button>
+        </div>
+
+        <div id="yearly-controls"  class="button-container" style="display:none;" >
+            <button onclick="changeYear(-1)">前年</button>
+            <span id="year-label"></span>
+            <button onclick="changeYear(1)">次年</button>
+        </div>
+
+ 		<!-- グラフ本体 -->
+        <div id="weightchart-container" style="width: 800px;">
             <canvas id="weightChart"></canvas>
         </div>
         
         <!-- JavaScriptファイルを読み込む -->
-        <script src="WeightGraph.js"></script>
+        <script src="script/WeightGraph.js"></script>
 
         <div>
-            <img src="mama.png" alt="イメージキャラクター" width="100" height=auto>
+            <img src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="100" height=auto>
             <p>現在の体重：○○㎏</p>
             <p>目標まであと：○○kg</p>
             
