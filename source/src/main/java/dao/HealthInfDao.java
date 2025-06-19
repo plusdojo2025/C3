@@ -73,7 +73,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		int weekCal;//一週間で必要な差分カロリー
 		int age = dto.getAge();
 		int cId;
-		int avgCal;//初週
+		int avgCal = 0;//初週
 		int dayCal;//一日で必要な運動消費カロリー
 		double dMotionTime;
 		int dMotionTimei;
@@ -82,6 +82,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 		try {
 			conn = conn();
+			
 			//基礎代謝量の計算
 			metaRate = 0.1238+(0.0481*dto.getcWeight())+(0.0234*dto.getHeight())-(0.0138*age);
 			if(dto.getGender().equals("M")) {//男
@@ -156,7 +157,10 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			PreparedStatement pStmt0 = conn.prepareStatement(sql0);
 			pStmt0.setInt(1,cId);
 			ResultSet rs = pStmt0.executeQuery();
-			avgCal= rs.getInt("avgCcalorie");
+			if (rs.next()) {
+				avgCal = rs.getInt("avgCcalorie");
+			}
+			
 			dayCal = (avgCal * 7 + weekCal - (int)conCal * 7)/dto.getwMotionDays();
 			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
 			dMotionTimei = (int)dMotionTime;
@@ -175,7 +179,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				pStmt.setInt(6, dto.getTerm());
 				pStmt.setInt(7, dto.getwMotionDays());
 				pStmt.setInt(8, dMotionTimei);
-				pStmt.setInt(9, 0);//lwCcalorie
+				pStmt.setInt(9, avgCal);//lwCcalorie
 				pStmt.setInt(10,0);//lwIcalorie
 				pStmt.setInt(11,metaRatei);
 				pStmt.setString(12, dto.getU_id());

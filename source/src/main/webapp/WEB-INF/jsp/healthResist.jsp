@@ -80,7 +80,9 @@
             <td>
                 <input type="submit" name="submit" value="決定">
             </td>
-        </tr>
+        <tr>  
+            <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
+       </tr>
     </table>
   </form>
  </main>
