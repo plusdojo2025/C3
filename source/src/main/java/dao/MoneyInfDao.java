@@ -245,5 +245,54 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 		// 結果を返す
 		return result;
 	}
+	public boolean updateComp(MoneyInf dto,int tax) {
+		// TODO 自動生成されたメソッド・スタブ
+		Connection conn = null;
+		boolean result = false;
+		int gIncome = dto.getgIncome();
+		int hWage = dto.gethWage();
+		int wWork = dto.getwWork();
+
+		try {
+			conn = conn();
+			 int netIncome = gIncome - tax;
+			
+			  //仮置き 一日辺りの労働時間 
+			 int kari = gIncome/12; 
+			 kari = kari/4;
+			 int workTime =kari/hWage; 
+			 int dWork = workTime/wWork; //ここまで
+			
+			// SQL文を準備する 上書き
+			String sql = "UPDATE moneyInf SET gIncome=?,hWage=?,wWork=?,dependent=?,netIncome=?,dWork=? WHERE u_id=?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1,gIncome);
+			pStmt.setInt(2,hWage);
+			pStmt.setInt(3,wWork);
+			pStmt.setString(4, dto.getDependent());
+			pStmt.setInt(5,netIncome);//目標年収-税金
+			pStmt.setInt(6,dWork);//1日あたりの労働時間
+			pStmt.setString(7,dto.getU_id());
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); //AUTO INCREMENT
+				//res.next();
+				//dto.setId(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
+	}
+	
 
 }
