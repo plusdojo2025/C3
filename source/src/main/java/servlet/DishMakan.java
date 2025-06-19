@@ -20,7 +20,17 @@ public class DishMakan extends CustomTemplateServlet {
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
-		
+//			
+//			// リクエストパラメータを取得する
+//			request.setCharacterEncoding("UTF-8");
+//
+//			// データベースを検索して結果をリクエストスコープに格納する
+//			DishInfDao dao = new DishInfDao();
+//			List<DishInf> dish = dao.select();
+//			//HttpSession session = request.getSession();
+//			request.setAttribute("dish",dish);
+//			//session.setAttribute("dish",dish);
+//		
 		// 食事表示画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
 		dispatcher.forward(request, response);

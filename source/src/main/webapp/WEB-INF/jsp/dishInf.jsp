@@ -16,12 +16,13 @@
 <p>食事内容をチェックしましょう</p>
 <p>＊各項目１つのみ選択してください</p>
 
+<form method="POST" action="/C3/DishInfMakan">
 <p>主食<br></p>
 <c:forEach var="b" items="${emp}">
 <table>
 
 <tr>
-	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><input type="radio" name="mStaple" value="${b.id}" checked>${b.name}</td>
 	<td><p>${b.calorie}</p></td>
 </tr>
 </table>
@@ -31,7 +32,7 @@
 <c:forEach var="b" items="${emp2}">
 <table>
 <tr>
-	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><input type="radio" name="mMain" value="${b.id}" checked>${b.name}</td>
 	<td><p>${b.calorie}</p></td>
 </tr>
 </table>
@@ -41,7 +42,7 @@
 <c:forEach var="b" items="${emp3}">
 <table>
 <tr>
-	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><input type="radio" name="mSide" value="${b.id}" checked>${b.name}</td>
 	<td><p>${b.calorie}</p></td>
 </tr>
 </table>
@@ -51,10 +52,10 @@
 <c:forEach var="b" items="${emp4}">
 <table>
 <tr>
-	<td><input type="radio" name="dishInf" value="${b.id}" checked>${b.name}</td>
+	<td><input type="radio" name="mOther" value="${b.id}" checked>${b.name}</td>
 	<td><p>${b.calorie}</p></td>
 </tr>
 </table>
 </c:forEach>
-
-<!-- <form method="POST" action="<c:url value='DishMakan' />">保存</form> -->
+<input type="submit" id="save" name="submit" value="保存">
+</form>
