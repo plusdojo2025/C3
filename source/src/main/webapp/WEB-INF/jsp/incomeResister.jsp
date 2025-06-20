@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>労働時間計算（登録）</title>
     <%-- <link rel="stylesheet" href="<c:url value='/css/style.css' />"> --%>
+    <link rel="stylesheet" href="<c:url value='/css/css_takehiro.css' />">
 </head>
 <body>
     <!-- ヘッダー -->
@@ -16,7 +17,7 @@
 
     <!-- メイン -->
     <main>
-        <h2>1週間の労働時間と手取り計算</h2>
+        <h2 class="midashi">1週間の労働時間と手取り計算</h2>
         <form method="POST" action="<c:url value="/IncomeResultMakan" />">
             <table>
                 <tr>
@@ -44,14 +45,12 @@
                     <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
                     <td><c:out value="${userInf.id}" /></td>
                 </tr>
-                
-                
-                <tr>
-                    <td>
-                        <input type="submit" name="submit" value="決定">
-                    </td>
-                </tr>
-            </table>
+                             
+                 </table>
+                    
+                    <div style="text-align:center;">
+                        <input type="submit" class="kadomaru" name="submit" value="決定">
+                    </div>                  
         </form>
     </main>
 

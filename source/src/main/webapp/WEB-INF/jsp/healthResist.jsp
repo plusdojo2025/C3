@@ -7,7 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>登録</title>
-    <link rel="stylesheet" href="<c:url value=' ' />">
+    <link rel="stylesheet" href="<c:url value='css/css_takehiro.css ' />">
+    <!-- <link rel="stylesheet" href="<c:url value='css/css_ryuji.css ' />"> -->
 
 </head>
 <body>
@@ -16,7 +17,7 @@
     <!--　ヘッダーここまで　-->
     <!--　メイン　-->
     <main>
-        <h2>Health目標入力</h2>
+        <h2 class="midashi">Health目標入力</h2>
   <form method="POST" action="<c:url value='HealthResistMakan' />">
     <table>
         <tr>
@@ -76,14 +77,15 @@
                 <input type="text" name="wMotionDays"><br>
             </td>
         </tr>
-        <tr>
-            <td>
-                <input type="submit" name="submit" value="決定">
-            </td>
+        
         <tr>  
             <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
        </tr>
-    </table>
+       <tr>
+       </table>   
+       <div style="text-align:center;">                  
+                <input type="submit" name="submit" class="kadomaru" value="決定">  
+       </div>                 
   </form>
  </main>
     <!--　メインここまで　-->

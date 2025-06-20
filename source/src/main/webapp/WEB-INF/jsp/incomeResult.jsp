@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>結果表示</title>
-    <link rel="stylesheet" href="<c:url value='/style.css' />">
+    <link rel="stylesheet" href="<c:url value='/css/css_takehiro.css' />">
 </head>
 <body>
     <!-- ヘッダー -->
@@ -16,7 +16,7 @@
 
     <!-- メイン -->
 <main>
-    <h2>結果表示</h2>
+    <h2 class="midashi">結果表示</h2>
 <c:forEach var="h" items="${emp}">
 		<table>
     		<tr>
@@ -34,7 +34,9 @@
     	</table>
     	</c:forEach>
     <form action="HomeMakan" method="get">
-        <button type="submit">ホームに戻る</button>
+    <div style="text-align:center;">
+        <button type="submit" class="kadomaru">ホームに戻る</button>
+        </div>
     </form>
 </main>
     <!-- フッター -->

@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>結果(2週目以降)</title>
-    <link rel="stylesheet" href="<c:url value=' '/>">
+    <link rel="stylesheet" href="<c:url value='css/css_takehiro.css ' />">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
     <p>empの中身確認: ${not empty emp}</p>
     <p>サイズ: ${fn:length(emp)}</p>
     
-        <h2>＜先週の振り返り＞</h2>
+        <h2 class="midashi">＜先週の振り返り＞</h2>
         <table>
 		<tr>
 			<th>先週の消費カロリー：　</th>
@@ -35,7 +35,7 @@
         </table>
     
     
-        <h2>＜今週の運動予定＞</h2>
+        <h2 class="midashi">＜今週の運動予定＞</h2>
 		<c:forEach var="h" items="${emp}">
 		<table>
     		<tr>
@@ -44,8 +44,10 @@
     		</tr>
     	</table>
   		</c:forEach>
-        
-        <a href="<c:url value='HomeMakan'/>"><button>ホームに戻る</button></a>
+  		
+        <div style="text-align:center;">
+        <a href="<c:url value='HomeMakan'/>"><button class="kadomaru">ホームに戻る</button></a>
+        </div>
     </main>
     <!--　メインここまで　-->
     <!--　フッター　-->

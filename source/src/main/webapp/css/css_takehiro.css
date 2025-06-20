@@ -1,1 +1,31 @@
 @charset "UTF-8";
+
+.midashi {
+	text-align: center;
+}
+
+main {
+	font-size: 1.5rem;
+}
+
+table {
+	margin: auto;
+}
+
+.kadomaru{
+	color: white;
+  background-color: #B5ACA1;
+  border-radius: 10px;
+  padding: 8px 16px;
+  white-space: nowrap;
+  font-size: 14px;
+  max-width: 160px;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;        /* ブロック要素にして中央寄せ可能に */
+  margin: 20px auto;     /* 上下マージン20px、左右自動で中央揃え */
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
