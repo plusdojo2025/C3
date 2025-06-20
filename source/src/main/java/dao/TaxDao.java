@@ -130,7 +130,7 @@ public class TaxDao extends CustomTemplateDao<Tax> {
 				} 
 			}
 			
-			 String sql = "SELECT tax FROM tax WHERE id = ?";
+			 String sql = "SELECT tax FROM tax WHERE id = ?;";
 			 PreparedStatement pStmt0 = conn.prepareStatement(sql);
 			 pStmt0.setInt(1,taxNo);
 			 

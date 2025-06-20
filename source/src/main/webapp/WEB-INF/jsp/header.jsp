@@ -39,9 +39,9 @@
                         <li><a href="HealthResultFirstWeekMakan">計算結果</a></li>
                     </ul>
                 </li>
-                <li class="kadomaru"><a href="LogoutMakan">ログアウト</a></li>
             </ul>
         </nav>
+        <div><a href="LogoutMakan" class="headerLogout">ログアウト</a></div>
     </header>
     <!--　ヘッダーここまで　-->
     
