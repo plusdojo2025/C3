@@ -23,51 +23,30 @@
 
   <!-- 食事が表示される場所 -->
  <main>
+ <!-- 食事選択画面へ遷移 -->
+ <a href="<c:url value="DishInfMakan"/>">選択</a>
+ 
   <div id="content">
     <div class="meal-section">
       <div class="meal-title">朝</div>
       <!-- 料理内容 -->
-      <div class="meal-content" id="content-morning">
-		<c:forEach var="d" items="${dish}">
-		<table>		
-		<tr>
-			<td><p>${d.mStaple}</p></td>			
-			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
-		</tr>
-		<tr>
-			<td><p>${d.mMain}</p></td>			
-			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
-		</tr>
-		<tr>
-			<td><p>${d.mSide}</p></td>			
-			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
-		</tr>
-		<tr>
-			<td><p>${d.mOther}</p></td>			
-			<td><p>${b.calorie}</p></td><!-- カロリーー表示 -->
-		</tr>
-		</table>
-		</c:forEach>
-      </div>
-      <a href="<c:url value="DishInfMakan"/>">選択</a>
+      <div class="meal-content" id="content-morning">ここに内容が表示されます</div>
+
     </div>
 
     <div class="meal-section">
       <div class="meal-title">昼</div>
       <div class="meal-content" id="content-lunch">ここに内容が表示されます</div>
-      <a href="<c:url value="DishInfMakan"/>">選択</a>
     </div>
 
     <div class="meal-section">
       <div class="meal-title">晩</div>
       <div class="meal-content" id="content-dinner">ここに内容が表示されます</div>
-      <a href="<c:url value="DishInfMakan"/>">選択</a>
     </div>
 
     <div class="meal-section">
       <div class="meal-title">間食</div>
       <div class="meal-content" id="content-snack">ここに内容が表示されます</div>
-      <a href="<c:url value="DishInfMakan"/>">選択</a>
     </div>
   </div>
 </main>
