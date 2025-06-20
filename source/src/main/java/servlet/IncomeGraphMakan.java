@@ -29,7 +29,7 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 //		}
 		String u_id;
 		HttpSession session = request.getSession();
-		u_id = (String) session.getAttribute("id");
+		u_id = "00001";																					// (String) session.getAttribute("id");
 //		MoneyInfDao mDao = new MoneyInfDao(); 
 //		MoneyInf mDto = new MoneyInf();//空のコンストラクタ　×
 //		MonthIncomeDao miDao = new MonthIncomeDao();

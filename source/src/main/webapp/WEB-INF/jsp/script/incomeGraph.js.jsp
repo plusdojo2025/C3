@@ -1,14 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
 const targetIncome = 160000;
 
-const yearlyData = {
-  2024: [100000, 120000, 130000, 125000, 150000, 145000, 160000, 155000, 140000, 135000, 138000, 142000],
-  2025: [120000, 150000, 135000, 140000, 160000, 155000, 170000, 165000, 158000, 175000, 168000, 172000],
-  2026: [130000, 145000, 155000, 160000, 170000, 165000, 175000, 180000, 170000, 165000, 160000, 162000]
-};
+const yearlyData = {	
+		  2024: [100000, 120000, 130000, 125000, 150000, 145000, 160000, 155000, 140000, 135000, 138000, 142000],
+		  2025: [120000, 150000, 135000, 140000, 160000, 155000, 170000, 165000, 158000, 175000, 168000, 172000],
+		  2026: [130000, 145000, 155000, 160000, 170000, 165000, 175000, 180000, 170000, 165000, 160000, 162000]
+		};
+
+<c:forEach var="e" items="${mInfo}" >
+	<c:set var="year" value="${e.workMonth.split('-')[0]}" /> 
+	<c:set var="tuki" value="${e.workMonth.split('-')[1]}" /> 
+	yearlyData[${year}][${tuki-1}]=${e.estimatedMonthlyIncome};
+
+
+</c:forEach>
 
 let currentYear = 2025;
 let incomeChart;
