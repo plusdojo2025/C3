@@ -5,11 +5,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Makan-まま管理アプリ-</title>
 	<link rel="stylesheet" href="<c:url value='/css/css_login.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/css_ryuji.css' />">
 </head>
 	<body id="top_login" class="login_body">
-	        <img src="tiger.png" alt="まま管理アプリ-makan-">
+	        <img src="images/icon.png" alt="まま管理アプリ-makan-">
 	        
 	        <h1>Makan~ログインフォーム~</h1><!--見出し-->
 		<main>
@@ -31,8 +32,8 @@
 	               	</tr>
 	              	<tr>
 	                	<td colspan="2">
-	                    	<input type="submit" value="ログイン">
-	                        <input type="reset" value="リセット">
+	                    	<input type="submit" value="ログイン" class="kadomaru">
+	                        <input type="reset" value="リセット" class="kadomaru">
 	                        <p id="error_login"><c:out value="${loginMiss}" /></p>
 	                  	</td>
 	           		</tr>
