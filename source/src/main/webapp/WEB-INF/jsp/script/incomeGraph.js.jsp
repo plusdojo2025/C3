@@ -3,21 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-const targetIncome = 160000;
+let targetIncome = 0;
 
-const yearlyData = {	
-		  2024: [100000, 120000, 130000, 125000, 150000, 145000, 160000, 155000, 140000, 135000, 138000, 142000],
-		  2025: [120000, 150000, 135000, 140000, 160000, 155000, 170000, 165000, 158000, 175000, 168000, 172000],
-		  2026: [130000, 145000, 155000, 160000, 170000, 165000, 175000, 180000, 170000, 165000, 160000, 162000]
+let yearlyData = {	
+		  2024: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2025: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2026: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2027: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2028: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2029: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2030: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2031: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2032: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		  2033: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		};
 
 <c:forEach var="e" items="${mInfo}" >
 	<c:set var="year" value="${e.workMonth.split('-')[0]}" /> 
 	<c:set var="tuki" value="${e.workMonth.split('-')[1]}" /> 
 	yearlyData[${year}][${tuki-1}]=${e.estimatedMonthlyIncome};
+	
+</c:forEach>
 
+<c:forEach var="e" items="${mIncome}" >
+targetIncome=${e.gIncome /12};
 
 </c:forEach>
+
+
+
 
 let currentYear = 2025;
 let incomeChart;
@@ -31,7 +45,7 @@ function createChart(year) {
   const targetLineData = new Array(12).fill(targetIncome);
 
   incomeChart = new Chart(ctx, {
-         data: {
+        data: {
         labels: months,
         datasets: [
           {
@@ -72,13 +86,13 @@ function createChart(year) {
               label: function(context) {
                 const value = context.raw;
                 if (context.dataset.type === 'bar') {
-                    const lines = [`収入: ¥${value.toLocaleString()}`];
+                    let lines = ["収入:"+ yearlyData[2025][10]];
                     if (value >= targetIncome) {
                     lines.push('🎉 達成!!!');  // 2行目に追加
                     }
                     return lines;
                 } else {
-                    return [`目標: ¥${value.toLocaleString()}`];
+                    return ["目標:"+ targetIncome];
                 }
                 }
             }
@@ -114,7 +128,7 @@ function createChart(year) {
 
 function changeYear(offset) {
   currentYear += offset;
-  document.getElementById('year-label').textContent = `${currentYear}年`;
+  document.getElementById('year-label').textContent = currentYear + "年";
   if (incomeChart) {
     incomeChart.destroy();
   }
