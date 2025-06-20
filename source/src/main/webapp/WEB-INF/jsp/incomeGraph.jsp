@@ -12,29 +12,19 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <!-- JSファイル -->
-  <script src="script/incomeGraph.js" defer></script>
+<!--  <script src="script/incomeGraph.js" defer></script> -->
   
   <!-- CSSファイル -->
 　　<link rel="stylesheet" href="<c:url value='/css/css_hana.css'/>">
 
-  <style>
-    #incomechart-container {
-      width: 80%;
-      margin: 40px auto; 
-      
-    }
-    .button-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    button {
-      margin: 0 10px;
-      padding: 8px 16px;
-      font-size: 16px;
-    }
-  </style>
 </head>
 <body>
+
+<!-- フッターここから -->
+<%@ include file="header.jsp" %>
+<!-- フッターここまで -->
+
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <h2>収入推移グラフ</h2>
 
@@ -49,10 +39,19 @@
     <canvas id="incomeChart"></canvas>
 </div>
 
-<img src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="100" height=auto>
-<p>現状<br>
-現在<br>
-目標まであと</p>
 
+<img id=mama-incomegraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
+<div id=now-incomegraph>	
+	<p>現状<br>
+	現在<br>
+	目標まであと</p>
+</div>
+
+<!--　フッター　-->
+<footer>
+  <%@ include file="footer.jsp" %>
+</footer>
+<!--　フッターここまで　-->
+<jsp:include page="script/incomeGraph.js.jsp" />
 </body>
 </html>

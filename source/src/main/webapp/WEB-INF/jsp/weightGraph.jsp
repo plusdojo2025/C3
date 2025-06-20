@@ -13,10 +13,11 @@
 
 </head>
 <body>
- <!--　ヘッダー　-->
-    <header>
-    </header>
-    <!--　ヘッダーここまで　-->
+ <!-- フッターここから -->
+ <%@ include file="header.jsp" %>
+ 
+ <!-- フッターここまで -->
+ <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
     
     <!--　メイン　-->
@@ -50,9 +51,11 @@
         <!-- JavaScriptファイルを読み込む -->
         <script src="script/WeightGraph.js"></script>
 
-        <div>
-            <img src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="100" height=auto>
-            <p>現在の体重：○○㎏</p>
+       
+        <img id=mama-weightgraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
+        <div id=now-weightgraph>
+        
+        	<p>現在の体重：○○㎏</p>
             <p>目標まであと：○○kg</p>
             
         </div>
@@ -66,10 +69,10 @@
 
     </main>
     <!--　メインここまで　-->
-    <!--　フッター　-->
-    <footer>
-        
-    </footer>
-    <!--　フッターここまで　-->
+<!--　フッター　-->
+<footer>
+  <%@ include file="footer.jsp" %>
+</footer>
+<!--　フッターここまで　-->
 </body>
 </html>
