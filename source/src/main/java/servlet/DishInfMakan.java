@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DishDao;
 import dao.DishInfDao;
@@ -97,12 +98,14 @@ public class DishInfMakan extends CustomTemplateServlet {
 		eOther = Integer.parseInt(request.getParameter("eOther"));
 		int snack = 0;
 		snack = Integer.parseInt(request.getParameter("snack"));
-//		String U_id = 0;
+		
+	    HttpSession session = request.getSession();
+	    String U_id = (String) session.getAttribute("id");
 
 
 		// 登録処理を行う
 		DishInfDao bDao = new DishInfDao();
-		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,null,"00002"));	
+		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,null,U_id));	
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");

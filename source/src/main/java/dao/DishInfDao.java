@@ -113,63 +113,54 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	}
 
 	// dishInfテーブルを検索するメソッド
-	public List<DishInf> select() {
-		// 結果セットを格納するコレクション
-		List<DishInf> list = new ArrayList<DishInf>();
+	public List<DishInf> selectByDate(String userId, String date) {
+		  List<DishInf> list = new ArrayList<>();
+		  Connection conn = null;
+		  try {
+		    Class.forName("com.mysql.cj.jdbc.Driver");
+		    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp2?useSSL=false&serverTimezone=JST", "root", "password");
 
-		// データベースに接続と切断を行うオブジェクト
-		Connection conn = null;
+		    String sql = """
+		        SELECT di1.name, di1.calorie FROM dishInf AS df
+		        LEFT JOIN dish AS di1 ON df.mStaple = di1.id
+		        WHERE df.U_id = ? AND df.insertDate = ?
+		        UNION ALL
+		        SELECT di1.name, di1.calorie FROM dishInf AS df
+		        LEFT JOIN dish AS di1 ON df.mMain = di1.id
+		        WHERE df.U_id = ? AND df.insertDate = ?
+		        UNION ALL
+		        SELECT di1.name, di1.calorie FROM dishInf AS df
+		        LEFT JOIN dish AS di1 ON df.mSide = di1.id
+		        WHERE df.U_id = ? AND df.insertDate = ?
+		        UNION ALL
+		        SELECT di1.name, di1.calorie FROM dishInf AS df
+		        LEFT JOIN dish AS di1 ON df.snack = di1.id
+		        WHERE df.U_id = ? AND df.insertDate = ?
+		        """;
 
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		    PreparedStatement pstmt = conn.prepareStatement(sql);
+		    for (int i = 0; i < 4; i++) {
+		      pstmt.setString(i * 2 + 1, userId);
+		      pstmt.setString(i * 2 + 2, date);
+		    }
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/webapp2?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT di1.name, di1.calorie FROM dishInf AS df\r\n"
-					+ "INNER JOIN dish AS di1 ON df.mStaple = di1.id WHERE df.U_id = '00007'\r\n"
-					+ "UNION ALL\r\n"
-					+ "SELECT di1.name, di1.calorie FROM dishInf AS df\r\n"
-					+ "INNER JOIN dish AS di1 ON df.mMain = di1.id WHERE df.U_id = '00007'\r\n"
-					+ "UNION ALL\r\n"
-					+ "SELECT di1.name, di1.calorie FROM dishInf AS df\r\n"
-					+ "INNER JOIN dish AS di1 ON df.mSide = di1.id WHERE df.U_id = '00007'\r\n"
-					+ "UNION ALL\r\n"
-					+ "SELECT di1.name, di1.calorie FROM dishInf AS df\r\n"
-					+ "INNER JOIN dish AS di1 ON df.mOther = di1.id WHERE df.U_id = '00007';";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-
-			// SQL文を実行して検索結果を取得する
-			ResultSet rs = pstmt.executeQuery();
-
-			// 検索結果をコレクションに格納する
-			while (rs.next()) {
-				DishInf b = new DishInf(rs.getString("name"), rs.getInt("calorie"));
-				list.add(b);
-			}
-
-			// 検索結果が格納されたコレクションを返す
-			return list;
-
-		} catch (Exception e) {
-			// 例外処理
-			e.printStackTrace();
-			return null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		    ResultSet rs = pstmt.executeQuery();
+		    while (rs.next()) {
+		      list.add(new DishInf(rs.getString("name"), rs.getInt("calorie")));
+		    }
+		    return list;
+		  } catch (Exception e) {
+		    e.printStackTrace();
+		    return null;
+		  } finally {
+		    try {
+		      if (conn != null) conn.close();
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		    }
+		  }
 		}
-	}
+	
 	@Override
 	public boolean update(DishInf dto) {
 		// TODO 自動生成されたメソッド・スタブ
