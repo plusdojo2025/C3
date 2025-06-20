@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.HealthInfDao;
 import dto.HealthInf;
@@ -24,9 +25,20 @@ public class HealthResistMakan extends CustomTemplateServlet {
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
-		// 結果ページにフォワードする
+		HttpSession session = request.getSession();
+		String u_id = (String) session.getAttribute("id");
+		HealthInfDao bDao = new HealthInfDao();
+		if(bDao.isOneData(u_id) == true) {
+			// リダイレクト	
+		response.sendRedirect(request.getContextPath() + "/HealthUpdateMakan");
+		}
+		else {
+			// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthResist.jsp");
 		dispatcher.forward(request, response);
+		}
+		
+		
 		
 	}
 

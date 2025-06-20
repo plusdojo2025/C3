@@ -25,7 +25,7 @@
                 目標体重
             </td>
             <td>
-                <input type="text" name="iWeight"><br>
+                <input type="number" name="iWeight"><br>
             </td>
         </tr>
         <tr>
@@ -33,7 +33,7 @@
                 現在体重
             </td>
             <td>
-                <input type="text" name="cWeight"><br>
+                <input type="number" name="cWeight"><br>
             </td>
         </tr>
         <tr>
@@ -41,7 +41,7 @@
                 身長
             </td>
             <td>
-                <input type="text" name="height"><br>
+                <input type="number" name="height"><br>
             </td>
         </tr>
         <tr>
@@ -49,7 +49,7 @@
                 年齢
             </td>
             <td>
-                <input type="text" name="age"><br>
+                <input type="number" name="age"><br>
             </td>
         </tr>
         <tr>
@@ -66,7 +66,7 @@
                 期間
             </td>
             <td>
-                <input type="text" name="term"><br>
+                <input type="number" name="term"><br>
             </td>
         </tr>
         <tr>
@@ -74,7 +74,7 @@
                 一週間の運動日数
             </td>
             <td>
-                <input type="text" name="wMotionDays"><br>
+                <input type="number" name="wMotionDays"><br>
             </td>
         </tr>
         

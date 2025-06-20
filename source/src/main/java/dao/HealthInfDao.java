@@ -425,7 +425,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			conn = conn();
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM healthInf WHERE id=? ;";
+			String sql = "SELECT count(*) FROM healthInf WHERE u_id=? ;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, u_id);
 
