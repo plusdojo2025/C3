@@ -39,9 +39,10 @@
 	           		</tr>
 	         	</table>
 	    	</form>
+	    	<p></p>
 	  	</main>
 	  	<footer>
-	  		
+	  		<div class="copyRight"><p>Copyright&copy; Makan.Co.,Ltd All rights reserved.</p></div>
 	  	</footer>
 	  	<script src="script/login.js"></script>
 	</body>
