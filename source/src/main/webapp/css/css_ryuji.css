@@ -4,7 +4,7 @@
   color: white;
   background-color: #B5ACA1;
   border-radius: 10px;
-
+  width: 128px;
   padding: 8px 16px; /* 縦横の余白を調整 */
  
   width: auto; /* 必要なら明示的に */
@@ -148,7 +148,7 @@ nav ul li:hover .dropdown {
 .kadomaru {
   position: relative;
   text-align: center;
-
+  
 }
 
 .kadomaru > a {
@@ -159,7 +159,7 @@ nav ul li:hover .dropdown {
   border-radius: 12px 12px 0 0;
   display: inline-block;
   font-weight: bold;
-  
+ 
 }
 
 /* ▼ ドロップダウンメニュー本体 */
@@ -171,10 +171,10 @@ nav ul li:hover .dropdown {
   transform: translateX(-50%);
   background-color: #B5ACA1;
   padding: 10px 0;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 12px 12px 12px 12px;
   width: 128px;
   
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  
 }
 
 /* ▼ ドロップダウン内のリンク */

@@ -15,7 +15,7 @@
 		<main class="main">
 			<form id="home-form" class="home-form">
 		    	<input type="text" name="item-10[0]" value="100">
-			    <input type="text" name="item-10[1]" value="50">
+			    <input type="text" name="item-10[1]" value="12">
 			    <input type="text" name="item-10[2]" value="etc">
 			    <input type="text" name="item-11[0]" value="240">
 			    <input type="text" name="item-11[1]" value="120">
