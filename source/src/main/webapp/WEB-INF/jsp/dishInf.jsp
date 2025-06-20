@@ -11,6 +11,7 @@
 
 <body>
 <!-- フッターここから -->
+<%@ include file="header.jsp" %>
 <!-- フッターここまで -->
 
 <p>食事内容をチェックしましょう</p>
@@ -159,5 +160,7 @@
 <input type="submit" id="save" name="submit" value="保存">
 </form>
 
+<!-- フッター -->
+ <%@ include file="footer.jsp" %>
 
 </body>

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.MoneyInfDao;
 import dao.MonthlyIncomeSummaryDao;
+import dto.MoneyInf;
 import dto.MonthlyIncomeSummaryDto;
 
 /**
@@ -50,6 +52,13 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 		monthlyIncomeDto.setU_id(u_id);
 		
 		request.setAttribute("mInfo",monthlyIncomeDao.select(monthlyIncomeDto));
+		
+		MoneyInfDao MoneyInfDao = new MoneyInfDao();
+		MoneyInf MoneyInf = new MoneyInf();
+		
+		MoneyInf.setU_id(u_id);
+		
+		request.setAttribute("mIncome",MoneyInfDao.select(MoneyInf));
 		
 //		request.setAttribute("mInfo",mInf);
 //		request.setAttribute("mIncome",mInc);

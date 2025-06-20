@@ -37,6 +37,7 @@ public class DishInfMakan extends CustomTemplateServlet {
 		// データベースを検索して結果をリクエストスコープに格納する
 		DishDao dao = new DishDao();
 		List<Dish> emp = dao.select1();
+		
 		//HttpSession session = request.getSession();
 		request.setAttribute("emp",emp);
 		//session.setAttribute("emp",emp);

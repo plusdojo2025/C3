@@ -7,63 +7,69 @@
 <head>
 <meta charset="UTF-8">
 <title>食事表示</title>
+
 <link rel="stylesheet" href="<c:url value='/css/css_madoka.css' />">
 </head>
 <body>
-<!-- フッターここから -->
+<!-- ヘッダー読み込み -->
 <%@ include file="header.jsp" %>
-<!-- フッターここまで -->
-
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
-  <!-- 日付 -->
-  <button id="prev-week">◀ 前の週</button>
-  <div id="date-buttons"></div>
-  <button id="next-week">次の週 ▶</button>
+<!-- 日付ナビゲーション -->
+<button id="prev-week">◀ 前の週</button>
+<div id="date-buttons"></div>
+<button id="next-week">次の週 ▶</button>
 
-  <!-- 食事が表示される場所 -->
- <main>
- <!-- 食事選択画面へ遷移 -->
- <a href="<c:url value="DishInfMakan"/>">選択</a>
- 
+<!-- 食事が表示される場所 -->
+<main>
+  <!-- 食事選択画面へ遷移 -->
+  <a id="select-link" href="DishInfMakan">選択</a>
+
   <div id="content">
     <div class="meal-section">
       <div class="meal-title">朝</div>
-      <!-- 料理内容 -->
-      <div class="meal-content" id="content-morning">ここに内容が表示されます</div>
-
+      <div class="meal-content" id="content-morning">
+        <p><c:out value="${dish.get(0).name}"></c:out></p>
+      </div>
     </div>
 
     <div class="meal-section">
       <div class="meal-title">昼</div>
-      <div class="meal-content" id="content-lunch">ここに内容が表示されます</div>
+      <div class="meal-content" id="content-lunch">
+        <p>ここに内容が表示されます</p>
+      </div>
     </div>
 
     <div class="meal-section">
       <div class="meal-title">晩</div>
-      <div class="meal-content" id="content-dinner">ここに内容が表示されます</div>
+      <div class="meal-content" id="content-dinner">
+        <p>ここに内容が表示されます</p>
+      </div>
     </div>
 
     <div class="meal-section">
       <div class="meal-title">間食</div>
-      <div class="meal-content" id="content-snack">ここに内容が表示されます</div>
+      <div class="meal-content" id="content-snack">
+        <p>ここに内容が表示されます</p>
+      </div>
     </div>
   </div>
 </main>
 
-  <!-- トラ画像 -->
-  <img src="images/tora.png" width="100", height=aoto>
+<!-- トラ画像 -->
+<img src="images/tora.png" width="100" height="auto">
 
-  <!-- 一日の消費カロリー -->
-  <p>今日の消費カロリー</p>
-  <p>〇kcal</p>
+<!-- 一日の消費カロリー -->
+<p>今日の消費カロリー</p>
+<p>○kcal</p>
 
- <!--　フッター　-->
-    <footer>
-        <%@ include file="footer.jsp" %>
-    </footer>
-    <!--　フッターここまで　-->
-    
-<script src="script/dish.js"></script>
+<!-- フッター読み込み -->
+<footer>
+  <%@ include file="footer.jsp" %>
+</footer>
+
+<!-- JavaScript 読み込み -->
+
+<jsp:include page="script/dish.js.jsp" />
 </body>
 </html>
