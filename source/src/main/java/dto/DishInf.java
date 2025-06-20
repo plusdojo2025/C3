@@ -140,6 +140,12 @@ public class DishInf extends CustomTemplateDto implements Serializable{
 		this(0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,"");
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
+	public DishInf(String string, int int1) {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+	public DishInf(int i, int mStaple2, int mMain2, int mSide2, int mOther2, Object object, String string) {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 	
 	
 }

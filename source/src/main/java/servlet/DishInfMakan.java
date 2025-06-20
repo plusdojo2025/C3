@@ -79,10 +79,30 @@ public class DishInfMakan extends CustomTemplateServlet {
 		mSide = Integer.parseInt(request.getParameter("mSide"));
 		int mOther = 0;
 		mOther = Integer.parseInt(request.getParameter("mOther"));
+		int nStaple = 0;
+		nStaple = Integer.parseInt(request.getParameter("nStaple"));
+		int nMain = 0;
+		nMain = Integer.parseInt(request.getParameter("nMain"));
+		int nSide = 0;
+		nSide = Integer.parseInt(request.getParameter("nSide"));
+		int nOther = 0;
+		nOther = Integer.parseInt(request.getParameter("nOther"));
+		int eStaple = 0;
+		eStaple = Integer.parseInt(request.getParameter("eStaple"));
+		int eMain = 0;
+		eMain = Integer.parseInt(request.getParameter("eMain"));
+		int eSide = 0;
+		eSide = Integer.parseInt(request.getParameter("eSide"));
+		int eOther = 0;
+		eOther = Integer.parseInt(request.getParameter("eOther"));
+		int snack = 0;
+		snack = Integer.parseInt(request.getParameter("snack"));
+//		String U_id = 0;
+
 
 		// 登録処理を行う
 		DishInfDao bDao = new DishInfDao();
-		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,1,1,1,1,1,1,1,1,1,null,"00007"));	
+		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,null,"00002"));	
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
