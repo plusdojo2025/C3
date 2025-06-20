@@ -27,19 +27,21 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 //		}
 		
 		// リクエストパラメータ取得
-				request.setCharacterEncoding("UTF-8");
-				// セッションからユーザーIDを取得
-				HttpSession session = request.getSession();
-				String u_id = (String) session.getAttribute("id");
-				System.out.println("【DEBUG】セッションのu_id: " + u_id);
-				// DTOに検索条件をセット
-				HealthInf dto = new HealthInf();
-				dto.setU_id(u_id);
-				
-				// データベースを検索して結果をリクエストスコープに格納する
-				HealthInfDao dao = new HealthInfDao();
-				List<HealthInf> emp = dao.select(dto);
-				request.setAttribute("emp",emp);
+		request.setCharacterEncoding("UTF-8");
+		
+		// セッションからユーザーIDを取得
+		HttpSession session = request.getSession();
+		String u_id = (String) session.getAttribute("id");
+		System.out.println("【DEBUG】セッションのu_id: " + u_id);
+		
+		// DTOに検索条件をセット
+		HealthInf dto = new HealthInf();
+		dto.setU_id(u_id);
+		
+		// データベースを検索して結果をリクエストスコープに格納する
+		HealthInfDao dao = new HealthInfDao();
+		List<HealthInf> emp = dao.select(dto);
+		request.setAttribute("emp",emp);
 				
 				
 		// 結果ページにフォワードする
