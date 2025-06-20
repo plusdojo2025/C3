@@ -21,7 +21,8 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM MoneyInf WHERE u_id = ? ;";
+
+			String sql = "SELECT * FROM moneyinf WHERE u_id = ? order by id desc limit 1;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
