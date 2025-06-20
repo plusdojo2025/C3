@@ -36,7 +36,7 @@
                 <li class="kadomaru"><a  href="#">運動管理</a>
                     <ul class="dropdown">
                         <li><a href="HealthResistMakan">目標体重入力/変更</a></li>
-                        <li><a href="HealthResultFirstWeekMakan">計算結果</a></li>
+                        <li><a href="HealthResultDefaultMakan">計算結果</a></li>
                     </ul>
                 </li>
             </ul>
