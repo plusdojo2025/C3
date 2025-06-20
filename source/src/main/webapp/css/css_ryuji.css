@@ -17,6 +17,22 @@
   font-weight: bold;
   display: inline-block;
 }
+.kadomaru2 {
+  color: white;
+  background-color: #B5ACA1;
+  border-radius: 10px;
+  width: 96px;
+  padding: 8px 16px; /* 縦横の余白を調整 */
+ 
+  
+  white-space: nowrap; /* 改行しない */
+  font-size: 14px;
+   
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+	
 .headerLogout{
 	position: absolute;
 	border-radius: 10px;
@@ -153,6 +169,22 @@ nav ul li:hover .dropdown {
   
 }
 
+.kadomaru2 {
+  position: relative;
+  text-align: center;
+  
+}
+.kadomaru2 > a {
+  background-color: #B5ACA1;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 12px 12px 0 0;
+  display: inline-block;
+  font-weight: bold;
+ 
+}
+
 .kadomaru > a {
   background-color: #B5ACA1;
   color: white;
@@ -168,12 +200,12 @@ nav ul li:hover .dropdown {
 .dropdown {
   display: none;
   position: absolute;
-  top: 90%;
+  top: 80%;
   left:50%;
   transform: translateX(-50%);
   background-color: #B5ACA1;
   padding: 10px 0;
-  border-radius: 12px 12px 12px 12px;
+  border-radius: 0px 0px 12px 12px;
   width: 128px;
   
   

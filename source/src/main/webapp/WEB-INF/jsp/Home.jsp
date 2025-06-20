@@ -15,7 +15,7 @@
 		<main class="main">
 			<form id="home-form" class="home-form">
 		    	<input type="text" name="item-10[0]" value="100">
-			    <input type="text" name="item-10[1]" value="12">
+			    <input type="text" name="item-10[1]" value="32">
 			    <input type="text" name="item-10[2]" value="etc">
 			    <input type="text" name="item-11[0]" value="240">
 			    <input type="text" name="item-11[1]" value="120">
@@ -42,31 +42,32 @@
 		    </ul>
 			<ul id="weekly-list" class="horizontal-list">
 				<li id="" class="horizontal-item time" style="position:relative;">
-					<div style="position:absolute; top:0px; right:0px;">0:00──</div>
-					<div style="position:absolute; top:24px; right:0px;">1:00──</div>
-					<div style="position:absolute; top:48px; right:0px;">2:00──</div>
-					<div style="position:absolute; top:72px; right:0px;">3:00──</div>
-					<div style="position:absolute; top:96px; right:0px;">4:00──</div>
-					<div style="position:absolute; top:120px; right:0px;">5:00──</div>
-					<div style="position:absolute; top:144px; right:0px;">6:00──</div>
-					<div style="position:absolute; top:168px; right:0px;">7:00──</div>
-					<div style="position:absolute; top:192px; right:0px;">8:00──</div>
-					<div style="position:absolute; top:216px; right:0px;">9:00──</div>
-					<div style="position:absolute; top:240px; right:0px;">10:00──</div>
-					<div style="position:absolute; top:264px; right:0px;">11:00──</div>
-					<div style="position:absolute; top:288px; right:0px;">12:00──</div>
-					<div style="position:absolute; top:312px; right:0px;">13:00──</div>
-					<div style="position:absolute; top:336px; right:0px;">14:00──</div>
-					<div style="position:absolute; top:360px; right:0px;">15:00──</div>
-					<div style="position:absolute; top:384px; right:0px;">16:00──</div>
-					<div style="position:absolute; top:408px; right:0px;">17:00──</div>
-					<div style="position:absolute; top:432px; right:0px;">18:00──</div>
-					<div style="position:absolute; top:456px; right:0px;">19:00──</div>
-					<div style="position:absolute; top:480px; right:0px;">20:00──</div>
-					<div style="position:absolute; top:504px; right:0px;">21:00──</div>
-					<div style="position:absolute; top:528px; right:0px;">22:00──</div>
-					<div style="position:absolute; top:552px; right:0px;">23:00──</div>
-					<div style="position:absolute; top:576px; right:0px;">24:00──</div>
+					<!-- 一時間24px　10分4px 開始は-13から -->
+					<!-- <div style="position:absolute; top:-13px; right:0px;">0:00──</div>-->
+					<div style="position:absolute; top:11px; right:0px;">1:00──</div>
+					<div style="position:absolute; top:35px; right:0px;">2:00──</div>
+					<div style="position:absolute; top:59px; right:0px;">3:00──</div>
+					<div style="position:absolute; top:83px; right:0px;">4:00──</div>
+					<div style="position:absolute; top:107px; right:0px;">5:00──</div>
+					<div style="position:absolute; top:131px; right:0px;">6:00──</div>
+					<div style="position:absolute; top:155px; right:0px;">7:00──</div>
+					<div style="position:absolute; top:179px; right:0px;">8:00──</div>
+					<div style="position:absolute; top:203px; right:0px;">9:00──</div>
+					<div style="position:absolute; top:227px; right:0px;">10:00──</div>
+					<div style="position:absolute; top:251px; right:0px;">11:00──</div>
+					<div style="position:absolute; top:275px; right:0px;">12:00──</div>
+					<div style="position:absolute; top:299px; right:0px;">13:00──</div>
+					<div style="position:absolute; top:323px; right:0px;">14:00──</div>
+					<div style="position:absolute; top:347px; right:0px;">15:00──</div>
+					<div style="position:absolute; top:371px; right:0px;">16:00──</div>
+					<div style="position:absolute; top:395px; right:0px;">17:00──</div>
+					<div style="position:absolute; top:419px; right:0px;">18:00──</div>
+					<div style="position:absolute; top:443px; right:0px;">19:00──</div>
+					<div style="position:absolute; top:467px; right:0px;">20:00──</div>
+					<div style="position:absolute; top:491px; right:0px;">21:00──</div>
+					<div style="position:absolute; top:515px; right:0px;">22:00──</div>
+					<div style="position:absolute; top:539px; right:0px;">23:00──</div>
+					<!-- <div style="position:absolute; top:576px; right:0px;">24:00──</div> -->
 				</li>
 	    		<li id="sun" class="horizontal-item">
 	    			<div id="item-12" class="box work">仕事

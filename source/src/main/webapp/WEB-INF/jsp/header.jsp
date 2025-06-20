@@ -19,21 +19,21 @@
         
         <nav class="nav">
             <ul class="nav_list">
-                <li class="kadomaru"><a href="HomeMakan">ホーム</a></li>
-                <li class="kadomaru"><a href="DishMakan">食事登録</a></li>
-                <li class="kadomaru"><a href="#">グラフ</a>
+                <li class="kadomaru2"><a href="HomeMakan">ホーム</a></li>
+                <li class="kadomaru2"><a href="DishMakan">食事登録</a></li>
+                <li class="kadomaru2" id="graph"><a href="#">グラフ</a>
                     <ul class="dropdown">
                         <li><a href="IncomeGraphMakan">グラフ(年収)</a></li>
                         <li><a href="WeightGraphMakan">グラフ(体重)</a> </li>
                     </ul>
                 </li>
-                <li class="kadomaru"><a href="#">年収管理</a>
+                <li class="kadomaru2"><a href="#">年収管理</a>
                     <ul class="dropdown">
                         <li><a href="IncomeResisterMakan">目標年収入力/変更</a></li>
                         <li><a href="IncomeResultMakan">計算結果</a></li>
                     </ul>
                 </li>
-                <li class="kadomaru"><a  href="#">運動管理</a>
+                <li class="kadomaru2"><a  href="#">運動管理</a>
                     <ul class="dropdown">
                         <li><a href="HealthResistMakan">目標体重入力/変更</a></li>
                         <li><a href="HealthResultDefaultMakan">計算結果</a></li>
