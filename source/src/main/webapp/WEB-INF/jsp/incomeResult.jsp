@@ -20,16 +20,16 @@
 <c:forEach var="h" items="${emp}">
 		<table>
     		<tr>
-      			<th>目標年収（万円）：</th>
-      			<td>${h.gIncome}</td>
+      			<th class="left">目標年収</th>
+      			<td>：　${h.gIncome}　万円</td>
     		</tr>
     		<tr>
-      			<th>手取り（万円）</th>
-      			<td>${h.netIncome}</td>
+      			<th class="left">手取り</th>
+      			<td>：　${h.netIncome}　万円</td>
     		</tr>
     		<tr>
-      			<th>1日当たりの労働時間（時間）</th>
-      			<td>${h.dWork}</td>
+      			<th class="left">1日当たりの労働時間</th>
+      			<td>：　${h.dWork}　時間</td>
     		</tr>
     	</table>
     	</c:forEach>

@@ -4,6 +4,10 @@
 	text-align: center;
 }
 
+.left {
+	text-align: left;
+}
+
 main {
 	font-size: 1.5rem;
 }

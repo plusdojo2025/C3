@@ -21,19 +21,19 @@
         <form method="POST" action="<c:url value="/IncomeResultMakan" />">
             <table>
                 <tr>
-                    <td>目標年収を入力（万円）</td>
-                    <td><input type="text" name="gIncome"></td>
+                    <th class="left">目標年収を入力（万円）</th>
+                    <td><input type="number" name="gIncome" min="0" max="1000"></td>
                 </tr>
                 <tr>
-                    <td>時給を入力（円）</td>
-                    <td><input type="text" name="hWage"></td>
+                    <th class="left">時給を入力（円）</th>
+                    <td><input type="number" name="hWage" min="0"></td>
                 </tr>
                 <tr>
-                    <td>1週間の希望労働日数を入力（日）</td>
-                    <td><input type="text" name="wWork"></td>
+                    <th class="left">1週間の希望労働日数を入力（日）</th>
+                    <td><input type="number" name="wWork" min="0" max="7"></td>
                 </tr>
                 <tr>
-                    <td>扶養しているか</td>
+                    <th class="left">扶養しているか</th>
                     <td>
                         <label><input type="radio" name="dependent" value="YES"> はい</label>
                         <label><input type="radio" name="dependent" value="NO"> いいえ</label>
@@ -43,7 +43,7 @@
                 
                 <tr>  
                     <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
-                    <td><c:out value="${userInf.id}" /></td>
+                
                 </tr>
                              
                  </table>
