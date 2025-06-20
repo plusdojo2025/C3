@@ -10,6 +10,7 @@ import java.util.List;
 import dto.HealthInf;
 
 public class HealthInfDao extends CustomTemplateDao<HealthInf> {
+	
 
 	@Override
 	public List<HealthInf> select(HealthInf dto) {
@@ -21,7 +22,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM healthInf WHERE u_id = ? ";
+			String sql = "SELECT * FROM healthinf WHERE u_id = ? order by id desc limit 1;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -45,7 +46,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 						rs.getInt("lwCcalorie"),
 						rs.getInt("lwIcalorie"),
 						rs.getInt("metaRate"),
-						rs.getString("U_id")
+						rs.getString("u_id")
 						);
 				hInfo.add(us);
 			}
@@ -60,7 +61,55 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		// 結果を返す
 		return hInfo;
 	}
+	
+	// つけたし
+	public List<HealthInf> select1() {
+		// 結果セットを格納するコレクション
+				List<HealthInf> hInfo = new ArrayList<HealthInf>();
 
+				// データベースに接続と切断を行うオブジェクト
+				Connection conn = null;
+
+				try {
+					conn = conn();
+
+					// SQL文を準備する
+					String sql = "SELECT * FROM healthinf WHERE u_id = ?; ";
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+
+					// SQL文を実行して検索結果を取得する
+					ResultSet rs = pstmt.executeQuery();
+					// 検索結果をコレクションに格納する
+					while (rs.next()) {
+						HealthInf us = new HealthInf(
+								rs.getInt("id"), //テーブルの列名
+								rs.getInt("iWeight"),
+								rs.getInt("cWeight"),
+								rs.getInt("height"),
+								rs.getInt("age"),
+								rs.getString("gender"),
+								rs.getInt("term"),
+								rs.getInt("wMotionDays"),
+								rs.getInt("dMotionTime"),
+								rs.getInt("lwCcalorie"),
+								rs.getInt("lwIcalorie"),
+								rs.getInt("metaRate"),
+								rs.getString("u_id")
+								);
+						hInfo.add(us);
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					// データベースを切断
+					close(conn);
+				}
+				// 検索結果が格納されたコレクションを返す
+				return hInfo;
+			}
+	// ここまで
+	
 	@Override
 	public boolean insert(HealthInf dto) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -153,7 +202,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 					cId = 16;
 				}
 			}
-			String sql0 = "SELECT avgCcalorie from cCalorie WHERE id = ?" ;
+			String sql0 = "SELECT avgCcalorie from cCalorie WHERE id = ?;" ;
 			PreparedStatement pStmt0 = conn.prepareStatement(sql0);
 			pStmt0.setInt(1,cId);
 			ResultSet rs = pStmt0.executeQuery();
@@ -167,7 +216,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO healthInf(iWeight,cWeight,height,age,gender,term,wMotionDays,dMotionTime,lwCcalorie,lwIcalorie,metaRate,u_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO healthinf(iWeight,cWeight,height,age,gender,term,wMotionDays,dMotionTime,lwCcalorie,lwIcalorie,metaRate,u_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -246,7 +295,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 
 			// SQL文を準備する 上書き
-			String sql =  "UPDATE healthInf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=? WHERE u_id=?;";
+			String sql =  "UPDATE healthinf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -342,7 +391,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			conn = conn();
 			
 			// SQL文を準備する 上書き
-			String sql =  "UPDATE healthInf SET lwCcalorie=?,lwIcalorie=? WHERE u_id=?";
+			String sql =  "UPDATE healthinf SET lwCcalorie=?,lwIcalorie=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -367,5 +416,8 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		// 結果を返す
 		return result;
 	}
+
+
+	
 
 }
