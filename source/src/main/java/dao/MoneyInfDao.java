@@ -21,7 +21,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM MoneyInf WHERE u_id = ? ";
+			String sql = "SELECT * FROM MoneyInf WHERE u_id = ? ;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -294,5 +294,35 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 		return result;
 	}
 	
+	public boolean isOneData(String u_id) {
+		Connection conn = null;
+		boolean Result = false;
 
+		try {
+			conn = conn();
+
+			// SELECT文を準備する
+			String sql = "SELECT count(*) FROM moneyInf WHERE id=? ;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, u_id);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			rs.next();
+			if (rs.getInt("count(*)") == 1) {
+				Result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Result = false;
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		
+		// 結果を返す
+		return Result;
+	}
 }

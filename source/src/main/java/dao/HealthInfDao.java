@@ -367,5 +367,36 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		// 結果を返す
 		return result;
 	}
+	
+	public boolean isOneData(String u_id) {
+		Connection conn = null;
+		boolean Result = false;
 
+		try {
+			conn = conn();
+
+			// SELECT文を準備する
+			String sql = "SELECT count(*) FROM healthInf WHERE id=? ;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, u_id);
+
+			// SELECT文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			rs.next();
+			if (rs.getInt("count(*)") == 1) {
+				Result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Result = false;
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		
+		// 結果を返す
+		return Result;
+	}
 }
