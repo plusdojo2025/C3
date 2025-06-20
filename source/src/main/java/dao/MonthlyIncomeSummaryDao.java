@@ -22,7 +22,7 @@ public class MonthlyIncomeSummaryDao extends CustomTemplateDao<MonthlyIncomeSumm
 
 			// SQL文を準備する
 
-			String sql = "SELECT * FROM monthly_income_summary WHERE u_id = ? order by id desc limit 1;";
+			String sql = "SELECT * FROM monthly_income_summary WHERE u_id = ?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
