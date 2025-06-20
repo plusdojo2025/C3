@@ -21,7 +21,7 @@
     <main>
         <h2 class="midashi">Health目標更新</h2>
   <c:forEach var="h" items="${emp}">
-  <form method="POST" action="<c:url value='HealthResultDefaultMakan'/>">
+  <form method="POST" action="<c:url value='HealthResistMakan'/>">
     <table>
         <tr>
             <td> 

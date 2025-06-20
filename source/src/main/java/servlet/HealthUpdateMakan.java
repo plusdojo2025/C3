@@ -61,7 +61,7 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 
 		// 登録処理を行う
 		HealthInfDao bDao = new HealthInfDao();
-		bDao.insert(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 0, 0, 0, 0, U_id)); // 登録成功
+		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 0, 0, 0, 0, U_id)); // 登録成功
 		// リダイレクト	
 		response.sendRedirect(request.getContextPath() + "/HealthResultDefaultMakan");
 		
