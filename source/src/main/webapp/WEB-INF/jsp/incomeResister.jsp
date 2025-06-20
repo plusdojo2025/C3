@@ -35,7 +35,7 @@
                 <tr>
                     <th class="left">扶養しているか</th>
                     <td>
-                        <label><input type="radio" name="dependent" value="YES"> はい</label>
+                        <label><input type="radio" name="dependent" value="YES" checked> はい</label>
                         <label><input type="radio" name="dependent" value="NO"> いいえ</label>
                     </td>
                 </tr>

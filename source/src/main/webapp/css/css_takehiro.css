@@ -8,6 +8,17 @@
 	text-align: left;
 }
 
+input{
+	width: 8em;
+}
+
+input[name=dependent]{
+	width: 1em;
+}
+
+input[name=gender]{
+	width: 1em;
+}
 main {
 	font-size: 1.5rem;
 }
