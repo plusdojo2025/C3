@@ -4,7 +4,7 @@
   color: white;
   background-color: #B5ACA1;
   border-radius: 10px;
-
+  width: 128px;
   padding: 8px 16px; /* 縦横の余白を調整 */
  
   width: auto; /* 必要なら明示的に */
@@ -14,6 +14,18 @@
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+}
+.headerLogout{
+	position: absolute;
+	border-radius: 10px;
+	right:3%;
+	top:40%;
+	color: white;
+	background-color: #B5ACA1;
+	padding: 8px 16px;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
 }
 /* ヘッダー全体 */
 .header {
@@ -28,17 +40,27 @@
 }
 .makan{
 	position: absolute;
-	top:10px;
+	top:0px;
 	text-align: center;
-	font-size:1.4rem;
-	font-family: 'Bebas Neue', sans-serif;
-	color:F5B1AA;
-	letter-spacing: 3px;
+	font-size: 2rem;
+	font-family: 'Poppins', 'Arial', sans-serif;
+	font-weight: bold;
+	color:#F5B1AA;
+	letter-spacing: 0.18em;
+	text-shadow: 0 2px 6px #fff4, 0 0px 0 #fff;
+	text-decoration: none;
+}
+.logo:visited{
+	color:#F5B1AA;
+	text-decoration: none;
 }
 .logo{
+	font-family: 'Poppins', 'Arial', sans-serif;
 	display:flex;
 	align-items: center;
 	gap: 10px;
+	text-decoration: none;
+	color:#F5B1AA;
 }
 .logo_img {
 	height: 40px;
@@ -126,7 +148,7 @@ nav ul li:hover .dropdown {
 .kadomaru {
   position: relative;
   text-align: center;
-
+  
 }
 
 .kadomaru > a {
@@ -137,7 +159,7 @@ nav ul li:hover .dropdown {
   border-radius: 12px 12px 0 0;
   display: inline-block;
   font-weight: bold;
-  
+ 
 }
 
 /* ▼ ドロップダウンメニュー本体 */
@@ -149,10 +171,10 @@ nav ul li:hover .dropdown {
   transform: translateX(-50%);
   background-color: #B5ACA1;
   padding: 10px 0;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 12px 12px 12px 12px;
   width: 128px;
   
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  
 }
 
 /* ▼ ドロップダウン内のリンク */

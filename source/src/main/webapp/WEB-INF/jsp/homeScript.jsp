@@ -6,7 +6,7 @@
     let changeParentId = '';
     const changeParentArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'etc'];
     const drugChangeArray = [
-        'item-10',
+        'item-10','item-11','item-12'
     ];
     $(".box").on("mousedown", function (e) {
         const isChanging = (drugChangeArray.includes(this.id));
@@ -23,7 +23,7 @@
     let startY, startBox, startTop, startIsTop, startHeight;
     const drugBarUnit = (10 * 2);
     const drugResizeArray = [
-        'item-10-top', 'item-10-end',
+        'item-10-top', 'item-10-end','item-11-top', 'item-11-end','item-12-top', 'item-12-end',
     ];
     $(".drug-bar").on("mousedown", function (e) {
         const isResizing = (drugResizeArray.includes(this.id));
@@ -105,5 +105,9 @@
     $(window).on('load', function () {
         $('#item-10').css('top', $('#home-form input[name^="item-10[0]').val() + 'px');
         $('#item-10').css('height', $('#home-form input[name^="item-10[1]').val() + 'px');
+        $('#item-11').css('top', $('#home-form input[name^="item-11[0]').val() + 'px');
+        $('#item-11').css('height', $('#home-form input[name^="item-11[1]').val() + 'px');
+        $('#item-12').css('top', $('#home-form input[name^="item-12[0]').val() + 'px');
+        $('#item-12').css('height', $('#home-form input[name^="item-12[1]').val() + 'px');
     }); 
 </script>

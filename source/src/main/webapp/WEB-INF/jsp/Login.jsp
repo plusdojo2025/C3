@@ -6,13 +6,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" href="<c:url value='/css/css_login.css' />">
 </head>
-	<body id="top_login">
+	<body id="top_login" class="login_body">
 	        <img src="tiger.png" alt="まま管理アプリ-makan-">
 	        
 	        <h1>Makan~ログインフォーム~</h1><!--見出し-->
 		<main>
-	    	<form id="form_login"action="<c:url value="/LoginMakan" />" method="POST">
+	    	<form id="form_login" class="login_box" action="<c:url value="/LoginMakan" />" method="POST">
 	        	<table>
 	            	<tr>
 	                	<td>
@@ -38,6 +39,9 @@
 	         	</table>
 	    	</form>
 	  	</main>
+	  	<footer>
+	  		
+	  	</footer>
 	
 	    <script><!--ファイルを分ける-->
 	           	'use strict';
