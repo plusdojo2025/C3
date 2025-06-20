@@ -8,9 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DishInfDao;
-import dto.DishInf;
+import dto.Dish;
 
 /**
  * Servlet implementation class DishMakan
@@ -25,22 +26,48 @@ public class DishMakan extends CustomTemplateServlet {
 //			return;
 //		}
 //			
-//			// リクエストパラメータを取得する
-//			request.setCharacterEncoding("UTF-8");
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String dateParam = request.getParameter("ymd");
+        
+//        // リクエストが JavaScript の fetch からかどうかを判定
+//        boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+//
+//        if (isAjax) {
+//            // fetch() からのリクエスト → JSONで返す
+//            response.setContentType("application/json; charset=UTF-8");
+//
+//            if (dateParam == null || dateParam.isEmpty()) {
+//                dateParam = java.time.LocalDate.now().toString();
+//            }
+//
+//            DishInfDao dao = new DishInfDao();
+//            List<DishInf> dish = dao.selectByDate("00007", dateParam);
+//
+//            Gson gson = new Gson();
+//            String json = gson.toJson(dish);
+//            response.getWriter().write(json);
+//            return; // フォワードせずに終了
+//        }
 
-			// データベースを検索して結果をリクエストスコープに格納する
-			DishInfDao dao = new DishInfDao();
-			List<DishInf> dish = dao.select();
-			//HttpSession session = request.getSession();
-			request.setAttribute("dish",dish);
-			//session.setAttribute("dish",dish);
-		
+        // 通常アクセス（画面遷移）
+        if (dateParam == null || dateParam.isEmpty()) {
+            dateParam = java.time.LocalDate.now().toString();
+        }
+	    HttpSession session = request.getSession();
+	    String U_id = (String) session.getAttribute("id");
+	    DishInfDao dao = new DishInfDao();
+	    
+	    List<Dish> dish = dao.selectByDate(U_id, dateParam); // ユーザーIDを仮に固定
+
+	    request.setAttribute("dish", dish);
+	    request.setAttribute("selectedDate", dateParam);
+		  		
 		// 食事表示画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
 		dispatcher.forward(request, response);
-		
-	}
-
+}
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
