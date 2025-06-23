@@ -52,18 +52,18 @@
         <script src="script/WeightGraph.js"></script>
 
        
-        <img id=mama-weightgraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
+        <!--  <img id=mama-weightgraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
         <div id=now-weightgraph>
         
         	<p>現在の体重：○○㎏</p>
             <p>目標まであと：○○kg</p>
             
-        </div>
+        </div>-->
 
-        <div>
+        <div class="info_weightgraph">
             <p>＜体重計算方法＞</p>
-            <p>今週の総消費カロリー = 運動量(○○kcal) + 基礎代謝量(○○kcal)－食事量(○○kcal)</p>
-            <p>－1kg =－7200kcalを指標に増減を計算しています。</p>
+            <p>今週の総消費カロリー&nbsp;=&nbsp;運動量(○○kcal)&nbsp;+&nbsp;基礎代謝量(○○kcal)&nbsp;－&nbsp;食事量(○○kcal)</p>
+            <p>－1kg&nbsp;=&nbsp;－7200kcalを指標に増減を計算しています。</p>
         </div>
 
 

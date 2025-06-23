@@ -54,3 +54,17 @@ h2{
   text-align:center;
   
 }
+
+.info_weightgraph{
+	  background-color: #FEF4F4;
+	  border-radius: 12px; /* 角丸 */
+	  border: 2px solid #111;
+	  width:80%;
+	  margin:0 auto 60px auto;
+	
+}
+
+.info_weightgraph > p{
+	text-align:center;
+	
+}
