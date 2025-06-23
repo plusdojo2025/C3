@@ -226,7 +226,34 @@ input[type="radio"]:checked {
     font-size: 16px;
   }
 }
-/*ここまで*/
+
+/* 結果画面のデザイン*/
+
+.Form-Item-Result {
+  border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 6em;
+    padding-right: 1em;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 48px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    font-size: 26px;
+}
+	
+.Form-Item-Label-Result {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 5em;
+}	
+
+/*ボタンのデザイン*/
 .kadomarutake{
 	border-top: 1px solid #ddd;
 	color: white;

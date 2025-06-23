@@ -30,24 +30,26 @@
 		
 <div class="Form">
   <div class="Form-Item">
-    <p class="Form-Item-Label">
+    <p class="Form-Item-Label-Result">
      	先週の消費カロリー
     </p>
-    <p class="Form-Item-Input">〇〇kcal</p><br>
+    <p class="Form-Item-Result">〇〇kcal</p><br>
   </div>
   <div class="Form-Item">
-    <p class="Form-Item-Label">
+    <p class="Form-Item-Label-Result">
      	先週の摂取カロリー
     </p>
-    <p class="Form-Item-Input">〇〇kcal</p><br>
+    <p class="Form-Item-Result">〇〇kcal</p><br>
   </div>
   <div class="Form-Item">
-    <p class="Form-Item-Label">
+    <p class="Form-Item-Label-Result">
      	今週の一日あたりの運動時間
     </p>
-    <p class="Form-Item-Input">${h.dMotionTime}　分</p><br>
+    <p class="Form-Item-Result">${h.dMotionTime}分</p><br>
   </div>
+  <a href="<c:url value='HomeMakan'/>"><button class="kadomarutake">ホームに戻る</button></a>
   </div>
+  
   		</c:forEach>
     </main>
     <!--　メインここまで　-->
