@@ -30,25 +30,6 @@ public class DishMakan extends CustomTemplateServlet {
 		request.setCharacterEncoding("UTF-8");
 		String dateParam = request.getParameter("ymd");
         
-//        // リクエストが JavaScript の fetch からかどうかを判定
-//        boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
-//
-//        if (isAjax) {
-//            // fetch() からのリクエスト → JSONで返す
-//            response.setContentType("application/json; charset=UTF-8");
-//
-//            if (dateParam == null || dateParam.isEmpty()) {
-//                dateParam = java.time.LocalDate.now().toString();
-//            }
-//
-//            DishInfDao dao = new DishInfDao();
-//            List<DishInf> dish = dao.selectByDate("00007", dateParam);
-//
-//            Gson gson = new Gson();
-//            String json = gson.toJson(dish);
-//            response.getWriter().write(json);
-//            return; // フォワードせずに終了
-//        }
 
         // 通常アクセス（画面遷移）
         if (dateParam == null || dateParam.isEmpty()) {
