@@ -29,6 +29,7 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		// セッションスコープからID取得
 		HttpSession session = request.getSession();
 		String u_id = (String) session.getAttribute("id");
+		
 		// インスタンス生成
 		HealthInfDao bDao = new HealthInfDao();
 		HealthInf bDto = new HealthInf();
@@ -60,9 +61,14 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		int  wMotionDays= Integer.parseInt(request.getParameter("wMotionDays"));
 		String U_id = request.getParameter("U_id");
 
+		// セッションスコープからID取得
+		HttpSession session = request.getSession();
+		session.setAttribute("gender" ,gender);
+		//String gender = (String) session.getAttribute("gender");
+		
 		// 更新処理を行う
 		HealthInfDao bDao = new HealthInfDao();
-		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 0, 0, 0, 0, U_id)); // 登録成功
+		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, 1, 0, 1, U_id)); // 登録成功
 		// リダイレクト	
 		response.sendRedirect(request.getContextPath() + "/HealthResultDefaultMakan");
 		

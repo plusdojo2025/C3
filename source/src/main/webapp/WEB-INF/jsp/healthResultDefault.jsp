@@ -22,12 +22,8 @@
     <p>empの中身確認: ${not empty emp}</p>
     <p>サイズ: ${fn:length(emp)}</p>
     
-        <h2 class="midashi">＜計算結果＞</h2>
-    
-    
-        
-		<c:forEach var="h" items="${emp}">
-		
+        <h2 class="midashi">＜計算結果＞</h2>        
+		<c:forEach var="h" items="${emp}">	
 <div class="Form">
   <div class="Form-Item">
     <p class="Form-Item-Label-Result">

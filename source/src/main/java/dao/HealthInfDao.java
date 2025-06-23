@@ -213,13 +213,16 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		boolean result = false;
 		double metaRate;
 		int metaRatei;
-		double conCal;//日常で消費するカロリー
+		double conCal = 0;//日常で消費するカロリー
 		int lowerCal;//期間中に減らす全カロリー
-		int weekCal;//一週間で必要な差分カロリー
+		int weekCal = 0;//一週間で必要な差分カロリー
 		int age = dto.getAge();
 		int dayCal;//一日で必要な運動消費カロリー
 		double dMotionTime;
 		int dMotionTimei;
+		int cId;
+		int avgCal = 0;//初週
+		
 		
 		final double RATE = 0.5473;
 
@@ -234,17 +237,80 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				metaRate = (metaRate - (RATE*2))*1000/4.186;
 			}
 			metaRatei = (int)metaRate;
-			//
 			
+			//男女年齢別平均摂取カロリー
+			if(dto.getGender().equals("M")) {//男
+				if(age < 20) {
+					cId = 1;
+				}
+				else if(age < 30) {
+					cId = 2;
+				}
+				else if(age < 40) {
+					cId = 3;
+				}
+				else if(age < 50) {
+					cId = 4;
+				}
+				else if(age < 60) {
+					cId = 5;
+				}
+				else if(age < 70) {
+					cId = 6;
+				}
+				else if(age < 80) {
+					cId = 7;
+				}
+				else {
+					cId = 8;
+				}
+			}
+			else {
+				if(age < 20) {
+					cId = 9;
+				}
+				else if(age < 30) {
+					cId = 10;
+				}
+				else if(age < 40) {
+					cId = 11;
+				}
+				else if(age < 50) {
+					cId = 12;
+				}
+				else if(age < 60) {
+					cId = 13;
+				}
+				else if(age < 70) {
+					cId = 14;
+				}
+				else if(age < 80) {
+					cId = 15;
+				}
+				else {
+					cId = 16;
+				}
+			}
+			String sql0 = "SELECT avgCcalorie from cCalorie WHERE id = ?;" ;
+			PreparedStatement pStmt0 = conn.prepareStatement(sql0);
+			pStmt0.setInt(1,cId);
+			ResultSet rs = pStmt0.executeQuery();
+			if (rs.next()) {
+				avgCal = rs.getInt("avgCcalorie");
+			}
+			
+			dayCal = (avgCal * 7 + weekCal - (int)conCal * 7)/dto.getwMotionDays();
+			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
+			dMotionTimei = (int)dMotionTime;
 			//１週間の運動時間の計算　一日あたり
 			conCal = metaRatei * 1.5;
 			lowerCal = (dto.getcWeight() - dto.getiWeight())*7200;
 			weekCal = lowerCal/(dto.getTerm()/7);
 			
 
-			dayCal = (dto.getLwIcalorie() + weekCal - (int)conCal * 7)/dto.getwMotionDays();
-			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
-			dMotionTimei = (int)dMotionTime;
+//			dayCal = (dto.getLwIcalorie() + weekCal - (int)conCal * 7)/dto.getwMotionDays();
+//			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
+//			dMotionTimei = (int)dMotionTime;
 			//
 
 
@@ -304,7 +370,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				pStmt.setInt(10, 0);
 			}
 			if (dto.getMetaRate() != 0) {
-				pStmt.setInt(11, dto.getMetaRate());
+				pStmt.setInt(11, metaRatei);
 			} else {
 				pStmt.setInt(11, 0);
 			}

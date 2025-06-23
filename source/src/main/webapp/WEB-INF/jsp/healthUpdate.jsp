@@ -8,14 +8,7 @@
     <meta charset="UTF-8">
     <title>更新</title>
     <link rel="stylesheet" href="<c:url value='css/css_takehiro.css'/>">
-	<%
-		// セッションスコープに格納された性別を取得
-		HttpSession set = request.getSession();
-			String gender =  (String)set.getAttribute("gender");
-			String stM = "男性";
-			String stF = "女性";
-	
-	%>
+	 
 </head>
 <body>
     <!--　ヘッダー　-->
@@ -29,7 +22,7 @@
         <h2 class="midashi">Health目標更新</h2>
   <c:forEach var="h" items="${emp}">
  
-  <form method="POST" action="<c:url value='HealthResistMakan' />"> 
+  <form method="POST" action="<c:url value='HealthUpdateMakan' />"> 
    <div class="Form">
   <div class="Form-Item">
     <p class="Form-Item-Label">
@@ -53,8 +46,8 @@
     <p class="Form-Item-Label">
       <span class="Form-Item-Label-Required">必須</span>性別
     </p>
-    <input type="radio" name="gender" id="M" value="M"<% if(gender.equals(stM)){ out.print("checked"); } %>><label for="M" class="label">男性</label>
-    <input type="radio" name="gender" id="F" value="F"<% if(gender.equals(stF)){ out.print("checked"); } %>><label for="F" class="label">女性</label><br>
+    <input type="radio" name="gender" id="M" value="M"><label for="M" class="label">男性</label>
+    <input type="radio" name="gender" id="F" value="F"><label for="F" class="label">女性</label><br>
   </div>
   <div class="Form-Item">
     <p class="Form-Item-Label">
