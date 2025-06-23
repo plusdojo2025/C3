@@ -62,53 +62,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		return hInfo;
 	}
 	
-	// つけたし
-	public List<HealthInf> select1() {
-		// 結果セットを格納するコレクション
-				List<HealthInf> hInfo = new ArrayList<HealthInf>();
-
-				// データベースに接続と切断を行うオブジェクト
-				Connection conn = null;
-
-				try {
-					conn = conn();
-
-					// SQL文を準備する
-					String sql = "SELECT * FROM healthinf WHERE u_id = ?; ";
-					PreparedStatement pstmt = conn.prepareStatement(sql);
-
-					// SQL文を実行して検索結果を取得する
-					ResultSet rs = pstmt.executeQuery();
-					// 検索結果をコレクションに格納する
-					while (rs.next()) {
-						HealthInf us = new HealthInf(
-								rs.getInt("id"), //テーブルの列名
-								rs.getInt("iWeight"),
-								rs.getInt("cWeight"),
-								rs.getInt("height"),
-								rs.getInt("age"),
-								rs.getString("gender"),
-								rs.getInt("term"),
-								rs.getInt("wMotionDays"),
-								rs.getInt("dMotionTime"),
-								rs.getInt("lwCcalorie"),
-								rs.getInt("lwIcalorie"),
-								rs.getInt("metaRate"),
-								rs.getString("u_id")
-								);
-						hInfo.add(us);
-					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					// データベースを切断
-					close(conn);
-				}
-				// 検索結果が格納されたコレクションを返す
-				return hInfo;
-			}
-	// ここまで
+	
 	
 	@Override
 	public boolean insert(HealthInf dto) {
