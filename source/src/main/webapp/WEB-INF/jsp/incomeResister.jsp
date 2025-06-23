@@ -17,43 +17,43 @@
 
     <!-- メイン -->
     <main>
-        <h2 class="midashi">1週間の労働時間と手取り計算</h2>
-        <form method="POST" action="<c:url value="/IncomeResultMakan" />">
-            <table>
-                <tr>
-                    <th class="left">目標年収を入力（万円）</th>
-                    <td><input type="number" name="gIncome" min="0" max="1000"></td>
-                </tr>
-                <tr>
-                    <th class="left">時給を入力（円）</th>
-                    <td><input type="number" name="hWage" min="0"></td>
-                </tr>
-                <tr>
-                    <th class="left">1週間の希望労働日数を入力（日）</th>
-                    <td><input type="number" name="wWork" min="0" max="7"></td>
-                </tr>
-                <tr>
-                    <th class="left">扶養しているか</th>
-                    <td>
-                        <label><input type="radio" name="dependent" value="YES" checked> はい</label>
-                        <label><input type="radio" name="dependent" value="NO"> いいえ</label>
-                    </td>
-                </tr>
                 
-                
-                <tr>  
-                    <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
-                
-                </tr>
-                             
-                 </table>
+	 <form method="POST" action="<c:url value="/IncomeResultMakan" />">                
+	   <div class="Form">
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label">
+			      <span class="Form-Item-Label-Required">必須</span>目標年収
+	    </p>
+	    <input type="number" name="gIncome" class="Form-Item-Input" placeholder="単位：万円" min="0" max="1000"><br>
+			  </div>
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>時給</p>
+			    <input type="number" name="hWage" class="Form-Item-Input" placeholder="単位：万円" min="0">
+	  </div>
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>1週間の希望労働日数</p>
+			    <input type="number" name="wWork" class="Form-Item-Input" placeholder="単位：万円"min="0" min="7">
+	  </div>
+	
+	  <div class="Form-Item">
+			    <p class="Form-Item-Label">
+			      <span class="Form-Item-Label-Required">必須</span>扶養の有無
+	    </p>
+			    <input type="radio" name="dependent" id="YES" value="M"><label for="YES" class="label">はい</label>
+			    <input type="radio" name="dependent" id="NO" value="F"><label for="NO" class="label">いいえ</label><br>
+	  </div>
+	 
+	 
+		  <input type="hidden" name="U_id" value="${userInf.id}">
+				  <div style="text-align:center;" class="Form-Item">
+				      <input type="submit" name="submit" class="kadomarutake" value="決定">
+				  </div>
+		</div>                    
+              
                     
-                    <div style="text-align:center;">
-                        <input type="submit" class="kadomaru" name="submit" value="決定">
-                    </div>                  
         </form>
     </main>
-
+  
     <!-- フッター -->
     <footer>
         <%@ include file="footer.jsp" %>

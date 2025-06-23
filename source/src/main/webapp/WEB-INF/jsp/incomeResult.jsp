@@ -18,20 +18,24 @@
 <main>
     <h2 class="midashi">結果表示</h2>
 <c:forEach var="h" items="${emp}">
-		<table>
-    		<tr>
-      			<th class="left">目標年収</th>
-      			<td>：　${h.gIncome}　万円</td>
-    		</tr>
-    		<tr>
-      			<th class="left">手取り</th>
-      			<td>：　${h.netIncome}　万円</td>
-    		</tr>
-    		<tr>
-      			<th class="left">1日当たりの労働時間</th>
-      			<td>：　${h.dWork}　時間</td>
-    		</tr>
-    	</table>
+    	
+    	 <div class="Form">
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label">目標年収</p>
+	    <p class="Form-Item-Input">${h.gIncome}万円</p><br>
+			  </div>
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label">手取り</p>
+			    <p class="Form-Item-Input" >${h.netIncome}万円</p>
+	  </div>
+			  <div class="Form-Item">
+			    <p class="Form-Item-Label">1日当たりの労働時間</p>
+			    <p class="Form-Item-Input">${h.dWork}時間</p>
+	  </div>
+	
+		  <input type="hidden" name="U_id" value="${userInf.id}">
+		</div> 
+    	
     	</c:forEach>
     <form action="HomeMakan" method="get">
     <div style="text-align:center;">
