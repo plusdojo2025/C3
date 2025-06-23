@@ -58,7 +58,9 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		int age = Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender");
 		int term = Integer.parseInt(request.getParameter("term"));
-		int  wMotionDays= Integer.parseInt(request.getParameter("wMotionDays"));
+		int wMotionDays= Integer.parseInt(request.getParameter("wMotionDays"));
+		int lwCcalorie= Integer.parseInt(request.getParameter("lwCcalorie"));
+		int lwIcalorie= Integer.parseInt(request.getParameter("lwIcalorie"));
 		String U_id = request.getParameter("U_id");
 
 		// セッションスコープからID取得
@@ -67,8 +69,16 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		//String gender = (String) session.getAttribute("gender");
 		
 		// 更新処理を行う
+		if(lwCcalorie == 0) {
+		// 更新処理を行う(初週)
 		HealthInfDao bDao = new HealthInfDao();
-		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, 1, 0, 1, U_id)); // 登録成功
+		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, 1, 1, 1, U_id));
+		}
+		else {
+		// 更新処理を行う(2週目以降)
+		HealthInfDao bDao = new HealthInfDao();
+		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, lwCcalorie, lwIcalorie, 1, U_id));	
+		}
 		// リダイレクト	
 		response.sendRedirect(request.getContextPath() + "/HealthResultDefaultMakan");
 		

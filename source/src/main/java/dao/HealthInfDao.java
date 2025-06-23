@@ -182,8 +182,8 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				pStmt.setInt(6, dto.getTerm());
 				pStmt.setInt(7, dto.getwMotionDays());
 				pStmt.setInt(8, dMotionTimei);
-				pStmt.setInt(9, avgCal);//lwCcalorie
-				pStmt.setInt(10,0);//lwIcalorie
+				pStmt.setInt(9, 0);//lwCcalorie
+				pStmt.setInt(10,avgCal);//lwIcalorie
 				pStmt.setInt(11,metaRatei);
 				pStmt.setString(12, dto.getU_id());
 			
@@ -365,7 +365,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				pStmt.setInt(9, 0);
 			}
 			if (dto.getLwIcalorie() != 0) {
-				pStmt.setInt(10, dto.getLwIcalorie());
+				pStmt.setInt(10, avgCal);
 			} else {
 				pStmt.setInt(10, 0);
 			}
