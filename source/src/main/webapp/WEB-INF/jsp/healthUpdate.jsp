@@ -8,7 +8,14 @@
     <meta charset="UTF-8">
     <title>更新</title>
     <link rel="stylesheet" href="<c:url value='css/css_takehiro.css'/>">
-
+	<%
+		// セッションスコープに格納された性別を取得
+		HttpSession set = request.getSession();
+			String gender =  (String)set.getAttribute("gender");
+			String stM = "男性";
+			String stF = "女性";
+	
+	%>
 </head>
 <body>
     <!--　ヘッダー　-->
@@ -21,75 +28,52 @@
     <main>
         <h2 class="midashi">Health目標更新</h2>
   <c:forEach var="h" items="${emp}">
-  <form method="POST" action="<c:url value='HealthResistMakan'/>">
-    <table>
-        <tr>
-            <td> 
-                目標体重
-            </td>
-            <td>
-                <input type="number" name="iWeight" value="${h.iWeight }" ><br>
-            </td>
-        </tr>
-        <tr>
-             <td> 
-                現在体重
-            </td>
-            <td>
-                <input type="number" name="cWeight" value="${h.cWeight }"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                身長
-            </td>
-            <td>
-                <input type="number" name="height" value="${h. height}"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                年齢
-            </td>
-            <td>
-                <input type="number" name="age" value="${h.age }"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                性別
-            </td>
-            <td>    
-                <label><input type="radio" name="gender" value="M">男性</label>
-                <label><input type="radio" name="gender" value="F">女性</label><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                期間
-            </td>
-            <td>
-                <input type="number" name="term" value="${h.term }"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                一週間の運動日数
-            </td>
-            <td>
-                <input type="number" name="wMotionDays" value="${h.wMotionDays }"><br>
-            </td>
-        </tr>
-        <tr>  
-            <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
-       </tr>
-        <tr>
-            <td>
-                <input type="submit" name="submit" value="更新">
-            </td>
-        </tr>
-    </table>
-  </form>
+ 
+  <form method="POST" action="<c:url value='HealthResistMakan' />"> 
+   <div class="Form">
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+      <span class="Form-Item-Label-Required">必須</span>目指す体重
+    </p>
+    <input type="number" name="iWeight" class="Form-Item-Input" placeholder="単位：kg" value="${h.iWeight }"><br>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>現在の体重</p>
+    <input type="number" name="cWeight" class="Form-Item-Input" placeholder="単位：kg" value="${h.cWeight }">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>身長</p>
+    <input type="number" name="height" class="Form-Item-Input" placeholder="単位：cm" value="${h. height}">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>年齢</p>
+    <input type="number" name="age" class="Form-Item-Input" placeholder="" value="${h.age }">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+      <span class="Form-Item-Label-Required">必須</span>性別
+    </p>
+    <input type="radio" name="gender" id="M" value="M"<% if(gender.equals(stM)){ out.print("checked"); } %>><label for="M" class="label">男性</label>
+    <input type="radio" name="gender" id="F" value="F"<% if(gender.equals(stF)){ out.print("checked"); } %>><label for="F" class="label">女性</label><br>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+      <span class="Form-Item-Label-Required">必須</span>期間
+    </p>
+    <input type="number" name="term" class="Form-Item-Input" placeholder="単位：日" value="${h.term }"><br>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+      <span class="Form-Item-Label-Required">必須</span>1週間の運動日数
+    </p>
+    <input type="number" name="wMotionDays" class="Form-Item-Input" min="1" max="7" placeholder="単位：日（1～7で入力）" value="${h.wMotionDays }"><br>
+  </div>
+  <input type="hidden" name="U_id" value="${userInf.id}">
+  <div style="text-align:center;" class="Form-Item">                  
+      <input type="submit" name="submit" class="kadomarutake" value="更新">  
+  </div>
+</div>
+</form>
   </c:forEach>
     </main>
     <!--　メインここまで　-->

@@ -22,32 +22,33 @@
     <p>empの中身確認: ${not empty emp}</p>
     <p>サイズ: ${fn:length(emp)}</p>
     
-        <h2 class="midashi">＜先週の振り返り＞</h2>
-        <table>
-		<tr>
-			<th>先週の消費カロリー：　</th>
-			<td>〇〇kcal</td>
-        </tr>
-		<tr>
-			<th>先週の摂取カロリー：　</th>
-			<td>〇〇kcal</td>
-        </tr>
-        </table>
+        <h2 class="midashi">＜計算結果＞</h2>
     
     
-        <h2 class="midashi">＜今週の運動予定＞</h2>
+        
 		<c:forEach var="h" items="${emp}">
-		<table>
-    		<tr>
-      			<th>今週の一日あたりの運動時間：</th>
-      			<td>${h.dMotionTime}　分</td>
-    		</tr>
-    	</table>
+		
+<div class="Form">
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+     	先週の消費カロリー
+    </p>
+    <p class="Form-Item-Input">〇〇kcal</p><br>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+     	先週の摂取カロリー
+    </p>
+    <p class="Form-Item-Input">〇〇kcal</p><br>
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+     	今週の一日あたりの運動時間
+    </p>
+    <p class="Form-Item-Input">${h.dMotionTime}　分</p><br>
+  </div>
+  </div>
   		</c:forEach>
-  		
-        <div style="text-align:center;">
-        <a href="<c:url value='HomeMakan'/>"><button class="kadomaru">ホームに戻る</button></a>
-        </div>
     </main>
     <!--　メインここまで　-->
     <!--　フッター　-->
