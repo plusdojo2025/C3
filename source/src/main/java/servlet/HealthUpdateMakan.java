@@ -38,7 +38,7 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		hInfo = bDao.select(bDto);
 		request.setAttribute("emp",hInfo);
 		
-		// ログインページにフォワードする
+		// 更新ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthUpdate.jsp");
 		dispatcher.forward(request, response);
 		
@@ -72,15 +72,18 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		if(lwCcalorie == 0) {
 		// 更新処理を行う(初週)
 		HealthInfDao bDao = new HealthInfDao();
-		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, 1, 1, 1, U_id));
+		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, 0, 1, 1, U_id));
+		// 結果(初週)リダイレクト
+		response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
 		}
 		else {
 		// 更新処理を行う(2週目以降)
 		HealthInfDao bDao = new HealthInfDao();
-		bDao.update(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, lwCcalorie, lwIcalorie, 1, U_id));	
-		}
-		// リダイレクト	
+		bDao.update2(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 1, lwCcalorie, lwIcalorie, 1, U_id));	
+		// 結果(2週目以降)リダイレクト	
 		response.sendRedirect(request.getContextPath() + "/HealthResultDefaultMakan");
+		}
+		
 		
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthUpdate.jsp");
 //		dispatcher.forward(request, response);

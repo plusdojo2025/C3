@@ -62,7 +62,7 @@ public class HealthResistMakan extends CustomTemplateServlet {
 				HealthInfDao bDao = new HealthInfDao();
 				bDao.insert(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 0, 0, 0, 0, U_id)); // 登録成功
 				// リダイレクト	
-				response.sendRedirect(request.getContextPath() + "/HealthResultDefaultMakan");
+				response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
 //		// フォワード
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthResultDefault0.jsp");
 //		dispatcher.forward(request, response);

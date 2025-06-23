@@ -228,6 +228,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 		try {
 			conn = conn();
+			
 			//基礎代謝量の計算
 			metaRate = 0.1238+(0.0481*dto.getcWeight())+(0.0234*dto.getHeight())-(0.0138*age);
 			if(dto.getGender().equals("M")) {//男
@@ -237,6 +238,13 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				metaRate = (metaRate - (RATE*2))*1000/4.186;
 			}
 			metaRatei = (int)metaRate;
+			//
+			
+			//１週間の運動時間の計算　一日あたり
+			conCal = metaRatei * 1.5;
+			lowerCal = (dto.getcWeight() - dto.getiWeight())*7200;
+			weekCal = lowerCal/(dto.getTerm()/7);
+			
 			
 			//男女年齢別平均摂取カロリー
 			if(dto.getGender().equals("M")) {//男
@@ -302,18 +310,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			dayCal = (avgCal * 7 + weekCal - (int)conCal * 7)/dto.getwMotionDays();
 			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
 			dMotionTimei = (int)dMotionTime;
-			//１週間の運動時間の計算　一日あたり
-			conCal = metaRatei * 1.5;
-			lowerCal = (dto.getcWeight() - dto.getiWeight())*7200;
-			weekCal = lowerCal/(dto.getTerm()/7);
 			
-
-//			dayCal = (dto.getLwIcalorie() + weekCal - (int)conCal * 7)/dto.getwMotionDays();
-//			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
-//			dMotionTimei = (int)dMotionTime;
-			//
-
-
 			// SQL文を準備する 上書き
 			String sql =  "UPDATE healthinf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -360,7 +357,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				pStmt.setInt(8, 0);
 			}
 			if (dto.getLwCcalorie() != 0) {
-				pStmt.setInt(9, dto.getLwCcalorie());
+				pStmt.setInt(9, 0);
 			} else {
 				pStmt.setInt(9, 0);
 			}
@@ -487,6 +484,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 
 		try {
 			conn = conn();
+			
 			//基礎代謝量の計算
 			metaRate = 0.1238+(0.0481*dto.getcWeight())+(0.0234*dto.getHeight())-(0.0138*age);
 			if(dto.getGender().equals("M")) {//男
@@ -496,7 +494,6 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 				metaRate = (metaRate - (RATE*2))*1000/4.186;
 			}
 			metaRatei = (int)metaRate;
-			//
 			
 			//１週間の運動時間の計算　一日あたり
 			conCal = metaRatei * 1.5;

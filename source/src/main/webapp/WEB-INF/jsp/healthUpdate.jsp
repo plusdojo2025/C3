@@ -61,8 +61,8 @@
     </p>
     <input type="number" name="wMotionDays" class="Form-Item-Input" min="1" max="7" placeholder="単位：日（1～7で入力）" value="${h.wMotionDays }"><br>
   </div>
-  <input type="hidden" name="lwCcalorie" value="${h.lwCcalorie}">
-  <input type="hidden" name="lwIcalorie" value="${h.lwIcalorie}">
+  <input type="number" name="lwCcalorie" value="${h.lwCcalorie}">
+  <input type="number" name="lwIcalorie" value="${h.lwIcalorie}">
   <input type="hidden" name="U_id" value="${userInf.id}">
   <div style="text-align:center;" class="Form-Item">                  
       <input type="submit" name="submit" class="kadomarutake" value="更新">  
