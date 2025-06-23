@@ -22,9 +22,11 @@ public class HealthResistMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
+		
 		HttpSession session = request.getSession();
 		String u_id = (String) session.getAttribute("id");
 		HealthInfDao bDao = new HealthInfDao();

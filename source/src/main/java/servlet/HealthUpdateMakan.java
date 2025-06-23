@@ -23,9 +23,9 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 		// セッションスコープからID取得
 		HttpSession session = request.getSession();
 		String u_id = (String) session.getAttribute("id");
