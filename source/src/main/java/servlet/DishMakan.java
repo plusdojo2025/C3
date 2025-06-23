@@ -39,10 +39,22 @@ public class DishMakan extends CustomTemplateServlet {
 	    String U_id = (String) session.getAttribute("id");
 	    DishInfDao dao = new DishInfDao();
 	    
-	    List<Dish> dish = dao.selectByDate(U_id, dateParam); // ユーザーIDを仮に固定
+	    List<Dish> dish = dao.selectByDate(U_id, dateParam); 
+	    List<Dish> dishN = dao.selectByDateN(U_id, dateParam);
+	    List<Dish> dishE = dao.selectByDateE(U_id, dateParam);
+	    List<Dish> dishS = dao.selectByDateS(U_id, dateParam);
 
 	    request.setAttribute("dish", dish);
 	    request.setAttribute("selectedDate", dateParam);
+	    
+	    request.setAttribute("dishN", dishN);
+	    request.setAttribute("selectedDateN", dateParam);
+	    
+	    request.setAttribute("dishE", dishE);
+	    request.setAttribute("selectedDateE", dateParam);
+	    
+	    request.setAttribute("dishS", dishS);
+	    request.setAttribute("selectedDateS", dateParam);
 		  		
 		// 食事表示画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");

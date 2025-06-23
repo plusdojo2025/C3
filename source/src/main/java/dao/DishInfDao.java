@@ -112,6 +112,7 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 		return result;
 	}
 
+	//朝
 	public List<Dish> selectByDate(String userId, String date) {
 	    List<Dish> list = new ArrayList<>();
 	    Connection conn = null;
@@ -135,17 +136,17 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	            SELECT di1.name, di1.calorie FROM dishInf df
 	            INNER JOIN dish di1 ON df.mOther = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
-	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
-	            INNER JOIN dish di1 ON df.snack = di1.id
-	            WHERE df.U_id = ? AND df.insertDate = ?
 	        """;
 
 	        PreparedStatement pstmt = conn.prepareStatement(sql);
-	        for (int i = 1; i <= 10; i += 2) {
-	            pstmt.setString(i, userId);
-	            pstmt.setString(i + 1, date);
-	        }
+	        pstmt.setString(1, userId);
+            pstmt.setString(2, date);
+            pstmt.setString(3, userId);
+            pstmt.setString(4, date);
+            pstmt.setString(5, userId);
+            pstmt.setString(6, date);
+            pstmt.setString(7, userId);
+            pstmt.setString(8, date);
 
 	        ResultSet rs = pstmt.executeQuery();
 	        while (rs.next()) {
@@ -153,6 +154,139 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	        }
 
 	        return list;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+	    }
+	}
+	
+	//昼
+	public List<Dish> selectByDateN(String userId, String date) {
+	    List<Dish> listN = new ArrayList<>();
+	    Connection conn = null;
+
+	    try {
+	        conn = conn();//戻り値Connection型 dbに接続する
+
+	        String sql = """
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.nStaple = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.nMain = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.nSide = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.nOther = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	        """;
+
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, userId);
+            pstmt.setString(2, date);
+            pstmt.setString(3, userId);
+            pstmt.setString(4, date);
+            pstmt.setString(5, userId);
+            pstmt.setString(6, date);
+            pstmt.setString(7, userId);
+            pstmt.setString(8, date);
+            
+	        ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            listN.add(new Dish(0,rs.getString("name"), rs.getInt("calorie"),0));
+	        }
+
+	        return listN;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+	    }
+	}
+	
+	//夜
+	public List<Dish> selectByDateE(String userId, String date) {
+	    List<Dish> listE = new ArrayList<>();
+	    Connection conn = null;
+
+	    try {
+	        conn = conn();//戻り値Connection型 dbに接続する
+
+	        String sql = """
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.eStaple = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.eMain = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.eSide = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	            UNION ALL
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.eOther = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	        """;
+
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, userId);
+	            pstmt.setString(2, date);
+	            pstmt.setString(3, userId);
+	            pstmt.setString(4, date);
+	            pstmt.setString(5, userId);
+	            pstmt.setString(6, date);
+	            pstmt.setString(7, userId);
+	            pstmt.setString(8, date);
+	            
+
+	        ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            listE.add(new Dish(0,rs.getString("name"), rs.getInt("calorie"),0));
+	        }
+
+	        return listE;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+	    }
+	}
+	
+	//間食
+	public List<Dish> selectByDateS(String userId, String date) {
+	    List<Dish> listS = new ArrayList<>();
+	    Connection conn = null;
+
+	    try {
+	        conn = conn();//戻り値Connection型 dbに接続する
+
+	        String sql = """
+	            SELECT di1.name, di1.calorie FROM dishInf df
+	            INNER JOIN dish di1 ON df.snack = di1.id
+	            WHERE df.U_id = ? AND df.insertDate = ?
+	        """;
+
+	        PreparedStatement pstmt = conn.prepareStatement(sql);	     
+	            pstmt.setString(1, userId);
+	            pstmt.setString(2, date);	        
+
+	        ResultSet rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            listS.add(new Dish(0,rs.getString("name"), rs.getInt("calorie"),0));
+	        }
+
+	        return listS;
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null;

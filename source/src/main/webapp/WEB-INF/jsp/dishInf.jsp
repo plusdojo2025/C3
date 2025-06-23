@@ -6,49 +6,73 @@
 <head>
 <meta charset="UTF-8">
 <title>食事選択</title>
+  <style>
+    body {
+      font-family: 'Yu Gothic', sans-serif;
+      background-color: #fdfaf6;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .meal-box {
+      background-color: #fff8f4;
+      border: 2px solid #ffd9d9;
+      border-radius: 15px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      width: 80%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .meal-box h2 {
+      margin-top: 0;
+      color: #ff6f91;
+    }
+
+    details {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .scroll-box {
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px dashed #ddd;
+      padding: 8px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: #ffb6b9;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .total-cal {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #e86f6f;
+    }
+  </style>
 <link rel="stylesheet" href="<c:url value='/css/css_madoka.css' />">
 </head>
 
 <body>
 
-
-<script >
-function calculateCalories() {
-	  const sections = ['m', 'n', 'e', 'snack'];
-	  sections.forEach(prefix => {
-	    let total = 0;
-
-	    // それぞれの選択肢（主食・主菜・副菜・その他）を取得
-	    ['Staple', 'Main', 'Side', 'Other'].forEach(type => {
-	      const selected = document.querySelector(`input[name="${prefix}${type}"]:checked`);
-	      if (selected && selected.dataset.calorie) {
-	        total += parseInt(selected.dataset.calorie);
-	      }
-	    });
-
-	    // 間食（snack）は prefix = 'snack' で nameも 'snack'
-	    if (prefix === 'snack') {
-	      const snack = document.querySelector(`input[name="snack"]:checked`);
-	      if (snack && snack.dataset.calorie) {
-	        total = parseInt(snack.dataset.calorie);
-	      }
-	    }
-
-	    // 表示更新
-	    const target = document.getElementById(`${prefix}Total`);
-	    if (target) target.textContent = total + ' kcal';
-	  });
-	}
-
-	// ページロード時にも一度計算
-	window.addEventListener('DOMContentLoaded', () => {
-	  calculateCalories();
-	  document.querySelectorAll('input[type="radio"]').forEach(input => {
-	    input.addEventListener('change', calculateCalories);
-	  });
-	});
-	</script>
-	
 <!-- ヘッターここから -->
 <%@ include file="header.jsp" %>
 <!-- ヘッターここまで -->
@@ -58,47 +82,55 @@ function calculateCalories() {
 	
 <form method="POST" action="/c3/DishInfMakan">
  <!-- ======= 朝 ======= -->
-<p>朝</p>
+<div class="meal-box">
+  <h2>朝食</h2>
 
-<details><summary>主食</summary>
-  <div class="scroll-box">
-    <c:forEach var="b" items="${emp}">
-      <label><input type="radio" name="mStaple" value="${b.id}" checked data-calorie="${b.calorie}">${b.name}（${b.calorie} kcal）</label><br>
-    </c:forEach>
-  </div>
-</details>
+  <details><summary>主食</summary>
+    <div class="scroll-box">
+      <c:forEach var="b" items="${emp}">
+        <label><input type="radio" name="mStaple" value="${b.id}" data-calorie="${b.calorie}" checked>
+        ${b.name}（${b.calorie} kcal）</label><br>
+      </c:forEach>
+    </div>
+  </details>
 
-<details><summary>主菜</summary>
-  <div class="scroll-box">
-    <c:forEach var="b" items="${emp2}">
-      <label><input type="radio" name="mMain" value="${b.id}" checked data-calorie="${b.calorie}">${b.name}（${b.calorie} kcal）</label><br>
-    </c:forEach>
-  </div>
-</details>
+  <details><summary>主菜</summary>
+    <div class="scroll-box">
+      <c:forEach var="b" items="${emp2}">
+        <label><input type="radio" name="mMain" value="${b.id}" data-calorie="${b.calorie}" checked>
+        ${b.name}（${b.calorie} kcal）</label><br>
+      </c:forEach>
+    </div>
+  </details>
 
-<details><summary>副菜</summary>
-  <div class="scroll-box">
-    <c:forEach var="b" items="${emp3}">
-      <label><input type="radio" name="mSide" value="${b.id}" checked data-calorie="${b.calorie}">${b.name}（${b.calorie} kcal）</label><br>
-    </c:forEach>
-  </div>
-</details>
+  <details><summary>副菜</summary>
+    <div class="scroll-box">
+      <c:forEach var="b" items="${emp3}">
+        <label><input type="radio" name="mSide" value="${b.id}" data-calorie="${b.calorie}" checked>
+        ${b.name}（${b.calorie} kcal）</label><br>
+      </c:forEach>
+    </div>
+  </details>
 
-<details><summary>その他</summary>
-  <div class="scroll-box">
-    <c:forEach var="b" items="${emp4}">
-      <label><input type="radio" name="mOther" value="${b.id}" checked>${b.name}（${b.calorie} kcal）</label><br>
-    </c:forEach>
-  </div>
-</details>
+  <details><summary>その他</summary>
+    <div class="scroll-box">
+      <c:forEach var="b" items="${emp4}">
+        <label><input type="radio" name="mOther" value="${b.id}" data-calorie="${b.calorie}" checked>
+        ${b.name}（${b.calorie} kcal）</label><br>
+      </c:forEach>
+    </div>
+  </details>
+  <div class="total-cal">合計: <span id="mTotal">0 kcal</span></div>
+</div>
 
 <!-- ======= 昼 ======= -->
-<p>昼</p>
+<p>昼食</p>
 
 <details><summary>主食</summary>
   <div class="scroll-box">
     <c:forEach var="b" items="${emp}">
-      <label><input type="radio" name="nStaple" value="${b.id}" checked>${b.name}（${b.calorie} kcal）</label><br>
+      <label><input type="radio" name="nStaple" value="${b.id}" checked>
+      ${b.name}（${b.calorie} kcal）</label><br>
     </c:forEach>
   </div>
 </details>
@@ -128,7 +160,7 @@ function calculateCalories() {
 </details>
 
 <!-- ======= 晩 ======= -->
-<p>晩</p>
+<p>夕食</p>
 
 <details><summary>主食</summary>
   <div class="scroll-box">
@@ -187,4 +219,6 @@ function calculateCalories() {
 <!-- フッター -->
  <%@ include file="footer.jsp" %>
 
+
 </body>
+</html>

@@ -36,3 +36,65 @@ details summary {
   cursor: pointer;
   margin-top: 10px;
 }
+
+/*中央揃え*/
+ body {
+    font-family: 'Yu Gothic', sans-serif;
+    background-color: #fdfaf6;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .meal-box {
+    background-color: #fff8f4;
+    border: 2px solid #ffd9d9;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .meal-box h2 {
+    margin-top: 0;
+    color: #ff6f91;
+  }
+
+  details {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444;
+  }
+
+  .scroll-box {
+    max-height: 180px;
+    overflow-y: auto;
+    border: 1px dashed #ddd;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #ffb6b9;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .total-cal {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #e86f6f;
+  }
