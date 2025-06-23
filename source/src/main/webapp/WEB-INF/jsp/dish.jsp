@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
 <html>
@@ -25,35 +27,24 @@
   <!-- 食事選択画面へ遷移 -->
   <a id="select-link" href="DishInfMakan">選択</a>
 
-  <div id="content">
-    <div class="meal-section">
-      <div class="meal-title">朝</div>
-      <div class="meal-content" id="content-morning">
-        <p><c:out value="${dish.get(0).name}"></c:out></p>
-      </div>
-    </div>
-
-    <div class="meal-section">
-      <div class="meal-title">昼</div>
-      <div class="meal-content" id="content-lunch">
-        <p>ここに内容が表示されます</p>
-      </div>
-    </div>
-
-    <div class="meal-section">
-      <div class="meal-title">晩</div>
-      <div class="meal-content" id="content-dinner">
-        <p>ここに内容が表示されます</p>
-      </div>
-    </div>
-
-    <div class="meal-section">
-      <div class="meal-title">間食</div>
-      <div class="meal-content" id="content-snack">
-        <p>ここに内容が表示されます</p>
-      </div>
+<c:set var="labels" value="朝,昼,晩,間食" />
+<c:forEach var="label" items="${fn:split(labels, ',')}" varStatus="status">
+  <div class="meal-section">
+    <div class="meal-title">${label}</div>
+    <div class="meal-content">
+      <c:choose>
+        <c:when test="${dish != null and status.index < dish.size()}">
+          <p><c:out value="${dish.get(status.index).name}" /></p>
+          <p><c:out value="${dish.get(status.index).calorie}" /> kcal</p>
+        </c:when>
+        <c:otherwise>
+          <p>データがありません</p>
+        </c:otherwise>
+      </c:choose>
     </div>
   </div>
+</c:forEach>
+
 </main>
 
 <!-- トラ画像 -->

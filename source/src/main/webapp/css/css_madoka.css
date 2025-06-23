@@ -22,3 +22,17 @@
   color: white;
   font-weight: bold;
 }
+
+/*食事選択画面*/
+.scroll-box {
+  max-height: 200px; /* 必要に応じて調整 */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
