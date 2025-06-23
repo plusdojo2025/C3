@@ -26,6 +26,7 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 //			return;
 //		}
 		
+		
 		// リクエストパラメータ取得
 		request.setCharacterEncoding("UTF-8");
 		

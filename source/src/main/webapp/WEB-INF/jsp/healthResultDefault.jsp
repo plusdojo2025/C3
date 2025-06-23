@@ -22,24 +22,20 @@
     <p>empの中身確認: ${not empty emp}</p>
     <p>サイズ: ${fn:length(emp)}</p>
     
-        <h2 class="midashi">＜計算結果＞</h2>
-    
-    
-        
-		<c:forEach var="h" items="${emp}">
-		
+        <h2 class="midashi">＜計算結果＞</h2>        
+		<c:forEach var="h" items="${emp}">	
 <div class="Form">
   <div class="Form-Item">
     <p class="Form-Item-Label-Result">
      	先週の消費カロリー
     </p>
-    <p class="Form-Item-Result">〇〇kcal</p><br>
+    <p class="Form-Item-Result">${h.lwCcalorie}kcal</p><br>
   </div>
   <div class="Form-Item">
     <p class="Form-Item-Label-Result">
      	先週の摂取カロリー
     </p>
-    <p class="Form-Item-Result">〇〇kcal</p><br>
+    <p class="Form-Item-Result">${h.lwIcalorie}kcal</p><br>
   </div>
   <div class="Form-Item">
     <p class="Form-Item-Label-Result">
