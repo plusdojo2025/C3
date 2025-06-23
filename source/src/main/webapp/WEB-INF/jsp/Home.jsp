@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,31 +14,37 @@
 			<%@ include file="header.jsp" %>
 		</header>
 		<main class="main">
-			<form id="home-form" class="home-form">
-		    	<input type="text" name="item-10[0]" value="100">
-			    <input type="text" name="item-10[1]" value="32">
-			    <input type="text" name="item-10[2]" value="etc">
-			    <input type="text" name="item-11[0]" value="240">
-			    <input type="text" name="item-11[1]" value="120">
-			    <input type="text" name="item-11[2]" value="etc">
-			    <input type="text" name="item-12[0]" value="240">
-			    <input type="text" name="item-12[1]" value="120">
-			    <input type="text" name="item-12[2]" value="sun">
-			</form>
+			
 			<form class="selectWeek">
 				<div><button id="" class="beforeWeek">前の週</button><button id="" class="nextWeek">次の週</button></div>
 			</form>
 			<ul id="" class="horizontal-list head">
 				<li id="" class="horizontal-item"></li>
-				<li id="dateSun" class="horizontal-item">6/8<br>(日)</li>
-				<li id="" class="horizontal-item">6/9<br>(月)</li>
-				<li id="" class="horizontal-item">6/10<br>(火)</li>
-				<li id="" class="horizontal-item">6/11<br>(水)</li>
-				<li id="" class="horizontal-item">6/12<br>(木)</li>
-				<li id="" class="horizontal-item">6/13<br>(金)</li>
-				<li id="" class="horizontal-item">6/14<br>(土)</li>
+				<c:forEach var="e" items="${week}" >
+					<li id="" class="horizontal-item"><fmt:formatDate value="${e}" pattern="MM/dd(E)" /></li>
+				</c:forEach>
 				<li id="" class="horizontal-item spacer">
-					<div><button type="button" class="decide">確定</button></div>
+					<form id="home-form" class="home-form" method="post" action="">
+						<c:forEach var="e" items="${dWork}" varStatus="status">
+							<input type="hidden" name="idList" value="item-<c:out value='${e.u_id}'/>">
+							<input type="hidden" name="item-<c:out value='${e.u_id}'/>[0]" value="<c:out value='${status.index*30}'/>">
+					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[1]" value="<c:out value='${e.dWork/10*4}'/>">
+					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[2]" value="etc1">
+						</c:forEach>
+						<c:forEach var="e" items="${dWalk}" varStatus="status">
+							<input type="hidden" name="idList" value="item-<c:out value='${e.u_id}'/>">
+							<input type="hidden" name="item-<c:out value='${e.u_id}'/>[0]" value="<c:out value='${status.index*30}'/>">
+					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[1]" value="<c:out value='${e.dMotionTime/10*4}'/>">
+					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[2]" value="etc2">
+						</c:forEach>
+						<div><button class="decide">確定</button></div>
+					</form>
+				</li>
+				<li id="" class="horizontal-item spacer">
+					
+				</li>
+				<li id="" class="horizontal-item spacer">
+					
 				</li>
 		    </ul>
 			<ul id="weekly-list" class="horizontal-list">
@@ -69,39 +76,44 @@
 					<div style="position:absolute; top:539px; right:0px;">23:00──</div>
 					<!-- <div style="position:absolute; top:576px; right:0px;">24:00──</div> -->
 				</li>
-	    		<li id="sun" class="horizontal-item">
-	    			<div id="item-12" class="box work">仕事
-			            <div id="item-12-top" class="drug-bar drug-bar-top"></div>
-			            <div id="item-12-end" class="drug-bar drug-bar-end"></div>
-			        </div>
+				<c:if test="${not empty sList}">
+					<c:forEach var="e" items="${sList}" >
+						<li id="sun" class="horizontal-item <c:if test="${1 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="mon" class="horizontal-item <c:if test="${2 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="tue" class="horizontal-item <c:if test="${3 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="wed" class="horizontal-item <c:if test="${4 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="thu" class="horizontal-item <c:if test="${5 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="fri" class="horizontal-item <c:if test="${6 <= now}">tourokuzumi</c:if>"></li>
+					    <li id="sat" class="horizontal-item <c:if test="${7 <= now}1">tourokuzumi</c:if>"></li>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty sList}">
+		    		<li id="sun" class="horizontal-item"></li>
+				    <li id="mon" class="horizontal-item"></li>
+				    <li id="tue" class="horizontal-item"></li>
+				    <li id="wed" class="horizontal-item"></li>
+				    <li id="thu" class="horizontal-item"></li>
+				    <li id="fri" class="horizontal-item"></li>
+				    <li id="sat" class="horizontal-item"></li>
+				</c:if>
+			    <li id="etc1" class="horizontal-item">
+				    <c:forEach var="e" items="${dWork}"  varStatus="status">
+				    	<div id="item-<c:out value='${e.u_id}'/>" class="box work" style="z-index:<c:out value='${status.index}'/>">仕事
+				            <div id="item-<c:out value='${e.u_id}'/>-top" class="drug-bar drug-bar-top"></div>
+				            <div id="item-<c:out value='${e.u_id}'/>-end" class="drug-bar drug-bar-end"></div>
+				        </div>
+					</c:forEach>
 			    </li>
-			    <li id="mon" class="horizontal-item">
-			
+			    <li id="etc2" class="horizontal-item">
+			    	<c:forEach var="e" items="${dWalk}" varStatus="status" >
+						<div id="item-<c:out value='${e.u_id}'/>" class="box walk" style="z-index:<c:out value='${status.index}'/>">ウォーキング
+				        	<div id="item-<c:out value='${e.u_id}'/>-top" class="drug-bar drug-bar-top"></div>
+				            <div id="item-<c:out value='${e.u_id}'/>-end" class="drug-bar drug-bar-end"></div>
+				        </div>
+					</c:forEach>
 			    </li>
-			    <li id="tue" class="horizontal-item">
-			
-			    </li>
-			    <li id="wed" class="horizontal-item">
-			
-			    </li>
-			    <li id="thu" class="horizontal-item">
-			
-			    </li>
-			    <li id="fri" class="horizontal-item">
-			
-			    </li>
-			    <li id="sat" class="horizontal-item">
-			
-			    </li>
-			    <li id="etc" class="horizontal-item">
-			        <div id="item-10" class="box walk">ウォーキング
-			            <div id="item-10-top" class="drug-bar drug-bar-top"></div>
-			            <div id="item-10-end" class="drug-bar drug-bar-end"></div>
-			        </div>
-			        <div id="item-11" class="box work">仕事
-			            <div id="item-11-top" class="drug-bar drug-bar-top"></div>
-			            <div id="item-11-end" class="drug-bar drug-bar-end"></div>
-			        </div>
+			    <li id="etc3" class="horizontal-item">
+			        
 			    </li>
     		</ul>
 		    <ul id="" class="horizontal-list foot">
@@ -113,6 +125,8 @@
 				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
 				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
 				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
+				<li id="" class="horizontal-item spacer"></li>
+				<li id="" class="horizontal-item spacer"></li>
 				<li id="" class="horizontal-item spacer"></li>
 		    </ul>
 			<!-- <form action = "HomeMakan" method = "post">
@@ -128,6 +142,7 @@
 		
 		<p><c:out value="${id}" /></p>
 		<p><c:out value="${userInf.name}" /></p>
+		<p><c:out value="${dWalk}" /></p>
 		<jsp:include page="homeScript.jsp" />
 	</body>
 </html>

@@ -22,7 +22,14 @@ public class Schedule extends CustomTemplateDto implements Serializable{
 	private int cCalorie;//運動で消費したカロリー
 	private Date latestDate;//日付 yyyy-mm-dd
 	private String u_id;
+	private int dayOfWeek;
 	
+	public int getDayOfWeek() {
+		return dayOfWeek;
+	}
+	public void setDayOfWeek(int dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
+	}
 	public int getId() {
 		return id;
 	}

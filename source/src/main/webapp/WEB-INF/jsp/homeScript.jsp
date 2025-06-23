@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script>
     let changeTargetId = '';
     let changeParentId = '';
-    const changeParentArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'etc'];
+    const changeParentArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'etc1', 'etc2', 'etc3'];
     const drugChangeArray = [
-        'item-10','item-11','item-12'
+    	<c:forEach var="e" items="${dWork}" >
+			"item-<c:out value='${e.u_id}'/>", 
+		</c:forEach>
+		<c:forEach var="e" items="${dWalk}" >
+			"item-<c:out value='${e.u_id}'/>", 
+		</c:forEach>
     ];
     $(".box").on("mousedown", function (e) {
         const isChanging = (drugChangeArray.includes(this.id));
@@ -23,7 +29,12 @@
     let startY, startBox, startTop, startIsTop, startHeight;
     const drugBarUnit = (10 * 2);
     const drugResizeArray = [
-        'item-10-top', 'item-10-end','item-11-top', 'item-11-end','item-12-top', 'item-12-end',
+    	<c:forEach var="e" items="${dWork}" >
+    		"item-<c:out value='${e.u_id}'/>-top", "item-<c:out value='${e.u_id}'/>-end",
+		</c:forEach>
+		<c:forEach var="e" items="${dWalk}" >
+			"item-<c:out value='${e.u_id}'/>-top", "item-<c:out value='${e.u_id}'/>-end",
+		</c:forEach>
     ];
     $(".drug-bar").on("mousedown", function (e) {
         const isResizing = (drugResizeArray.includes(this.id));
@@ -68,6 +79,7 @@
                     } else {
                         startBox.css("height", drugBarUnit + 'px');
                     }
+                    
                 }
             } else {
                 const newHeight = startHeight + diffHeight;
@@ -84,6 +96,8 @@
             }
             $('#home-form input[name="' + startBox.attr("id") + '[0]"').val(parseInt(startBox.css("top")));
             $('#home-form input[name="' + startBox.attr("id") + '[1]"').val(parseInt(startBox.css("height")));
+            localStorage.setItem(startBox.attr("id") + '[0]', parseInt(startBox.css("top")));
+            localStorage.setItem(startBox.attr("id") + '[1]', parseInt(startBox.css("height")));
         }
         if (changeTargetId && changeParentId) {
             const nowParentId = $(document.elementFromPoint(e.clientX, e.clientY)).attr('id');
@@ -92,6 +106,7 @@
                 changeParentId = nowParentId;
                 $('#' + changeParentId).append(changeElement);
                 $('#home-form input[name="' + changeElement.attr("id") + '[2]"').val(changeParentId);
+                localStorage.setItem(changeElement.attr("id") + '[2]', changeParentId);
             }
         }
     });
@@ -103,11 +118,77 @@
         $('#weekly-list').css('cursor', 'default');
     });
     $(window).on('load', function () {
-        $('#item-10').css('top', $('#home-form input[name^="item-10[0]').val() + 'px');
-        $('#item-10').css('height', $('#home-form input[name^="item-10[1]').val() + 'px');
-        $('#item-11').css('top', $('#home-form input[name^="item-11[0]').val() + 'px');
-        $('#item-11').css('height', $('#home-form input[name^="item-11[1]').val() + 'px');
-        $('#item-12').css('top', $('#home-form input[name^="item-12[0]').val() + 'px');
-        $('#item-12').css('height', $('#home-form input[name^="item-12[1]').val() + 'px');
+    	let localStorageItem = ""
+    	<c:forEach var="e" items="${dWork}" >
+    		$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
+        	$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
+        	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[0]");
+        	if(localStorageItem){
+        		$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
+        	}
+        	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[1]");
+        	if(localStorageItem){
+        		$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
+        	}
+        	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[2]");
+        	if(localStorageItem){
+                if (changeParentArray.includes(localStorageItem)) {
+                    const changeElement = $("#item-<c:out value='${e.u_id}'/>");
+                    $('#' + localStorageItem).append(changeElement);
+                    $('#home-form input[name="' + changeElement.attr("id") + '[2]"').val(localStorageItem);
+                }
+        	}
+		</c:forEach>
+		<c:forEach var="e" items="${dWalk}" >
+			$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
+    		$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
+    		localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[0]");
+    		if(localStorageItem){
+        		$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
+        	}
+        	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[1]");
+        	if(localStorageItem){
+        		$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
+        	}
+        	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[2]");
+        	if(localStorageItem){
+                if (changeParentArray.includes(localStorageItem)) {
+                    const changeElement = $("#item-<c:out value='${e.u_id}'/>");
+                    $('#' + localStorageItem).append(changeElement);
+                    $('#home-form input[name="' + changeElement.attr("id") + '[2]"').val(localStorageItem);
+                }
+        	}
+    	</c:forEach>
     }); 
+    
+    function getCurrentWeekDates() {
+        const today = new Date();
+        const dayOfWeek = today.getDay(); // 0: 日曜, 1: 月曜, ..., 6: 土曜
+
+        // 日曜日を取得
+        const sunday = new Date(today);
+        sunday.setDate(today.getDate() - dayOfWeek);
+
+        // 日曜〜土曜までの配列を作る
+        const weekDates = [];
+        for (let i = 0; i < 7; i++) {
+            const d = new Date(sunday);
+            d.setDate(sunday.getDate() + i);
+            weekDates.push(d);
+        }
+
+        return weekDates;
+    }
+    /*window.addEventListener('DOMContentLoaded', function() {
+    	// 1. input要素から値を取得
+    	 let input = document.getElementById('boxHeight');
+    	 let val = input.value;
+    	 let num = Number(val);
+    	 
+    	// 2. 四捨五入して10で割り、4px倍
+    	 let px = Math.round(num / 10) * 4;
+    	
+    	// 3. px値をvalueに再セット
+    	 input.value = px + 'px';
+    });*/
 </script>
