@@ -399,40 +399,6 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 		return false;
 	}
 	
-	public boolean updateCalorie(int lwCcal ,int lwIcal,String uId) {//先週の消費　先週の摂取
-		// TODO 自動生成されたメソッド・スタブ
-		Connection conn = null;
-		boolean result = false;
-
-		try {
-			conn = conn();
-			
-			// SQL文を準備する 上書き
-			String sql =  "UPDATE healthinf SET lwCcalorie=?,lwIcalorie=? WHERE u_id=?;";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-				pStmt.setInt(1,lwCcal);
-				pStmt.setInt(2,lwIcal);
-				pStmt.setString(3,uId);
-
-			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
-				//ResultSet res = pStmt.getGeneratedKeys(); AUTO INCREMENT
-				//res.next();
-				//dto.Set~~~(res.getInt(1));
-				result = true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			// データベースを切断
-			close(conn);
-		}
-
-		// 結果を返す
-		return result;
-	}
 	
 	public boolean isOneData(String u_id) {
 		Connection conn = null;
@@ -570,6 +536,74 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			pStmt.setString(12, dto.getU_id());
 		
 			
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); AUTO INCREMENT
+				//res.next();
+				//dto.Set~~~(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
+	}
+	
+	public boolean updatelwCcal(int lwCcal ,String uId) {//先週の消費　先週の摂取
+		// TODO 自動生成されたメソッド・スタブ
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = conn();
+			
+			// SQL文を準備する 上書き
+			String sql =  "UPDATE healthinf SET lwCcalorie=? WHERE u_id=?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+				pStmt.setInt(1,lwCcal);
+				pStmt.setString(2,uId);
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); AUTO INCREMENT
+				//res.next();
+				//dto.Set~~~(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
+	}
+	
+	public boolean updatelwIcal(int lwIcal,String uId) {//先週の消費　先週の摂取
+		// TODO 自動生成されたメソッド・スタブ
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = conn();
+			
+			// SQL文を準備する 上書き
+			String sql =  "UPDATE healthinf SET lwIcalorie=? WHERE u_id=?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+				pStmt.setInt(1,lwIcal);
+				pStmt.setString(2,uId);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
