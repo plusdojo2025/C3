@@ -39,8 +39,8 @@
 			    <p class="Form-Item-Label">
 			      <span class="Form-Item-Label-Required">必須</span>扶養の有無
 	    </p>
-			    <input type="radio" name="dependent" id="YES" value="M"><label for="YES" class="label">はい</label>
-			    <input type="radio" name="dependent" id="NO" value="F"><label for="NO" class="label">いいえ</label><br>
+			    <input type="radio" name="dependent" id="YES" value="YES"><label for="YES" class="label">はい</label>
+			    <input type="radio" name="dependent" id="NO" value="NO"><label for="NO" class="label">いいえ</label><br>
 	  </div>
 	 
 	 
