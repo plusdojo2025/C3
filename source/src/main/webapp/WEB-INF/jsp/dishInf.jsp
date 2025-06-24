@@ -40,6 +40,7 @@ body {
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   box-sizing: border-box;
   background-color: white; /* デフォルト背景（上書き用） */
+  border: 2px solid #ccc;
 }
 
 .meal-box h2 {
@@ -93,6 +94,7 @@ details summary {
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  border: white;
 }
  
 </style>
