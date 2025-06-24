@@ -1,4 +1,4 @@
-const weekDays = ["日", "月", "火", "水", "木", "金", "土"];
+const weekDays = ["日", "月", "火", "水", "木", "金", "土"]; 
 const dateButtonsContainer = document.getElementById("date-buttons");
 const prevWeekBtn = document.getElementById("prev-week");
 const nextWeekBtn = document.getElementById("next-week");
@@ -61,13 +61,13 @@ function highlightSelectedDate(selectedBtn) {
 }
 
 function fetchMealData(dateStr) {
-  fetch(`MealDataServlet?date=${dateStr}`)
+	 fetch(`MealDataServlet?date=${dateStr}`)
     .then(response => response.json())
     .then(data => {
-      contentMorning.innerHTML = data[0] ? `${data[0].name} (${data[0].calorie} kcal)` : "データなし";
-      contentLunch.innerHTML = data[1] ? `${data[1].name} (${data[1].calorie} kcal)` : "データなし";
-      contentDinner.innerHTML = data[2] ? `${data[2].name} (${data[2].calorie} kcal)` : "データなし";
-      contentSnack.innerHTML = data[3] ? `${data[3].name} (${data[3].calorie} kcal)` : "データなし";
+        contentMorning.innerHTML = data[0] ? `${data[0].name} (${data[0].calorie} kcal)` : "データなし";
+        contentLunch.innerHTML = data[1] ? `${data[1].name} (${data[1].calorie} kcal)` : "データなし";
+        contentDinner.innerHTML = data[2] ? `${data[2].name} (${data[2].calorie} kcal)` : "データなし";
+        contentSnack.innerHTML = data[3] ? `${data[3].name} (${data[3].calorie} kcal)` : "データなし";
     })
     .catch(error => {
       contentMorning.innerHTML = contentLunch.innerHTML =

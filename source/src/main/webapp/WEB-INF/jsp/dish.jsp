@@ -8,46 +8,154 @@
 <meta charset="UTF-8">
 <title>食事表示</title>
 
+<style>
+
+.kadomaru {
+  text-align: center;
+  color: white;
+  background-color: #B5ACA1;
+  border-radius: 10px;
+  width: 128px;
+  padding: 8px 16px; /* 縦横の余白を調整 */
+ 
+  width: auto; /* 必要なら明示的に */
+  white-space: nowrap; /* 改行しない */
+  font-size: 14px;
+  max-width: 160px; /* 必要なら最大幅を指定 */
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+#week-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* ボタンと日付の間隔 */
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
+
+/* 日付ボタンの親要素を中央揃え */
+#date-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* 日付ボタンの基本スタイル */
+#date-buttons button{
+  background-color: #FEF4F4;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* ホバー時の色 */
+#date-buttons button:hover {
+  background-color: #F5B1AA;
+}
+
+/* 選択中のボタン */
+#date-buttons button.selected {
+  background-color: #F5B1AA;
+  font-weight: bold;
+}
+
+  .meal-section {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 500px;
+    background-color: #fffbea; /* デフォルトは淡い黄色 */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .meal-section.blue {
+    background-color: #e6f7ff; /* 淡い水色 */
+  }
+
+  .meal-section h2 {
+    text-align: center;
+    margin-top: 0;
+    color: #333;
+  }
+
+  .meal-section p {
+    font-size: 16px;
+    padding: 5px;
+    margin: 3px 0;
+  }
+  
+  /*ナビゲーション*/
+  #prev-week, #next-week{
+  	max-width: 100px;
+  	radius: 12px;
+  	padding: 8px 12px;
+  }
+
+</style>
+
 <link rel="stylesheet" href="<c:url value='/css/css_madoka.css' />">
 </head>
 <body>
+
 <!-- ヘッダー読み込み -->
+<header>
 <%@ include file="header.jsp" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+</header>
 
 <!-- 日付ナビゲーション -->
+<div id="week-nav">
 <button id="prev-week">◀ 前の週</button>
 <div id="date-buttons"></div>
 <button id="next-week">次の週 ▶</button>
+</div>
 
 <!-- 食事が表示される場所 -->
 <main>
   <!-- 食事選択画面へ遷移 -->
-  <a id="select-link" href="DishInfMakan">選択</a>
-	<h2>朝食</h2>
-      <div id="content-morning">
-		<c:forEach var="b" items="${dish}" begin="0" end="3" varStatus="status">
-		<p>${b.name}（${b.calorie} kcal）</p>	
-		</c:forEach>
-		</div>
-	<h2>昼食</h2>
-      <div id="content-noon">
-		<c:forEach var="n" items="${dishN}" begin="0" end="3" varStatus="status">
-		<p>${n.name}（${n.calorie} kcal）</p>		
-		</c:forEach>
-		</div>
-	<h2>夕食</h2>
-      <div id="content-evening">
-		<c:forEach var="e" items="${dishE}" begin="0" end="3" varStatus="status">
-		<p>${e.name}（${e.calorie} kcal）</p>
-		</c:forEach>
-		</div>
-	<h2>間食</h2>
-      <div id="content-morning">
-		<c:forEach var="s" items="${dishS}" begin="0" end="3" varStatus="status">
-		<p>${s.name}（${s.calorie} kcal）</p>
-		</c:forEach>
-		</div>
+  <a id="select-link" class=kadomaru href="DishInfMakan">選択</a>
+  
+  <div class="meal-section yellow">
+    <h2>朝食</h2>
+    <div id="content-morning">
+      <c:forEach var="b" items="${dish}" begin="0" end="3">
+        <p>${b.name}（${b.calorie} kcal）</p>	
+      </c:forEach>
+    </div>
+  </div>
+
+  <div class="meal-section blue">
+    <h2>昼食</h2>
+    <div id="content-noon">
+      <c:forEach var="n" items="${dishN}" begin="0" end="3">
+        <p>${n.name}（${n.calorie} kcal）</p>		
+      </c:forEach>
+    </div>
+  </div>
+
+  <div class="meal-section yellow">
+    <h2>夕食</h2>
+    <div id="content-evening">
+      <c:forEach var="e" items="${dishE}" begin="0" end="3">
+        <p>${e.name}（${e.calorie} kcal）</p>
+      </c:forEach>
+    </div>
+  </div>
+
+  <div class="meal-section blue">
+    <h2>間食</h2>
+    <div id="content-snack">
+      <c:forEach var="s" items="${dishS}" begin="0" end="3">
+        <p>${s.name}（${s.calorie} kcal）</p>
+      </c:forEach>
+    </div>
+  </div>
 </main>
 
 <!-- トラ画像 -->
