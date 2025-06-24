@@ -125,15 +125,100 @@ public class ScheduleDao extends CustomTemplateDao<Schedule> {
 	}
 
 	@Override
-	public boolean insert(Schedule dto) {
+	public boolean insert(Schedule dto) {//日曜日に確定ボタンを押す
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = conn();
+			// SQL文を準備する 上書き
+			String sql = "INSERT INTO Schedule(sunWork,sunMotion,monWork,monMotion,tueWork,tueMotion,wedWork,wedMotion,thuWork,thuMotion,friWork,friMotion,satWork,satMotion,cCalorie,latestDate,U_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE(),?);";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, dto.getSunWork());//分
+			pStmt.setInt(2, dto.getSunMotion());
+			pStmt.setInt(3, dto.getMonWork());
+			pStmt.setInt(4, dto.getMonMotion());
+			pStmt.setInt(5,dto.getTueWork());
+			pStmt.setInt(6,dto.getTueMotion());
+			pStmt.setInt(7,dto.getWedWork());
+			pStmt.setInt(8,dto.getWedMotion());
+			pStmt.setInt(9,dto.getThuWork());
+			pStmt.setInt(10,dto.getThuMotion());
+			pStmt.setInt(11,dto.getFriWork());
+			pStmt.setInt(12,dto.getFriMotion());
+			pStmt.setInt(13,dto.getSatWork());
+			pStmt.setInt(14,dto.getSatMotion());
+			pStmt.setInt(15,dto.getcCalorie());
+			pStmt.setString(16,dto.getU_id());
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); //AUTO INCREMENT
+				//res.next();
+				//dto.setId(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
 	}
 
 	@Override
 	public boolean update(Schedule dto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = conn();
+			// SQL文を準備する 上書き
+			String sql = "UPDATE schedule SET sunWork=?,sunMotion=?,monWork=?,monMotion=?,tueWork=?,tueMotion=?,wedWork=?,wedMotion=?,thuWork=?,thuMotion=?,friWork=?,friMotion=?,satWork=?,satMotion=?,cCalorie=?,CURRENT_DATE() WHERE u_id=?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, dto.getSunWork());//分
+			pStmt.setInt(2, dto.getSunMotion());
+			pStmt.setInt(3, dto.getMonWork());
+			pStmt.setInt(4, dto.getMonMotion());
+			pStmt.setInt(5,dto.getTueWork());
+			pStmt.setInt(6,dto.getTueMotion());
+			pStmt.setInt(7,dto.getWedWork());
+			pStmt.setInt(8,dto.getWedMotion());
+			pStmt.setInt(9,dto.getThuWork());
+			pStmt.setInt(10,dto.getThuMotion());
+			pStmt.setInt(11,dto.getFriWork());
+			pStmt.setInt(12,dto.getFriMotion());
+			pStmt.setInt(13,dto.getSatWork());
+			pStmt.setInt(14,dto.getSatMotion());
+			pStmt.setInt(15,dto.getcCalorie());
+			pStmt.setString(16,dto.getU_id());
+			
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); AUTO INCREMENT
+				//res.next();
+				//dto.Set~~~(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
 	}
 
 	@Override
