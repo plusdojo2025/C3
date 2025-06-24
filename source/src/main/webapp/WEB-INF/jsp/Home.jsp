@@ -37,7 +37,10 @@
 					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[1]" value="<c:out value='${e.dMotionTime/10*4}'/>">
 					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[2]" value="etc2">
 						</c:forEach>
-						<div><button class="decide">確定</button></div>
+						<div>
+							<button class="decide">確定</button>
+							<button class="reset" id="clear-storage">位置リセット</button>
+						</div>
 					</form>
 				</li>
 				<li id="" class="horizontal-item spacer">

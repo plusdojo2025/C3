@@ -20,6 +20,22 @@
   position: absolute;
   left:0px;
 }
+.reset{
+  color: white;
+  background-color: #B5ACA1;
+  border-radius: 10px;
+  padding: 8px 16px; /* 縦横の余白を調整 */
+  width: auto; /* 必要なら明示的に */
+  white-space: nowrap; /* 改行しない */
+  font-size: 14px;
+  max-width: 160px; /* 必要なら最大幅を指定 */
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  border: none;
+  position: absolute;
+  left:60%;
+}
 .beforeWeek{
 	color: white;
   	background-color: #B5ACA1;
@@ -83,7 +99,7 @@
         border: 1px solid silver;
 }
 .horizontal-item.spacer{
-    	border-color:white;
+    	border-color:transparent;
     	position: relative;
 }
 .horizontal-item.spacer{ 

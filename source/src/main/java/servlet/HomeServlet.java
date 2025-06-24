@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ScheduleDao;
 import dto.HealthInf;
@@ -52,10 +53,18 @@ public class HomeServlet extends CustomTemplateServlet {
 //				return;
 //			}
 			
+			// リクエストパラメータ取得
+			request.setCharacterEncoding("UTF-8");
+				
+			// セッションからユーザーIDを取得
+			HttpSession session = request.getSession();
+			String u_id = (String) session.getAttribute("id");
+		
 			// 検索処理を行う
 			ScheduleDao sDao = new ScheduleDao ();
 			MoneyInf mInf = new MoneyInf();
-			mInf.setU_id("00007");		
+			//dto.setU_id(u_id);
+			mInf.setU_id(u_id);		
 			List<MoneyInf> mInfoList = sDao.select(mInf);
 			List<MoneyInf> dWork = new ArrayList<MoneyInf>();
 			if(mInfoList.size() == 1) {
@@ -70,7 +79,7 @@ public class HomeServlet extends CustomTemplateServlet {
 							mInfoList.get(0).getwWork(),
 							mInfoList.get(0).getDependent(),
 							mInfoList.get(0).getNetIncome(),
-							mInfoList.get(0).getdWork(),
+							mInfoList.get(0).getdWork() * 60,
 							mInfoList.get(0).getId()+"-"+i
 							);
 					
@@ -82,7 +91,7 @@ public class HomeServlet extends CustomTemplateServlet {
 			
 			
 			HealthInf hInf = new HealthInf();
-			hInf.setU_id("00007");
+			hInf.setU_id(u_id);
 			List<HealthInf> hInfoList = sDao.select(hInf);
 			List<HealthInf> dWalk = new ArrayList<HealthInf>();
 			if(hInfoList.size() == 1) {
@@ -116,7 +125,7 @@ public class HomeServlet extends CustomTemplateServlet {
 			request.setAttribute("week", getCurrentWeekDates());
 			
 			Schedule schedule = new Schedule();
-			schedule.setU_id("00007");
+			schedule.setU_id(u_id);
 			List<Schedule> scheduleList = sDao.select(schedule);
 			request.setAttribute("sList", scheduleList);
 			
@@ -133,18 +142,25 @@ public class HomeServlet extends CustomTemplateServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		// リクエストパラメータ取得
+		request.setCharacterEncoding("UTF-8");
+						
+		// セッションからユーザーIDを取得
+		HttpSession session = request.getSession();
+		String u_id = (String) session.getAttribute("id");
+		
 		ScheduleDao sDao = new ScheduleDao ();
 		Schedule schedule = new Schedule();
-		schedule.setU_id("00007");
+		schedule.setU_id(u_id);
 		List<Schedule> scheduleList = sDao.select(schedule);
 		schedule = (scheduleList.size() == 1)?scheduleList.get(0): new Schedule();
 		
 		HealthInf hInf = new HealthInf();
-		hInf.setU_id("00007");
+		hInf.setU_id(u_id);
 		List<HealthInf> hInfoList = sDao.select(hInf);
 		
 		MoneyInf mInf = new MoneyInf();
-		mInf.setU_id("00007");		
+		mInf.setU_id(u_id);		
 		List<MoneyInf> mInfoList = sDao.select(mInf);
 		
 		String[] idArray = request.getParameterValues("idList");
@@ -155,36 +171,36 @@ public class HomeServlet extends CustomTemplateServlet {
 			String id3 = request.getParameter(id + "[2]");
 			
 			if("sun".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setSunWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setSatMotion(id2);
 				}
 			}
 			else if("mon".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSunWork(id2);
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setMonWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSatMotion(id2);
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setMonMotion(id2);
 				}
 				
 			}
 			else if("tue".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSunWork(id2);
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setTueWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSatMotion(id2);
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setTueMotion(id2);
 				}
 			}
 			else if("wed".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSunWork(id2);
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setWedWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSatMotion(id2);
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setWedMotion(id2);
 				}
 			}
 			else if("thu".equals(id3)) {
@@ -196,18 +212,18 @@ public class HomeServlet extends CustomTemplateServlet {
 				}
 			}
 			else if("fri".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSunWork(id2);
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setFriWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSatMotion(id2);
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setFriMotion(id2);
 				}
 			}
-			else if("sta".equals(id3)) {
-				if(mInfoList.size() == 1 && ("item-"+mInfoList.get(0).getId()+"-").startsWith(id) ) {
-					schedule.setSunWork(id2);
+			else if("sat".equals(id3)) {
+				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+					schedule.setSatWork(id2);
 				}
-				if(hInfoList.size() == 1 && ("item-"+hInfoList.get(0).getId()+"-").startsWith(id) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setSatMotion(id2);
 				}
 			}

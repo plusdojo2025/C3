@@ -179,6 +179,18 @@
 
         return weekDates;
     }
+    
+    document.getElementById("clear-storage").onclick = function() {
+        if (confirm("位置をリセットしてよろしいですか？")){
+        	localStorage.clear();
+        	alert("位置をリセットしました");
+        }
+        else{
+        	alert("キャンセルしました");
+        }
+    	
+        
+      };
     /*window.addEventListener('DOMContentLoaded', function() {
     	// 1. input要素から値を取得
     	 let input = document.getElementById('boxHeight');
