@@ -181,7 +181,7 @@ public class ScheduleDao extends CustomTemplateDao<Schedule> {
 		try {
 			conn = conn();
 			// SQL文を準備する 上書き
-			String sql = "UPDATE schedule SET sunWork=?,sunMotion=?,monWork=?,monMotion=?,tueWork=?,tueMotion=?,wedWork=?,wedMotion=?,thuWork=?,thuMotion=?,friWork=?,friMotion=?,satWork=?,satMotion=?,cCalorie=?,CURRENT_DATE() WHERE u_id=?;";
+			String sql = "UPDATE schedule SET sunWork=?,sunMotion=?,monWork=?,monMotion=?,tueWork=?,tueMotion=?,wedWork=?,wedMotion=?,thuWork=?,thuMotion=?,friWork=?,friMotion=?,satWork=?,satMotion=?,cCalorie=?,latestDate=CURRENT_DATE() WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
