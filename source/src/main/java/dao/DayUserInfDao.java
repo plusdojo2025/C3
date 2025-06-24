@@ -100,5 +100,82 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
+	
+	public double setDayCalcWeight(String U_id) {
+		// TODO 自動生成されたメソッド・スタブ
+		Connection conn = null;
+		double dayCalcWeight = 0;
+		
+		try {
+			conn = conn();//戻り値Connection型 dbに接続する
+
+			// SQL文を準備する
+			String sql = """
+					    select round(
+						(select dayCalcWeight from dayuserinf where U_id = ? order by id desc limit 1)
+						 +
+						( 
+						COALESCE(
+						(select totalCalorie from dayuserinf where U_id = ? order by id desc limit 1 offset 1),
+						(select  avgCcalorie 
+						from cCalorie cc 
+						inner join healthinf hi on 1=1 
+						where hi.U_id = '00001' and cc.id = CASE
+						  WHEN hi.gender = 'M' AND hi.age < 20 THEN 1
+						    WHEN hi.gender = 'M' AND hi.age < 30 THEN 2
+						    WHEN hi.gender = 'M' AND hi.age < 40 THEN 3
+						    WHEN hi.gender = 'M' AND hi.age < 50 THEN 4
+						    WHEN hi.gender = 'M' AND hi.age < 60 THEN 5
+						    WHEN hi.gender = 'M' AND hi.age < 70 THEN 6
+						    WHEN hi.gender = 'M' AND hi.age < 80 THEN 7
+						    WHEN hi.gender = 'M' THEN 8
+						    WHEN hi.gender = 'F' AND hi.age < 20 THEN 9
+						    WHEN hi.gender = 'F' AND hi.age < 30 THEN 10
+						    WHEN hi.gender = 'F' AND hi.age < 40 THEN 11
+						    WHEN hi.gender = 'F' AND hi.age < 50 THEN 12
+						    WHEN hi.gender = 'F' AND hi.age < 60 THEN 13
+						    WHEN hi.gender = 'F' AND hi.age < 70 THEN 14
+						    WHEN hi.gender = 'F' AND hi.age < 80 THEN 15
+						    WHEN hi.gender = 'F' THEN 16
+						  END
+						))
+						 - 
+						COALESCE((select cCalorie from schedule where U_id = ? order by id desc limit 1 offset 0),0)
+						 -
+						COALESCE((select cCalorie from schedule where U_id = ? order by id desc limit 1 offset 1),0)
+						-
+						((select metaRate from healthinf where U_id = ? order by id desc limit 1 ) * 1.5 ))/7200 ,1 ) dayCalcWeight
+						""";
+
+					
+					
+					
+					
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1,U_id);
+			pStmt.setString(2,U_id);
+			pStmt.setString(3,U_id);
+			pStmt.setString(4,U_id);
+			pStmt.setString(5,U_id);
+
+			// SQL文を実行し、結果を取得する
+			ResultSet rs = pStmt.executeQuery();
+			
+			// 結果を1行ずつコレクションにコピーする
+			while (rs.next()) {
+				dayCalcWeight = rs.getDouble("dayCalcWeight");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			dayCalcWeight= 0;
+		} finally {
+			// dbを切断
+			close(conn);
+		}
+		
+		return dayCalcWeight;
+	}
 
 }
