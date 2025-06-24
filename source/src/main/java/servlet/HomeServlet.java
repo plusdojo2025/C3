@@ -149,6 +149,8 @@ public class HomeServlet extends CustomTemplateServlet {
 		HttpSession session = request.getSession();
 		String u_id = (String) session.getAttribute("id");
 		
+		
+		
 		ScheduleDao sDao = new ScheduleDao ();
 		Schedule schedule = new Schedule();
 		schedule.setU_id(u_id);
@@ -174,8 +176,8 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setSunWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
-					schedule.setSatMotion(id2);
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
+					schedule.setSunMotion(id2);
 				}
 			}
 			else if("mon".equals(id3)) {
@@ -191,7 +193,7 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setTueWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
 					schedule.setTueMotion(id2);
 				}
 			}
@@ -199,7 +201,7 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setWedWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
 					schedule.setWedMotion(id2);
 				}
 			}
@@ -215,7 +217,7 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setFriWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
 					schedule.setFriMotion(id2);
 				}
 			}
@@ -223,7 +225,7 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setSatWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
 					schedule.setSatMotion(id2);
 				}
 			}
@@ -233,11 +235,56 @@ public class HomeServlet extends CustomTemplateServlet {
 			
 		}
 		
-		schedule.setcCalorie(1000);
+		
+//		List<HealthInf> weight = new ArrayList<HealthInf>();
+//		if(hInfoList.size() == 1) {
+//			for(int i = 0; i< hInfoList.get(0).getwMotionDays(); i++) {
+//				HealthInf data = new HealthInf(
+//						hInfoList.get(0).getId(),
+//						hInfoList.get(0).getiWeight(),
+//						hInfoList.get(0).getcWeight(),
+//						hInfoList.get(0).getHeight(),
+//						hInfoList.get(0).getAge(),
+//						hInfoList.get(0).getGender(),
+//						hInfoList.get(0).getTerm(),
+//						hInfoList.get(0).getwMotionDays(),
+//						hInfoList.get(0).getdMotionTime(),
+//						hInfoList.get(0).getLwCcalorie(),
+//						hInfoList.get(0).getLwIcalorie(),
+//						hInfoList.get(0).getMetaRate(),
+//						hInfoList.get(0).getId()+"-"+i
+//						);
+//				
+//				weight.add(data);
+//			}
+//		}
+		// 現在の日付を取得
+		//Calendar calendar = Calendar.getInstance();
+        // 現在の曜日を取得（日曜 = 1, 月曜 = 2, ..., 土曜 = 7）
+        //int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        
+//		int totalCalorie = 0;
+//		for (String id: idArray) {
+//	        if (!weight.isEmpty()) {
+//	        	 int cWeight = weight.get(0).getcWeight();
+//	        	 int id2 = (int)(Float.parseFloat(request.getParameter(id + "[1]")) * 10 / 4);
+//	        	 String id3 = request.getParameter(id + "[2]");
+//	        	 
+//	        	 if ("sun".equals(id3)) {
+//	        		 double cCalorie = id2 / ((4 * cWeight * 1.05) * 60);
+//	        		 totalCalorie += (int)cCalorie;
+//	        	 }
+//	        	 else if ("tue".equals(id3)) {
+//	        		double cCalorie = id2 / ((4 * cWeight * 1.05) * 60);
+//	        		schedule.setcCalorie((int)cCalorie);
+//	        	 }
+//			 }
+//		}
+//        schedule.setcCalorie(totalCalorie);
 		
 		schedule.setLatestDate(new Date());
 		if(schedule.getId() < 1) {
-			schedule.setU_id("00007");
+			schedule.setU_id(u_id);
 			sDao.insert(schedule);
 			
 		} else {
