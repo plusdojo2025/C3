@@ -94,6 +94,7 @@ details summary {
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  border: white;
 }
  
 </style>

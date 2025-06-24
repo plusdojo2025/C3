@@ -16,11 +16,11 @@
   background-color: #B5ACA1;
   border-radius: 10px;
   width: 128px;
-  padding: 8px 16px; /* 縦横の余白を調整 */
+  padding: 10px 20px; /* 縦横の余白を調整 */
  
   width: auto; /* 必要なら明示的に */
   white-space: nowrap; /* 改行しない */
-  font-size: 14px;
+  font-size: 20px;
   max-width: 160px; /* 必要なら最大幅を指定 */
   text-decoration: none;
   font-weight: bold;
@@ -28,6 +28,14 @@
   margin: 15px auto;
 }
 
+.kadomarud{
+  margin: 15px auto;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+  
+  }
+  
 #week-nav {
   display: flex;
   justify-content: center;
@@ -64,6 +72,16 @@
   background-color: #F5B1AA;
   font-weight: bold;
 }
+
+/* 食事内容全体 */
+.meal-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+} 
 
 /*食事表示全体*/
   .meal-section {
@@ -110,7 +128,7 @@
     gap: 20px;
     margin: 0 auto;
   }
-  
+
   
 </style>
 
@@ -134,7 +152,7 @@
 <!-- 食事が表示される場所 -->
 <main>
   <!-- 食事選択画面へ遷移 -->
-  <a id="select-link" class=kadomaru href="DishInfMakan">選択</a>
+  <div class=kadomarud><a id="select-link" class=kadomaru href="DishInfMakan">食事選択画面へ</a></div>
   
   <div class="meal-container">
   <div class="meal-section yellow">
@@ -175,13 +193,13 @@
 </div>
 </main>
 
-<!-- トラ画像 -->
+<!-- トラ画像
 <img src="images/tora.png" width="100" height="auto">
 
-<!-- 一日の消費カロリー -->
+ 一日の消費カロリー
 <p>今日の消費カロリー</p>
 <p>○kcal</p>
-
+ -->
 <!-- フッター読み込み -->
 <footer>
   <%@ include file="footer.jsp" %>
