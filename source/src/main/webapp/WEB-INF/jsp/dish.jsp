@@ -81,7 +81,7 @@
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-} 
+}
 
 /*食事表示全体*/
   .meal-section {
@@ -120,15 +120,9 @@
   	border:white;
   }
 
- .meal-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    gap: 20px;
-    margin: 0 auto;
-  }
-
+.selecteddate{
+	text-align: center;
+}
   
 </style>
 
@@ -148,6 +142,8 @@
 <div id="date-buttons"></div>
 <button id="next-week">次の週 ▶</button>
 </div>
+<!-- 例：選択中の日付の表示 -->
+<div class="selecteddate"><p>選択中の日付：<c:out value="${selectedDate}" /></p></div>
 
 <!-- 食事が表示される場所 -->
 <main>
