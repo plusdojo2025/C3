@@ -11,7 +11,7 @@
 <style>
 
 .kadomaru {
-  text-align: center;
+  justify-content: center;
   color: white;
   background-color: #B5ACA1;
   border-radius: 10px;
@@ -25,6 +25,7 @@
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  margin: 15px auto;
 }
 
 #week-nav {
@@ -64,18 +65,20 @@
   font-weight: bold;
 }
 
+/*食事表示全体*/
   .meal-section {
+    width: 45%; /*横２列にする*/
     border: 2px solid #ccc;
     border-radius: 15px;
     padding: 15px;
     margin: 15px auto;
     max-width: 500px;
-    background-color: #fffbea; /* デフォルトは淡い黄色 */
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    background-color: #fff8cc; /* デフォルトは淡い黄色 */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   }
 
   .meal-section.blue {
-    background-color: #e6f7ff; /* 淡い水色 */
+    background-color: #e0f4ff; /* 淡い水色 */
   }
 
   .meal-section h2 {
@@ -95,8 +98,20 @@
   	max-width: 100px;
   	radius: 12px;
   	padding: 8px 12px;
+  	background-color: white;
+  	border:white;
   }
 
+ .meal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    gap: 20px;
+    margin: 0 auto;
+  }
+  
+  
 </style>
 
 <link rel="stylesheet" href="<c:url value='/css/css_madoka.css' />">
@@ -121,6 +136,7 @@
   <!-- 食事選択画面へ遷移 -->
   <a id="select-link" class=kadomaru href="DishInfMakan">選択</a>
   
+  <div class="meal-container">
   <div class="meal-section yellow">
     <h2>朝食</h2>
     <div id="content-morning">
@@ -139,7 +155,7 @@
     </div>
   </div>
 
-  <div class="meal-section yellow">
+  <div class="meal-section blue">
     <h2>夕食</h2>
     <div id="content-evening">
       <c:forEach var="e" items="${dishE}" begin="0" end="3">
@@ -148,7 +164,7 @@
     </div>
   </div>
 
-  <div class="meal-section blue">
+  <div class="meal-section yellow">
     <h2>間食</h2>
     <div id="content-snack">
       <c:forEach var="s" items="${dishS}" begin="0" end="3">
@@ -156,6 +172,7 @@
       </c:forEach>
     </div>
   </div>
+</div>
 </main>
 
 <!-- トラ画像 -->
