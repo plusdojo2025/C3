@@ -68,7 +68,7 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 
 			// SQL文を完成させる
 			pStmt.setInt(1, dto.getTotalCalorie());
-			pStmt.setInt(2, dto.getDayCalcWeight());
+			pStmt.setDouble(2, dto.getDayCalcWeight());
 			pStmt.setString(3,dto.getU_id());
 
 			// SQL文を実行する
@@ -92,7 +92,37 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 	@Override
 	public boolean update(DayUserInf dto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			conn = conn();
+			// SQL文を準備する 上書き
+			String sql = "UPDATE dayuserinf SET totalCalorie=?,dayCalcWeight=? WHERE u_id=?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, dto.getTotalCalorie());//分
+			pStmt.setDouble(2, dto.getDayCalcWeight());
+			pStmt.setString(3,dto.getU_id());
+			
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				//ResultSet res = pStmt.getGeneratedKeys(); AUTO INCREMENT
+				//res.next();
+				//dto.Set~~~(res.getInt(1));
+				result = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+
+		// 結果を返す
+		return result;
 	}
 
 	@Override

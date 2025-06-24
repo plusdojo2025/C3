@@ -6,7 +6,7 @@ import java.util.Date;
 public class DayUserInf extends CustomTemplateDto implements Serializable{
 	private int id;
 	private int totalCalorie;//kcal
-	private int dayCalcWeight;//キロ
+	private double dayCalcWeight;//キロ
 	private Date insertDate;
 	private String u_id;
 	
@@ -22,7 +22,7 @@ public class DayUserInf extends CustomTemplateDto implements Serializable{
 	public void setTotalCalorie(int totalCalorie) {
 		this.totalCalorie = totalCalorie;
 	}
-	public int getDayCalcWeight() {
+	public double getDayCalcWeight() {
 		return dayCalcWeight;
 	}
 	public void setDayCalcWeight(int dayCalcWeight) {
@@ -40,7 +40,7 @@ public class DayUserInf extends CustomTemplateDto implements Serializable{
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
-	public DayUserInf(int id, int totalCalorie, int dayCalcWeight, Date insertDate, String u_id) {
+	public DayUserInf(int id, int totalCalorie, double dayCalcWeight, Date insertDate, String u_id) {
 		super();
 		this.id = id;
 		this.totalCalorie = totalCalorie;
