@@ -63,7 +63,7 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 //		request.setAttribute("mInfo",mInf);
 //		request.setAttribute("mIncome",mInc);
 		
-		// 体重グラフにフォワードする
+		// 収入グラフにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/incomeGraph.jsp");
 		dispatcher.forward(request, response);
 		

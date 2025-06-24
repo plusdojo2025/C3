@@ -26,7 +26,7 @@ let yearlyData = {
 </c:forEach>
 
 <c:forEach var="e" items="${mIncome}" >
-targetIncome=${e.gIncome /12};
+targetIncome=Math.floor(${e.gIncome /12});
 
 </c:forEach>
 
@@ -63,7 +63,7 @@ function createChart(year) {
             data: targetLineData,
             borderColor: 'rgb(249, 136, 80)',
             borderWidth: 2,
-            borderDash: [10, 10],
+            //borderDash: [10, 10],
             pointRadius: 0,
             fill: false
           }
@@ -86,13 +86,13 @@ function createChart(year) {
               label: function(context) {
                 const value = context.raw;
                 if (context.dataset.type === 'bar') {
-                    let lines = ["収入:"+ yearlyData[2025][10]];
+                    let lines = ["収入:"+ "￥" +yearlyData[2025][10]];
                     if (value >= targetIncome) {
                     lines.push('🎉 達成!!!');  // 2行目に追加
                     }
                     return lines;
                 } else {
-                    return ["目標:"+ targetIncome];
+                    return ["目標:"+ "￥" +targetIncome];
                 }
                 }
             }

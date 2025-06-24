@@ -12,11 +12,15 @@
 <link rel="stylesheet" href="<c:url value='/css/css_hana.css'/>">
 
 </head>
+
 <body>
- <!-- フッターここから -->
+
+<header>
+ <!-- ヘッダーここから -->
  <%@ include file="header.jsp" %>
+ </header>
+ <!-- ヘッダーここまで -->
  
- <!-- フッターここまで -->
  <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
     
@@ -62,7 +66,7 @@
 
         <div class="info_weightgraph">
             <p>＜体重計算方法＞</p>
-            <p>今週の総消費カロリー&nbsp;=&nbsp;運動量(○○kcal)&nbsp;+&nbsp;基礎代謝量(○○kcal)&nbsp;－&nbsp;食事量(○○kcal)</p>
+            <p>今週の総消費カロリー&nbsp;=&nbsp;運動量(kcal)&nbsp;+&nbsp;基礎代謝量(kcal)&nbsp;－&nbsp;食事量(kcal)</p>
             <p>－1kg&nbsp;=&nbsp;－7200kcalを指標に増減を計算しています。</p>
         </div>
 

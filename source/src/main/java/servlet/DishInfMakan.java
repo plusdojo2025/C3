@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,10 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.DayUserInfDao;
 import dao.DishDao;
 import dao.DishInfDao;
+import dao.HealthInfDao;
+import dto.DayUserInf;
 import dto.Dish;
 import dto.DishInf;
+import dto.HealthInf;
 
 
 
@@ -106,8 +111,17 @@ public class DishInfMakan extends CustomTemplateServlet {
 
 		// 登録処理を行う
 		DishInfDao bDao = new DishInfDao();
-		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,null,U_id));	
-
+		bDao.insert(new DishInf(0, mStaple,mMain, mSide, mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,null,U_id));
+		
+		HealthInfDao hDao = new HealthInfDao();
+		List<HealthInf> hInfo = hDao.select(new HealthInf(0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0,U_id));
+		
+		DayUserInfDao uDao = new DayUserInfDao();
+		DayUserInf uDto =new DayUserInf (0, 0, 0, new Date(), U_id);
+		uDto.setTotalCalorie(mStaple + mMain + mSide + mOther +nStaple +nMain +nSide + nOther +eStaple +eMain +eSide +eOther +snack);
+		uDto.setDayCalcWeight(hInfo.get(0).getcWeight());
+		uDao.insert(uDto);
+		
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
 		dispatcher.forward(request, response);

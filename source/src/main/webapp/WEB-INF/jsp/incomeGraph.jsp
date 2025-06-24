@@ -20,10 +20,15 @@
 </head>
 <body>
 
-<!-- フッターここから -->
-<%@ include file="header.jsp" %>
-<!-- フッターここまで -->
+<header>
 
+<!-- ヘッダーここから -->
+<%@ include file="header.jsp" %>
+<!-- ヘッダーここまで -->
+
+
+</header>
+<main>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <h2>収入推移グラフ</h2>
@@ -46,7 +51,7 @@
 	現在<br>
 	目標まであと</p>
 </div>
-
+</main>
 <!--　フッター　-->
 <footer>
   <%@ include file="footer.jsp" %>
