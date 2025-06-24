@@ -16,90 +16,10 @@
     <%@ include file="header.jsp" %>
     <!--　ヘッダーここまで　-->
     <!--　メイン　-->
-    <main>
+<main>
         <h2 class="midashi">Health目標入力</h2>
         <p class="midashi">あなたの身体情報をもとに、一日当たりの必要な運動時間を概算します</p>
- <!--  <div class="form">       
-  <form method="POST" action="<c:url value='HealthResistMakan' />">
-    <table>
-        <tr>
-            <td> 
-	            <p class="Form-Item-Label">
-		      			<span class="Form-Item-Label-Required">必須</span>目標体重
-		    	</p>               
-            </td>
-            <td>
-            <div class="Form-Item">
-	            
-                <input type="number" name="iWeight"><br>
-            </div>
-            </td>
-            
-        </tr>
-        <tr>
-             <td> 
-                現在体重
-            </td>
-            <td>
-                <input type="number" name="cWeight"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                身長
-            </td>
-            <td>
-                <input type="number" name="height"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                年齢
-            </td>
-            <td>
-                <input type="number" name="age"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                性別
-            </td>
-            <td>    
-                <label><input type="radio" name="gender" value="M">男性</label>
-                <label><input type="radio" name="gender" value="F">女性</label><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-                期間
-            </td>
-            <td>
-                <input type="number" name="term"><br>
-            </td>
-        </tr>
-        <tr>
-            <td> 
-               <p class="Form-Item-Label">
-		      			<span class="Form-Item-Label-Required">必須</span>1週間の運動日数
-		    	</p>
-            </td>
-            <td>
-                <input type="number" name="wMotionDays"><br>
-            </td>
-        </tr>
-        
-        <tr>  
-            <td><input type="hidden" name="U_id" value="${userInf.id}"></td>
-       </tr>
-       <tr>
-       </table>   
-       <div style="text-align:center;">                  
-                <input type="submit" name="submit" class="kadomaru" value="決定">  
-       </div>                 
-  </form>
- </div> 
- -->
-<form method="POST" action="<c:url value='HealthResistMakan' />"> 
+<form method="POST" action="<c:url value='HealthResistMakan' />" onsubmit="return validateWeightLoss();"> 
    <div class="Form">
   <div class="Form-Item">
     <p class="Form-Item-Label">
@@ -139,11 +59,15 @@
     <input type="number" name="wMotionDays" class="Form-Item-Input" min="1" max="7" placeholder="単位：日（1～7で入力）"><br>
   </div>
   <input type="hidden" name="U_id" value="${userInf.id}">
-  <div style="text-align:center;" class="Form-Item">                  
+  <div  style="text-align:center;"class="Form-Item">                  
       <input type="submit" name="submit" class="kadomarutake" value="決定">  
   </div>
 </div>
 </form>
+
+<!-- JavaScript取得 -->
+<script src="<c:url value='/script/healthResistAlert.js' />"></script>
+
 </main>
     <!--　メインここまで　-->
     <!--　フッター　-->

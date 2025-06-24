@@ -29,11 +29,11 @@ public class HealthResistMakan extends CustomTemplateServlet {
 		String u_id = (String) session.getAttribute("id");
 		HealthInfDao bDao = new HealthInfDao();
 		if(bDao.isOneData(u_id) == true) {
-			// リダイレクト	
+			// 更新ページにリダイレクト	
 		response.sendRedirect(request.getContextPath() + "/HealthUpdateMakan");
 		}
 		else {
-			// 結果ページにフォワードする
+			// 計算結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthResist.jsp");
 		dispatcher.forward(request, response);
 		}
@@ -61,7 +61,7 @@ public class HealthResistMakan extends CustomTemplateServlet {
 				// 登録処理を行う
 				HealthInfDao bDao = new HealthInfDao();
 				bDao.insert(new HealthInf(0,iWeight , cWeight, height, age, gender, term, wMotionDays, 0, 0, 0, 0, U_id)); // 登録成功
-				// リダイレクト	
+				// 結果画面(初週)へリダイレクト	
 				response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
 //		// フォワード
 //		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthResultDefault0.jsp");

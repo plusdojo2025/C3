@@ -66,7 +66,8 @@ public class HealthUpdateMakan extends CustomTemplateServlet {
 		// セッションスコープからID取得
 		HttpSession session = request.getSession();
 		session.setAttribute("gender" ,gender);
-		//String gender = (String) session.getAttribute("gender");
+		
+//		String gender2 = (String) session.getAttribute("gender");
 		
 		// 更新処理を行う
 		if(lwCcalorie == 0) {

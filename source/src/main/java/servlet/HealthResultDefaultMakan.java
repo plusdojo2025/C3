@@ -25,10 +25,19 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
-		
-		
 		// リクエストパラメータ取得
 		request.setCharacterEncoding("UTF-8");
+		
+//		// 先週の摂取カロリーを取得
+//		int lwCcalorie= Integer.parseInt(request.getParameter("lwCcalorie"));
+//		
+//		// 先週の摂取カロリーがない場合(初週)の分岐
+//		if(lwCcalorie == 0) {
+//			// 結果(初週)リダイレクト
+//			response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
+//		}
+		
+		
 		
 		// セッションからユーザーIDを取得
 		HttpSession session = request.getSession();

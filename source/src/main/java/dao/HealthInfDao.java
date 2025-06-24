@@ -98,7 +98,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			//
 			
 			//１週間の運動時間の計算　一日あたり
-			conCal = metaRatei * 1.5;
+			conCal = metaRatei * 1.2;
 			lowerCal = (dto.getcWeight() - dto.getiWeight())*7200;
 			weekCal = lowerCal/(dto.getTerm()/7);
 			
@@ -167,6 +167,15 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			dayCal = (avgCal * 7 + weekCal - (int)conCal * 7)/dto.getwMotionDays();
 			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
 			dMotionTimei = (int)dMotionTime;
+			
+			// dMotiontimeiがマイナスの場合20分を表示
+			if (dMotionTimei <= 0) {
+				dMotionTimei = 20;
+				
+				// 10分以上の場合、1の位切り捨て
+			} else if(dMotionTimei >10) {
+				dMotionTimei = (dMotionTimei / 10) * 10;
+			}
 
 
 			// SQL文を準備する 上書き
@@ -310,7 +319,16 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			dayCal = (avgCal * 7 + weekCal - (int)conCal * 7)/dto.getwMotionDays();
 			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
 			dMotionTimei = (int)dMotionTime;
-			
+			// dMotiontimeiがマイナスの場合20分を表示
+			if (dMotionTimei <= 0) {
+				dMotionTimei = 20;
+				
+				// 10分以上の場合、1の位切り捨て
+			} else if(dMotionTimei >10) {
+				dMotionTimei = (dMotionTimei / 10) * 10;
+			}
+
+
 			// SQL文を準備する 上書き
 			String sql =  "UPDATE healthinf SET iWeight=?,cWeight=?,height=?,age=?,gender=?,term=?,wMotionDays=?,dMotionTime=?,lwCcalorie=?,lwIcalorie=?,metaRate=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -470,7 +488,15 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			dayCal = (dto.getLwIcalorie() + weekCal - (int)conCal * 7)/dto.getwMotionDays();
 			dMotionTime = dayCal / (4*dto.getcWeight()*1.05) * 60;
 			dMotionTimei = (int)dMotionTime;
-			//
+			// dMotiontimeiがマイナスの場合20分を表示
+			if (dMotionTimei <= 0) {
+				dMotionTimei = 20;
+							
+				// 10分以上の場合、位置の位切り捨て
+			} else if(dMotionTimei >10) {
+				dMotionTimei = (dMotionTimei / 10) * 10;
+			}
+
 
 
 			// SQL文を準備する 上書き

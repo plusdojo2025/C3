@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<c:url value='css/css_takehiro.css'/>">
 	 
 </head>
+	
 <body>
     <!--　ヘッダー　-->
     <header>
@@ -20,9 +21,8 @@
     <!--　メイン　-->
     <main>
         <h2 class="midashi">Health目標更新</h2>
-  <c:forEach var="h" items="${emp}">
- 
-  <form method="POST" action="<c:url value='HealthUpdateMakan' />"> 
+<c:forEach var="h" items="${emp}">
+  <form method="POST" action="<c:url value='HealthUpdateMakan' />" onsubmit="return validateWeightLoss();"> 
    <div class="Form">
   <div class="Form-Item">
     <p class="Form-Item-Label">
@@ -46,8 +46,8 @@
     <p class="Form-Item-Label">
       <span class="Form-Item-Label-Required">必須</span>性別
     </p>
-    <input type="radio" name="gender" id="M" value="M"><label for="M" class="label">男性</label>
-    <input type="radio" name="gender" id="F" value="F"><label for="F" class="label">女性</label><br>
+    <input type="radio" name="gender" id="M" value="M" <c:if test="${h.gender == 'M'}">checked</c:if>><label for="M" class="label">男性</label>
+    <input type="radio" name="gender" id="F" value="F" <c:if test="${h.gender == 'F'}">checked</c:if>><label for="F" class="label">女性</label><br>
   </div>
   <div class="Form-Item">
     <p class="Form-Item-Label">
@@ -70,6 +70,9 @@
 </div>
 </form>
   </c:forEach>
+  
+ <!-- JavaScript取得 -->
+<script src="<c:url value='/script/healthResistAlert.js' />"></script> 
     </main>
     <!--　メインここまで　-->
     <!--　フッター　-->
