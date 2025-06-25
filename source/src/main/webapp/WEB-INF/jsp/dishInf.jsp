@@ -111,7 +111,8 @@ details summary {
 <!-- ヘッターここまで -->
 
 <p class=setsumei>食事内容をチェックしましょう<br>
-＊各項目１つのみ選択してください</p>
+＊各項目１つのみ選択してください<br>
+＊１日１回、当日分のみ登録できます</p>
 	
 
 <form method="POST" action="/c3/DishInfMakan">
