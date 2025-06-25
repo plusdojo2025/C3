@@ -131,7 +131,7 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 		return false;
 	}
 	
-	public double setDayCalcWeight(String U_id) {
+	public double selectDayCalcWeight(String U_id) {
 		// TODO 自動生成されたメソッド・スタブ
 		Connection conn = null;
 		double dayCalcWeight = 0;
