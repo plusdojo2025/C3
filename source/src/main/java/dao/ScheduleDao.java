@@ -20,7 +20,7 @@ public class ScheduleDao extends CustomTemplateDao<Schedule> {
 
 		try {
 			conn = conn();
-			String sql = "select * from MoneyInf where u_id = ? order by id desc limit 1";
+			String sql = "select * from moneyinf where u_id = ? order by id desc limit 1";
 			;
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -133,7 +133,7 @@ public class ScheduleDao extends CustomTemplateDao<Schedule> {
 		try {
 			conn = conn();
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO Schedule(sunWork,sunMotion,monWork,monMotion,tueWork,tueMotion,wedWork,wedMotion,thuWork,thuMotion,friWork,friMotion,satWork,satMotion,cCalorie,latestDate,U_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE(),?);";
+			String sql = "INSERT INTO schedule(sunWork,sunMotion,monWork,monMotion,tueWork,tueMotion,wedWork,wedMotion,thuWork,thuMotion,friWork,friMotion,satWork,satMotion,cCalorie,latestDate,U_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE(),?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

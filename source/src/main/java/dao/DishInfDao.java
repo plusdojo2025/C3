@@ -22,7 +22,7 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM DishInf WHERE u_id = ? ";
+			String sql = "SELECT * FROM dishinf WHERE u_id = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -75,7 +75,7 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 			conn = conn();
 
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO dishInf(mStaple,mMain,mSide,mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,insertDate,u_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE(),?);";
+			String sql = "INSERT INTO dishinf(mStaple,mMain,mSide,mOther,nStaple,nMain,nSide,nOther,eStaple,eMain,eSide,eOther,snack,insertDate,u_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_DATE(),?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -121,19 +121,19 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	        conn = conn();//戻り値Connection型 dbに接続する
 
 	        String sql = """
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.mStaple = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.mMain = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.mSide = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.mOther = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	        """;
@@ -171,19 +171,19 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	        conn = conn();//戻り値Connection型 dbに接続する
 
 	        String sql = """
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.nStaple = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.nMain = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.nSide = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.nOther = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	        """;
@@ -221,19 +221,19 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	        conn = conn();//戻り値Connection型 dbに接続する
 
 	        String sql = """
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.eStaple = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.eMain = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.eSide = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	            UNION ALL
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.eOther = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	        """;
@@ -272,7 +272,7 @@ public class DishInfDao extends CustomTemplateDao<DishInf> {
 	        conn = conn();//戻り値Connection型 dbに接続する
 
 	        String sql = """
-	            SELECT di1.name, di1.calorie FROM dishInf df
+	            SELECT di1.name, di1.calorie FROM dishinf df
 	            INNER JOIN dish di1 ON df.snack = di1.id
 	            WHERE df.U_id = ? AND df.insertDate = ?
 	        """;

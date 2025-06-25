@@ -95,7 +95,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			 * kari/hWage; int dWork = workTime/wWork; //ここまで
 			 */
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO MoneyInf(gIncome,hWage,wWork,dependent,netIncome,dWork,u_id)VALUES(?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO moneyinf(gIncome,hWage,wWork,dependent,netIncome,dWork,u_id)VALUES(?,?,?,?,?,?,?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -163,7 +163,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			 * kari/hWage; int dWork = workTime/wWork; //ここまで
 			 */
 			// SQL文を準備する 上書き
-			String sql = "UPDATE moneyInf SET gIncome=?,hWage=?,wWork=?,dependent=?,netIncome=?,dWork=? WHERE u_id=?;";
+			String sql = "UPDATE moneyinf SET gIncome=?,hWage=?,wWork=?,dependent=?,netIncome=?,dWork=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -217,7 +217,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			 int dWork = workTime/wWork; //ここまで
 			
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO MoneyInf(gIncome,hWage,wWork,dependent,netIncome,dWork,u_id)VALUES(?,?,?,?,?,?,?);";
+			String sql = "INSERT INTO moneyinf(gIncome,hWage,wWork,dependent,netIncome,dWork,u_id)VALUES(?,?,?,?,?,?,?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -265,7 +265,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			 int dWork = workTime/wWork; //ここまで
 			
 			// SQL文を準備する 上書き
-			String sql = "UPDATE moneyInf SET gIncome=?,hWage=?,wWork=?,dependent=?,netIncome=?,dWork=? WHERE u_id=?;";
+			String sql = "UPDATE moneyinf SET gIncome=?,hWage=?,wWork=?,dependent=?,netIncome=?,dWork=? WHERE u_id=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -303,7 +303,7 @@ public class MoneyInfDao extends CustomTemplateDao<MoneyInf> {
 			conn = conn();
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM moneyInf WHERE id=? ;";
+			String sql = "SELECT count(*) FROM moneyinf WHERE id=? ;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, u_id);
 

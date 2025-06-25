@@ -156,7 +156,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 					cId = 16;
 				}
 			}
-			String sql0 = "SELECT avgCcalorie from cCalorie WHERE id = ?;" ;
+			String sql0 = "SELECT avgCcalorie from ccalorie WHERE id = ?;" ;
 			PreparedStatement pStmt0 = conn.prepareStatement(sql0);
 			pStmt0.setInt(1,cId);
 			ResultSet rs = pStmt0.executeQuery();
@@ -308,7 +308,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 					cId = 16;
 				}
 			}
-			String sql0 = "SELECT avgCcalorie from cCalorie WHERE id = ?;" ;
+			String sql0 = "SELECT avgCcalorie from ccalorie WHERE id = ?;" ;
 			PreparedStatement pStmt0 = conn.prepareStatement(sql0);
 			pStmt0.setInt(1,cId);
 			ResultSet rs = pStmt0.executeQuery();
@@ -426,7 +426,7 @@ public class HealthInfDao extends CustomTemplateDao<HealthInf> {
 			conn = conn();
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM healthInf WHERE u_id=? ;";
+			String sql = "SELECT count(*) FROM healthinf WHERE u_id=? ;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, u_id);
 

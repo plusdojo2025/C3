@@ -21,7 +21,7 @@ public class MonthIncomeDao extends CustomTemplateDao<MonthIncome> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM monthIncome WHERE u_id = ?;";
+			String sql = "SELECT * FROM monthincome WHERE u_id = ?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -62,7 +62,7 @@ public class MonthIncomeDao extends CustomTemplateDao<MonthIncome> {
 			conn = conn();
 
 			// SQL文を準備する 上書き
-			String sql = "INSERT INTO monthIncome(mIncome,insertMonth,u_id)VALUES(?,CURRENT_DATE(),?);";
+			String sql = "INSERT INTO monthincome(mIncome,insertMonth,u_id)VALUES(?,CURRENT_DATE(),?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
