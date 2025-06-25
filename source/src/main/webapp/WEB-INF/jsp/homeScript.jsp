@@ -120,15 +120,16 @@
     $(window).on('load', function () {
     	let localStorageItem = ""
     	<c:forEach var="e" items="${dWork}" >
-    		$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
-        	$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
+    		
         	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[0]");
         	if(localStorageItem){
-        		$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
+        		$('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val(localStorageItem);
+        		//$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
         	}
         	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[1]");
         	if(localStorageItem){
-        		$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
+        		$('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val(localStorageItem);
+        		//$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
         	}
         	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[2]");
         	if(localStorageItem){
@@ -138,17 +139,20 @@
                     $('#home-form input[name="' + changeElement.attr("id") + '[2]"').val(localStorageItem);
                 }
         	}
+        	$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
+        	$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
 		</c:forEach>
 		<c:forEach var="e" items="${dWalk}" >
-			$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
-    		$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
+			
     		localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[0]");
     		if(localStorageItem){
-        		$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
+    			$('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val(localStorageItem);
+        		//$("#item-<c:out value='${e.u_id}'/>").css('top', localStorageItem + 'px');
         	}
         	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[1]");
         	if(localStorageItem){
-        		$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
+        		$('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val(localStorageItem);
+        		//$("#item-<c:out value='${e.u_id}'/>").css('height', localStorageItem + 'px');
         	}
         	localStorageItem = localStorage.getItem("item-<c:out value='${e.u_id}'/>[2]");
         	if(localStorageItem){
@@ -158,6 +162,8 @@
                     $('#home-form input[name="' + changeElement.attr("id") + '[2]"').val(localStorageItem);
                 }
         	}
+        	$("#item-<c:out value='${e.u_id}'/>").css('top', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[0]').val() + 'px');
+    		$("#item-<c:out value='${e.u_id}'/>").css('height', $('#home-form input[name^="item-'+"<c:out value='${e.u_id}'/>"+'[1]').val() + 'px');
     	</c:forEach>
     }); 
     

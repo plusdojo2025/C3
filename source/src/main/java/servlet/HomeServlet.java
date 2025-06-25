@@ -156,7 +156,20 @@ public class HomeServlet extends CustomTemplateServlet {
 		schedule.setU_id(u_id);
 		List<Schedule> scheduleList = sDao.select(schedule);
 		schedule = (scheduleList.size() == 1)?scheduleList.get(0): new Schedule();
-		
+		schedule.setSunWork(0);
+		schedule.setSunMotion(0);
+		schedule.setMonWork(0);
+		schedule.setMonMotion(0);
+		schedule.setTueWork(0);
+		schedule.setTueMotion(0);
+		schedule.setWedWork(0);
+		schedule.setWedMotion(0);
+		schedule.setThuWork(0);
+		schedule.setThuMotion(0);
+		schedule.setFriWork(0);
+		schedule.setFriMotion(0);
+		schedule.setSatWork(0);
+		schedule.setSatMotion(0);
 		HealthInf hInf = new HealthInf();
 		hInf.setU_id(u_id);
 		List<HealthInf> hInfoList = sDao.select(hInf);
@@ -184,7 +197,7 @@ public class HomeServlet extends CustomTemplateServlet {
 				if(mInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
 					schedule.setMonWork(id2);
 				}
-				if(hInfoList.size() == 1 && id.startsWith(("item-"+mInfoList.get(0).getId()+"-")) ) {
+				if(hInfoList.size() == 1 && id.startsWith(("item-"+hInfoList.get(0).getId()+"-")) ) {
 					schedule.setMonMotion(id2);
 				}
 				
@@ -235,52 +248,19 @@ public class HomeServlet extends CustomTemplateServlet {
 			
 		}
 		
+		Calendar cal = Calendar.getInstance();
+		int week = cal.get(Calendar.DAY_OF_WEEK);
 		
-//		List<HealthInf> weight = new ArrayList<HealthInf>();
-//		if(hInfoList.size() == 1) {
-//			for(int i = 0; i< hInfoList.get(0).getwMotionDays(); i++) {
-//				HealthInf data = new HealthInf(
-//						hInfoList.get(0).getId(),
-//						hInfoList.get(0).getiWeight(),
-//						hInfoList.get(0).getcWeight(),
-//						hInfoList.get(0).getHeight(),
-//						hInfoList.get(0).getAge(),
-//						hInfoList.get(0).getGender(),
-//						hInfoList.get(0).getTerm(),
-//						hInfoList.get(0).getwMotionDays(),
-//						hInfoList.get(0).getdMotionTime(),
-//						hInfoList.get(0).getLwCcalorie(),
-//						hInfoList.get(0).getLwIcalorie(),
-//						hInfoList.get(0).getMetaRate(),
-//						hInfoList.get(0).getId()+"-"+i
-//						);
-//				
-//				weight.add(data);
-//			}
-//		}
-		// 現在の日付を取得
-		//Calendar calendar = Calendar.getInstance();
-        // 現在の曜日を取得（日曜 = 1, 月曜 = 2, ..., 土曜 = 7）
-        //int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        
-//		int totalCalorie = 0;
-//		for (String id: idArray) {
-//	        if (!weight.isEmpty()) {
-//	        	 int cWeight = weight.get(0).getcWeight();
-//	        	 int id2 = (int)(Float.parseFloat(request.getParameter(id + "[1]")) * 10 / 4);
-//	        	 String id3 = request.getParameter(id + "[2]");
-//	        	 
-//	        	 if ("sun".equals(id3)) {
-//	        		 double cCalorie = id2 / ((4 * cWeight * 1.05) * 60);
-//	        		 totalCalorie += (int)cCalorie;
-//	        	 }
-//	        	 else if ("tue".equals(id3)) {
-//	        		double cCalorie = id2 / ((4 * cWeight * 1.05) * 60);
-//	        		schedule.setcCalorie((int)cCalorie);
-//	        	 }
-//			 }
-//		}
-//        schedule.setcCalorie(totalCalorie);
+		int sum = 0;
+		sum += (week >= Calendar.SUNDAY) ? schedule.getSunMotion() : 0;
+		sum += (week >= Calendar.MONDAY) ? schedule.getMonMotion() : 0;
+		sum += (week >= Calendar.TUESDAY) ? schedule.getTueMotion() : 0;
+		sum += (week >= Calendar.WEDNESDAY) ? schedule.getWedMotion() : 0;
+		sum += (week >= Calendar.THURSDAY) ? schedule.getThuMotion() : 0;
+		sum += (week >= Calendar.FRIDAY) ? schedule.getFriMotion() : 0;
+		sum += (week >= Calendar.SATURDAY) ? schedule.getSatMotion() : 0;
+		double weight = hInfoList.get(0).getcWeight();
+		schedule.setcCalorie((int)(sum * (4 * weight * 1.05) / 60));
 		
 		schedule.setLatestDate(new Date());
 		if(schedule.getId() < 1) {
