@@ -123,8 +123,8 @@ public class DishInfMakan extends CustomTemplateServlet {
 		uDao.insert(uDto);
 		
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/dish.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/DishMakan?ymd=");
+
 
 		}
 }
