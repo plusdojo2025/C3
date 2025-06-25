@@ -197,6 +197,9 @@
     	
         
       };
+      document.getElementById("decide").onclick = function() {
+    	  alert("確定しました");
+      }
     /*window.addEventListener('DOMContentLoaded', function() {
     	// 1. input要素から値を取得
     	 let input = document.getElementById('boxHeight');

@@ -38,7 +38,7 @@
 					    	<input type="hidden" name="item-<c:out value='${e.u_id}'/>[2]" value="etc2">
 						</c:forEach>
 						<div>
-							<button class="decide" type="submit">確定</button>
+							<button class="decide" type="submit" id="decide">確定</button>
 							<button class="reset" id="clear-storage">位置リセット</button>
 						</div>
 					</form>
@@ -121,13 +121,13 @@
     		</ul>
 		    <ul id="" class="horizontal-list foot">
 				<li id="" class="horizontal-item"></li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
-				<li id="" class="horizontal-item">運動で消費したカロリー200kcal</li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
+				<li id="" class="horizontal-item"></li>
 				<li id="" class="horizontal-item spacer"></li>
 				<li id="" class="horizontal-item spacer"></li>
 				<li id="" class="horizontal-item spacer"></li>
