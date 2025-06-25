@@ -28,7 +28,7 @@
 			  </div>
 			  <div class="Form-Item">
 			    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>時給</p>
-			    <input type="number" name="hWage" class="Form-Item-Input" placeholder="単位：万円" min="0">
+			    <input type="number" name="hWage" class="Form-Item-Input" placeholder="単位：円" min="0">
 	  </div>
 			  <div class="Form-Item">
 			    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>1週間の希望労働日数</p>
@@ -44,11 +44,10 @@
 	  </div>
 	 
 	 
-		  <input type="hidden" name="U_id" value="${userInf.id}">
+		<input type="hidden" name="U_id" value="${userInf.id}">
 				  <div style="text-align:center;" class="Form-Item">
 				      <input type="submit" name="submit" class="kadomarutake" value="決定">
-				  </div>
-		</div>                    
+				  </div>                  
               
                     
         </form>
