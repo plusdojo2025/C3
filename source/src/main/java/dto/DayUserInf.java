@@ -25,7 +25,7 @@ public class DayUserInf extends CustomTemplateDto implements Serializable{
 	public double getDayCalcWeight() {
 		return dayCalcWeight;
 	}
-	public void setDayCalcWeight(int dayCalcWeight) {
+	public void setDayCalcWeight(double dayCalcWeight) {
 		this.dayCalcWeight = dayCalcWeight;
 	}
 	public Date getInsertDate() {

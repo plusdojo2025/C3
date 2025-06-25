@@ -53,7 +53,7 @@
         </div>
         
         <!-- JavaScriptファイルを読み込む -->
-        <script src="script/WeightGraph.js"></script>
+        <!--  <script src="script/WeightGraph.js"></script>-->
 
        
         <!--  <img id=mama-weightgraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
@@ -78,5 +78,6 @@
   <%@ include file="footer.jsp" %>
 </footer>
 <!--　フッターここまで　-->
+<jsp:include page="script/weightGraph.js.jsp" />
 </body>
 </html>

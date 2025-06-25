@@ -45,12 +45,12 @@
 </div>
 
 
-<img id=mama-incomegraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
+<!--  <img id=mama-incomegraph src="<c:url value='/images/mama.png' />" alt="イメージキャラクター" width="150" height=auto>
 <div id=now-incomegraph>	
 	<p>現状<br>
 	現在<br>
 	目標まであと</p>
-</div>
+</div>-->
 </main>
 <!--　フッター　-->
 <footer>
