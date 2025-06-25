@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -116,9 +117,25 @@ public class DishInfMakan extends CustomTemplateServlet {
 		HealthInfDao hDao = new HealthInfDao();
 		List<HealthInf> hInfo = hDao.select(new HealthInf(0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0,U_id));
 		
+		DishDao dDao = new DishDao();
+		Map<Integer,Integer> dList = dDao.select();
+		
 		DayUserInfDao uDao = new DayUserInfDao();
 		DayUserInf uDto =new DayUserInf (0, 0, 0, new Date(), U_id);
-		uDto.setTotalCalorie(mStaple + mMain + mSide + mOther +nStaple +nMain +nSide + nOther +eStaple +eMain +eSide +eOther +snack);
+		uDto.setTotalCalorie(
+				dList.get(mStaple) +
+				dList.get(mMain) +
+				dList.get(mSide) +
+				dList.get(mOther) +
+				dList.get(nStaple) +
+				dList.get(nMain) +
+				dList.get(nSide) +
+				dList.get(nOther) +
+				dList.get(eStaple) +
+				dList.get(eMain) +
+				dList.get(eSide) +
+				dList.get(eOther) +
+				dList.get(snack));
 		uDto.setDayCalcWeight(hInfo.get(0).getcWeight());
 		uDao.insert(uDto);
 		

@@ -5,12 +5,46 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dto.Dish;
 
 public class DishDao extends CustomTemplateDao<Dish> {
+	public Map<Integer,Integer> select() {
+		// TODO 自動生成されたメソッド・スタブ
+		// 結果セットを格納するコレクション
+		Map<Integer,Integer> list = new HashMap<>();
 
+		// データベースに接続と切断を行うオブジェクト
+		Connection conn = null;
+
+		try {
+			conn = conn();
+
+			// SQL文を準備する
+			String sql = "select * from dish;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// SQL文を実行して検索結果を取得する
+			ResultSet rs = pstmt.executeQuery();
+			// 検索結果をコレクションに格納する
+			while (rs.next()) {
+				Dish b = new Dish(rs.getInt("id"), rs.getString("name"), rs.getInt("calorie"), rs.getInt("type"));
+				list.put(b.getId(),b.getCalorie());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			close(conn);
+		}
+		// 検索結果が格納されたコレクションを返す
+		return list;
+	}
+	
 	@Override
 	public List<Dish> select(Dish dto) {
 		// TODO 自動生成されたメソッド・スタブ

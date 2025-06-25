@@ -36,7 +36,7 @@ public class MonthlyIncomeSummaryDao extends CustomTemplateDao<MonthlyIncomeSumm
 				MonthlyIncomeSummaryDto us = new MonthlyIncomeSummaryDto(
 						rs.getString("U_id"), //テーブルの列名
 						rs.getString("work_month"),
-						rs.getInt("estimatedMonthlyIncome"),
+						rs.getDouble("estimatedMonthlyIncome"),
 						rs.getInt("hWage"),
 						rs.getInt("totalMonthlyWorkHours")
 						);
