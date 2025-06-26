@@ -25,20 +25,7 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 //		if (checkNoneLogin(request, response)) {
 //			return;
 //		}
-		// リクエストパラメータ取得
-		request.setCharacterEncoding("UTF-8");
-		
-//		// 先週の摂取カロリーを取得
-//		int lwCcalorie= Integer.parseInt(request.getParameter("lwCcalorie"));
-//		
-//		// 先週の摂取カロリーがない場合(初週)の分岐
-//		if(lwCcalorie == 0) {
-//			// 結果(初週)リダイレクト
-//			response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
-//		}
-		
-		
-		
+		int lwCcalorie;
 		// セッションからユーザーIDを取得
 		HttpSession session = request.getSession();
 		String u_id = (String) session.getAttribute("id");
@@ -51,12 +38,23 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 		// データベースを検索して結果をリクエストスコープに格納する
 		HealthInfDao dao = new HealthInfDao();
 		List<HealthInf> emp = dao.select(dto);
+		lwCcalorie = emp.get(0).getLwCcalorie();		
 		request.setAttribute("emp",emp);
-				
-				
-		// 結果ページにフォワードする
+		
+		// 先週の消費カロリーを取得
+		
+		
+		// 先週の消費カロリーがない場合(初週)の分岐
+		if(lwCcalorie == 0) {
+			// 結果(初週)リダイレクト
+			response.sendRedirect(request.getContextPath() + "/HealthResultFirstWeekMakan");
+		}
+		else {
+			// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/healthResultDefault.jsp");
 		dispatcher.forward(request, response);
+		}
+		
 		
 	}
 

@@ -11,11 +11,22 @@ const ctx = document.getElementById('weightChart').getContext('2d');
    let currentYear = new Date().getFullYear(); // 現在の年
    
    const data = {};
-   data[2024] = {};
-   data[2024][6] = Array.from({ length: 30 }, () => Math.floor(0));
+   for (let y = 2000; y<=2100; y++){
+	   for (let m = 1; m <= 12; m++){
+		   const daysInMonth = new Date(y, m, 0).getDate(); //指定月の日数を取得
+		   for (let d = 1; d <= daysInMonth; d++){
+			   const mm = String(m).padStart(2, '0');  // "00042"
+			   const dd = String(d).padStart(2, '0');  // "00042"
+			   data[ y + "-" + mm + "-" + dd ] = 0;
+		   }
+	   }
+   }
    
    
-   
+   <c:forEach var="e" items="${uInfo}" >
+   data['<c:out value="${e.insertDate}"/>'] = <c:out value="${e.dayCalcWeight}"/>;
+
+   </c:forEach>
    
    
 
@@ -23,8 +34,15 @@ const ctx = document.getElementById('weightChart').getContext('2d');
    function generateMonthlyData(year, month) {
      const daysInMonth = new Date(year, month + 1, 0).getDate(); //指定月の日数を取得
      const labels = Array.from({ length: daysInMonth }, (_, i) => (i + 1) + "日"); //ラベルの表示
-     const actual = Array.from({ length: daysInMonth }, () => Math.floor(Math.random() * 5) + 60); //日数分の実際体重データ生成
+     //const actual = Array.from({ length: daysInMonth }, () => Math.floor(Math.random() * 5) + 60); //日数分の実際体重データ生成
      
+     const actual = [];
+     for (let d = 1; d <= daysInMonth; d++){
+		   const mm = String(month + 1).padStart(2, '0');  // "00042"
+		   const dd = String(d).padStart(2, '0');  // "00042"
+		   actual.push(data[ year + "-" + mm + "-" + dd ]);
+	   }
+   
      let target = Array(daysInMonth).fill(80); //日数分の目標体重データ生成
      
     

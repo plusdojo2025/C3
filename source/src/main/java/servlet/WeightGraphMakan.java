@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,10 +41,13 @@ public class WeightGraphMakan extends CustomTemplateServlet {
 	    DayUserInf dayUserInf = new DayUserInf();
 	    dayUserInf.setU_id(U_id);
 	    
+	    
 	    dayUserInf = dayUserInfDao.select(dayUserInf).get(0);
 	    dayUserInf.setDayCalcWeight(dayUserInfDao.selectDayCalcWeight(U_id));
 	    dayUserInfDao.update(dayUserInf);
-		request.setAttribute("uInfo", dayUserInf.getDayCalcWeight());
+	    List<DayUserInf> duInfo = new ArrayList<DayUserInf>();
+	    duInfo = dayUserInfDao.select(dayUserInf);
+		request.setAttribute("uInfo", duInfo);
 	    
 	    
 		
