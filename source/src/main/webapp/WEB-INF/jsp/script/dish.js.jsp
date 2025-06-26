@@ -106,6 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.getElementById("select-link").onclick = function() {
-	  alert("確定しました");
+	 if (confirm("１日１回しか登録できません")){
+     	alert("食事選択画面に移動します");
+     	return true;
+     }
+     else{
+     	alert("キャンセルしました");
+     	return false;
+     }
 }
 </script>
