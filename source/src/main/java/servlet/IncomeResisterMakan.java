@@ -18,9 +18,9 @@ public class IncomeResisterMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/incomeResister.jsp");
