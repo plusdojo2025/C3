@@ -156,7 +156,6 @@ details summary {
           </c:forEach>
         </div>
       </details>
-      <div class="total-cal">合計: <span id="mTotal">0 kcal</span></div>
     </div>
 
   <div class="meal-box blue">
@@ -197,7 +196,6 @@ details summary {
           </c:forEach>
         </div>
       </details>
-      <div class="total-cal">合計: <span id="nTotal">0 kcal</span></div>
     </div>
 
   <!-- 下段：夜と間食 -->
