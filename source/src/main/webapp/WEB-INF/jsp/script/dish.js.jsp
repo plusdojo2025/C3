@@ -104,4 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderWeek();
 });
+
+document.getElementById("select-link").onclick = function() {
+	  alert("確定しました");
+}
 </script>

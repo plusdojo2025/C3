@@ -142,10 +142,6 @@
 		<footer>
 			<%@ include file="footer.jsp" %>
 		</footer>
-		
-		<p><c:out value="${id}" /></p>
-		<p><c:out value="${userInf.name}" /></p>
-		<p><c:out value="${dWalk}" /></p>
 		<jsp:include page="homeScript.jsp" />
 	</body>
 </html>
