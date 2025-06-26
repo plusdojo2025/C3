@@ -33,9 +33,9 @@ public class DishInfMakan extends CustomTemplateServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //ログイン画面にリダイレクト
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

@@ -22,10 +22,10 @@ public class DishMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
-//			
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
+			
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String dateParam = request.getParameter("ymd");
