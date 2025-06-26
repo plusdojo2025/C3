@@ -32,7 +32,7 @@
 	  </div>
 			  <div class="Form-Item">
 			    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>1週間の希望労働日数</p>
-			    <input type="number" name="wWork" class="Form-Item-Input" placeholder="単位：日"min="0" min="7">
+			    <input type="number" name="wWork" class="Form-Item-Input" placeholder="単位：日"min="0" max="7">
 	  </div>
 	
 	  <div class="Form-Item">
