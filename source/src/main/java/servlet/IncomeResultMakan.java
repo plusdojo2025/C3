@@ -23,9 +23,9 @@ public class IncomeResultMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 
 		// リクエストパラメータ取得
 		request.setCharacterEncoding("UTF-8");

@@ -25,7 +25,7 @@
     <p class="Form-Item-Label">
       <span class="Form-Item-Label-Required">必須</span>目指す体重
     </p>
-    <input type="number" name="iWeight" class="Form-Item-Input" placeholder="単位：kg"><br>
+    <input type="number" name="iWeight" class="Form-Item-Input" placeholder="単位：kg (現在体重より低い値にしてください)"><br>
   </div>
   <div class="Form-Item">
     <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>現在の体重</p>
