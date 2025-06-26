@@ -22,9 +22,9 @@ public class HealthResultDefaultMakan extends CustomTemplateServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 		int lwCcalorie;
 		// セッションからユーザーIDを取得
 		HttpSession session = request.getSession();
