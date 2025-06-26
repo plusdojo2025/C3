@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MonthlyIncomeSummaryDto extends CustomTemplateDto implements Serializable {
 	private String u_id;//ユーザーID
 	private String workMonth;
-	private int estimatedMonthlyIncome;
+	private double estimatedMonthlyIncome;
 	private int hWage;
 	private int totalMonthlyWorkHours;
 	public String getU_id() {
@@ -20,10 +20,10 @@ public class MonthlyIncomeSummaryDto extends CustomTemplateDto implements Serial
 	public void setWorkMonth(String workMonth) {
 		this.workMonth = workMonth;
 	}
-	public int getEstimatedMonthlyIncome() {
+	public double getEstimatedMonthlyIncome() {
 		return estimatedMonthlyIncome;
 	}
-	public void setEstimatedMonthlyIncome(int estimatedMonthlyIncome) {
+	public void setEstimatedMonthlyIncome(double estimatedMonthlyIncome) {
 		this.estimatedMonthlyIncome = estimatedMonthlyIncome;
 	}
 	public int gethWage() {
@@ -41,7 +41,7 @@ public class MonthlyIncomeSummaryDto extends CustomTemplateDto implements Serial
 	public MonthlyIncomeSummaryDto() {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
-	public MonthlyIncomeSummaryDto(String u_id, String workMonth, int estimatedMonthlyIncome, int hWage,
+	public MonthlyIncomeSummaryDto(String u_id, String workMonth, double estimatedMonthlyIncome, int hWage,
 			int totalMonthlyWorkHours) {
 		this.u_id = u_id;
 		this.workMonth = workMonth;

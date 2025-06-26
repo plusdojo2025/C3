@@ -98,7 +98,7 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 		try {
 			conn = conn();
 			// SQL文を準備する 上書き
-			String sql = "UPDATE dayuserinf SET totalCalorie=?,dayCalcWeight=? WHERE u_id=?;";
+			String sql = "UPDATE dayuserinf SET totalCalorie=?,dayCalcWeight=? WHERE u_id=? and insertDate = current_date;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

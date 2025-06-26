@@ -26,7 +26,7 @@ let yearlyData = {
 </c:forEach>
 
 <c:forEach var="e" items="${mIncome}" >
-targetIncome=Math.floor(${e.gIncome /12});
+targetIncome=Math.floor(${(e.gIncome /12 )* 10000});
 
 </c:forEach>
 
