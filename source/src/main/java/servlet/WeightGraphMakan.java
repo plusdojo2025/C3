@@ -26,9 +26,9 @@ public class WeightGraphMakan extends CustomTemplateServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 		
 	    HttpSession session = request.getSession();
 	    String U_id = (String) session.getAttribute("id");

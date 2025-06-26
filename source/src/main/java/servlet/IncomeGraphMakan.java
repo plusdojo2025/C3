@@ -26,9 +26,9 @@ public class IncomeGraphMakan extends CustomTemplateServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-//		if (checkNoneLogin(request, response)) {
-//			return;
-//		}
+		if (checkNoneLogin(request, response)) {
+			return;
+		}
 		String u_id;
 		HttpSession session = request.getSession();
 		u_id = "00001";																					// (String) session.getAttribute("id");
