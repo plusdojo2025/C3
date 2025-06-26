@@ -21,7 +21,7 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 			conn = conn();//戻り値Connection型 dbに接続する
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM dayuserinf WHERE u_id = ? ";
+			String sql = "SELECT * FROM dayuserinf WHERE u_id = ?  order by id desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -35,7 +35,7 @@ public class DayUserInfDao extends CustomTemplateDao<DayUserInf> {
 				DayUserInf us = new DayUserInf(
 						rs.getInt("id"), //テーブルの列名
 						rs.getInt("totalCalorie"),
-						rs.getInt("dayCalcWeight"),
+						rs.getDouble("dayCalcWeight"),
 						rs.getDate("insertDate"),
 						rs.getString("U_id")
 						);
